@@ -145,7 +145,7 @@ DEFINE_MESSAGE(0x0016, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
 ITEM_ICON("\x2A")  QUICKTEXT_ENABLE "Du lånade en " COLOR(RED) "Gerudomask" COLOR(DEFAULT) "." QUICKTEXT_DISABLE "\n"
 "Ta på dig den med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " för att visa upp den!\n"
 "den! Med den här masken på kommer du\n"
-"att se ut som en...tjej?"
+"att se ut som en...flicka?"
 )
 
 DEFINE_MESSAGE(0x0017, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
@@ -357,171 +357,171 @@ ITEM_ICON("\x02")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Bomber" COLOR(DEFAULT
 DEFINE_MESSAGE(0x0033, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
 ITEM_ICON("\x09")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Bombchu" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
 "På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x09") " Carry and place with " COLOR(YELLOW) "[C]" COLOR(DEFAULT) ".\n"
-"This is a new type bomb that\n"
-"can even crawl up walls.\n"
-"Aim well and release it!"
+"så kan du placera dem på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x09") " Lyft och placera med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) ".\n"
+"Det här är en ny typ utav bomb\n"
+"som kan krypa upp för väggar.\n"
+"Sikta smart och släpp lös den!"
 )
 
 DEFINE_MESSAGE(0x0034, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x01")  QUICKTEXT_ENABLE "You got a " COLOR(RED) "Deku Nut" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x01") "Set it to " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "and try \n"
-"throwing it! It will flash and \n"
-"stun the enemy!"
+ITEM_ICON("\x01")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Dekunötter" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"så kan du placera dem på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x01") "Sätt den på " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "och prova att \n"
+"kasta den! Den kommer att blixtra till \n"
+"och bedöva fienden!"
 )
 
 DEFINE_MESSAGE(0x0035, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x0E")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Boomerang" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0E") "Press " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " to use it to \n"
-"attack distant enemies!"
+UNSKIPPABLE  ITEM_ICON("\x0E")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Bumerang" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"så kan du placera dem på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0E") "Tryck " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " för att kasta den \n"
+"på avlägsna fiender!"
 )
 
 DEFINE_MESSAGE(0x0036, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x0A")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Hookshot" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"It's a spring-loaded chain that\n"
-"you can cast out to hook things." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0A") "You can use it to drag\n"
-"distant items toward you, or\n"
-"you can use it to pull yourself\n"
-"toward something." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0A") "While holding " COLOR(YELLOW) "[C]" COLOR(DEFAULT) ", you can\n"
-"aim with " COLOR(LIGHTBLUE) "[Control-Pad]" COLOR(DEFAULT) ". Shoot it by\n"
-"releasing " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "."
+UNSKIPPABLE  ITEM_ICON("\x0A")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Krokskottet" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Det är en fjäderladdad kedja som\n"
+"du kan ta fram för att kroka fast saker." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0A") "Du kan använda den för att dra\n"
+"till dig avlägsna föremål, eller\n"
+"så kan du använda den för att dra\n"
+"dig själv emot någonting." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0A") "Medan du håller inne " COLOR(YELLOW) "[C]" COLOR(DEFAULT) ", så kan du\n"
+"sikta med " COLOR(LIGHTBLUE) "[Control-Pad]" COLOR(DEFAULT) ". Skjut genom att\n"
+"släppa " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "."
 )
 
 DEFINE_MESSAGE(0x0037, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x00")  QUICKTEXT_ENABLE "You got a " COLOR(RED) "Deku Stick" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x00") "Set it to " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " and swing it\n"
-"with " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "!" BOX_BREAK ITEM_ICON("\x00") "When you want to put it away, \n"
-"stand still and press " COLOR(BLUE) "[A]" COLOR(DEFAULT) ". \n"
-"You can carry up to 10 sticks,\n"
-"but don't waste them."
+ITEM_ICON("\x00")  QUICKTEXT_ENABLE "Du fick en " COLOR(RED) "Dekukäpp" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"så kan du placera dem på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x00") "Sätt den på " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " och svinga den\n"
+"med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "!" BOX_BREAK ITEM_ICON("\x00") "Då du vill stoppa undan den, \n"
+"stå still och tryck " COLOR(BLUE) "[A]" COLOR(DEFAULT) ". \n"
+"Du kan bära upp till 10 käppar,\n"
+"men slösa inte bort dem."
 )
 
 DEFINE_MESSAGE(0x0038, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x11")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Megaton Hammer" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Press " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " to smash and break \n"
-"junk! It's so heavy, you need to \n"
-"use two hands to swing it!"
+UNSKIPPABLE  ITEM_ICON("\x11")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Megatonhammaren" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Tryck " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " to krossa och förstöra \n"
+"skrot! Den är så tung, att du behöver \n"
+"använda två händer för att svinga den!"
 )
 
 DEFINE_MESSAGE(0x0039, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x0F")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Lens of Truth" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Set it to " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " and press " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " to \n"
-"look through it! Mysterious \n"
-"things are hidden everywhere!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0F") "Be sure to try to use it outside\n"
-"of the well. Seeing the truth will\n"
-"cost magic power, so press " COLOR(YELLOW) "[C]\n"
-COLOR(DEFAULT) "again to stop using it."
+UNSKIPPABLE  ITEM_ICON("\x0F")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Sanningslinsen" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Sätt den på " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " och tryck " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " för att \n"
+"titta genom den! Mystiska \n"
+"saker är dolda överallt!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0F") "Försök att även använda den\n"
+"utanför brunnen. Att se sanningen\n"
+"kostar dig magisk kraft, tryck " COLOR(YELLOW) "[C]\n"
+COLOR(DEFAULT) "igen för att sluta använda den."
 )
 
 DEFINE_MESSAGE(0x003A, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x08")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Ocarina of Time" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This is the Royal Family's hidden \n"
-"treasure which Zelda left behind.\n"
-"It glows with a mystical light..."
+UNSKIPPABLE  ITEM_ICON("\x08")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Tidsokarinan" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Detta är en utav den Kungliga Familjens \n"
+"dolda skatter som Zelda lämnade efter sig.\n"
+"Den skimrar med ett mystiskt ljus..."
 )
 
 DEFINE_MESSAGE(0x003B, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-"You cast Farore's Wind!\n"
-THREE_CHOICE  COLOR(ADJUSTABLE) "Return to the Warp Point\n"
-"Dispel the Warp Point\n"
-"Exit" COLOR(DEFAULT)
+"Du kastar Farore's Vind!\n"
+THREE_CHOICE  COLOR(ADJUSTABLE) "Återvänd till Varp-Punkten\n"
+"Avskingra Varp-Punkten\n"
+"Lämna" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x003C, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x67")  QUICKTEXT_ENABLE "You received the " COLOR(RED) "Fire\n"
-"Medallion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Darunia awakens as a Sage and\n"
-"adds his power to yours!"
+UNSKIPPABLE  ITEM_ICON("\x67")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Eldmedaljen\n"
+" " COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Darunia vaknade upp som en Vise och\n"
+"skänker dig härmed sina krafter!"
 )
 
 DEFINE_MESSAGE(0x003D, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x68")  QUICKTEXT_ENABLE "You received the " COLOR(BLUE) "Water\n"
-"Medallion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Ruto awakens as a Sage and\n"
-"adds her power to yours!"
+UNSKIPPABLE  ITEM_ICON("\x68")  QUICKTEXT_ENABLE "Du fick " COLOR(BLUE) "Vattenmedaljen\n"
+" " COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Ruto vaknade upp som en Vise och\n"
+"skänker dig härmed sina krafter!"
 )
 
 DEFINE_MESSAGE(0x003E, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x66")  QUICKTEXT_ENABLE "You received the " COLOR(ADJUSTABLE) "Forest\n"
-"Medallion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Saria awakens as a Sage and\n"
-"adds her power to yours!"
+UNSKIPPABLE  ITEM_ICON("\x66")  QUICKTEXT_ENABLE "Du fick " COLOR(ADJUSTABLE) "Skogsmedaljen\n"
+" " COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Saria vaknade upp som en Vise och\n"
+"skänker dig härmed sina krafter!"
 )
 
 DEFINE_MESSAGE(0x003F, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x69")  QUICKTEXT_ENABLE "You received the " COLOR(YELLOW) "Spirit\n"
-"Medallion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Nabooru awakens as a Sage and\n"
-"adds her power to yours!"
+UNSKIPPABLE  ITEM_ICON("\x69")  QUICKTEXT_ENABLE "Du fick " COLOR(YELLOW) "Själamedaljen\n"
+" " COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Nabooru vaknade upp som en Vise och\n"
+"skänker dig härmed sina krafter!"
 )
 
 DEFINE_MESSAGE(0x0040, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x6B")  QUICKTEXT_ENABLE "You received the " COLOR(LIGHTBLUE) "Light\n"
-"Medallion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Rauru the Sage adds his power\n"
-"to yours!"
+UNSKIPPABLE  ITEM_ICON("\x6B")  QUICKTEXT_ENABLE "Du fick " COLOR(LIGHTBLUE) "Ljusmedaljen\n"
+" " COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Rauru den Vise skänker dig\n"
+"härmed sina krafter!"
 )
 
 DEFINE_MESSAGE(0x0041, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x6A")  QUICKTEXT_ENABLE "You received the " COLOR(PURPLE) "Shadow\n"
-"Medallion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Impa awakens as a Sage and\n"
-"adds her power to yours!"
+UNSKIPPABLE  ITEM_ICON("\x6A")  QUICKTEXT_ENABLE "Du fick " COLOR(PURPLE) "Skuggmedaljen\n"
+" " COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Impa vaknade upp som en Vise och\n"
+"skänker dig härmed sina krafter!""
 )
 
 DEFINE_MESSAGE(0x0042, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x14")  QUICKTEXT_ENABLE "You got an " COLOR(RED) "Empty Bottle" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"After you put something in this\n"
-"bottle, set it to " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " when you\n"
-"want to use the item inside."
+UNSKIPPABLE  ITEM_ICON("\x14")  QUICKTEXT_ENABLE "Du fick en " COLOR(RED) "Tom Flaska" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Då du har något i den här\n"
+"flaskan så kan du placera den på " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " då du\n"
+"vill använda föremålet inuti."
 )
 
 DEFINE_MESSAGE(0x0043, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x15")  QUICKTEXT_ENABLE "You got a " COLOR(RED) "Red Potion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x15") "Drink it with " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " to recover\n"
-"your life energy.\n"
-"You carry this potion in one\n"
-"of your bottles."
+ITEM_ICON("\x15")  QUICKTEXT_ENABLE "Du fick en " COLOR(RED) "Röd Brygd" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"placera den på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x15") "Drick den med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " för att återhämta\n"
+"din livsenergi.\n"
+"Du bär den här brygden i\n"
+"en utav dina flaskor."
 )
 
 DEFINE_MESSAGE(0x0044, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x16")  QUICKTEXT_ENABLE "You got a " COLOR(ADJUSTABLE) "Green Potion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x16") "Drink it with " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " to recover\n"
-"your magic power.\n"
-"You carry this potion in one\n"
-"of your bottles."
+ITEM_ICON("\x16")  QUICKTEXT_ENABLE "Du fick en " COLOR(ADJUSTABLE) "Grön Brygd" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"placera den på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x16") "Drick den med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " för att återhämta\n"
+"din magiska kraft.\n"
+"Du bär den här brygden i\n"
+"en utav dina flaskor."
 )
 
 DEFINE_MESSAGE(0x0045, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x17")  QUICKTEXT_ENABLE "You got a " COLOR(BLUE) "Blue Potion" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Drink it with " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " to recover\n"
-"your life energy and magic power."
+ITEM_ICON("\x17")  QUICKTEXT_ENABLE "Du fick en " COLOR(BLUE) "Blå Brygd" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Drick den med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " för att återhämta\n"
+"din livsenergi och din magiska kraft."
 )
 
 DEFINE_MESSAGE(0x0046, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x18")  QUICKTEXT_ENABLE "You caught a " COLOR(RED) "Fairy" COLOR(DEFAULT) " in a bottle!" QUICKTEXT_DISABLE "\n"
-"On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x18") "This tiny fairy is a reliable \n"
-"partner who will revive you\n"
-"the moment you run out of life \n"
-"energy." BOX_BREAK ITEM_ICON("\x18") "Once you set it to " COLOR(YELLOW) "[C]" COLOR(DEFAULT) ",\n"
-"though, you can ask for its help\n"
-"anytime."
+ITEM_ICON("\x18")  QUICKTEXT_ENABLE "Du fångade en " COLOR(RED) "Älva" COLOR(DEFAULT) " i en flaska!" QUICKTEXT_DISABLE "\n"
+"På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"så kan du placera den på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x18") "Den här lilla älvan är en pålitlig \n"
+"partner som återhämtar dig\n"
+"så fort din livsenergi tar \n"
+"slut." BOX_BREAK ITEM_ICON("\x18") "Då du placerar den på " COLOR(YELLOW) "[C]" COLOR(DEFAULT) ",\n"
+"så kan du be om dess hjälp\n"
+"när du vill."
 )
 
 DEFINE_MESSAGE(0x0047, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x19")  QUICKTEXT_ENABLE "You got a " COLOR(RED) "Fish" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Use it with " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " and something \n"
-"might happen... It looks so \n"
-"fresh and delicious!" BOX_BREAK ITEM_ICON("\x19") "On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) "\n"
-"or " COLOR(YELLOW) "[C-Right]" COLOR(DEFAULT) ", and then press that\n"
-COLOR(YELLOW) "[C] " COLOR(DEFAULT) "to use it."
+ITEM_ICON("\x19")  QUICKTEXT_ENABLE "Du fick en " COLOR(RED) "Fisk" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Använd den med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " så kanske \n"
+"någonting händer... Den ser \n"
+"färsk och mumsig ut!" BOX_BREAK ITEM_ICON("\x19") "På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"så kan du placera den på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) "\n"
+"eller " COLOR(YELLOW) "[C-Right]" COLOR(DEFAULT) ", tryck sedan\n"
+COLOR(YELLOW) "[C] " COLOR(DEFAULT) "för att använda den."
 )
 
 DEFINE_MESSAGE(0x0048, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
@@ -535,417 +535,417 @@ COLOR(YELLOW) "[C] " COLOR(DEFAULT) "to plant it."
 )
 
 DEFINE_MESSAGE(0x0049, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_VARIABLE,
-"Sorry about that...OK, well..." BOX_BREAK QUICKTEXT_ENABLE  SHIFT("\x3D")  COLOR(RED) "LET'S BOWL" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE  EVENT
+"Ursäkta mig...okej..." BOX_BREAK QUICKTEXT_ENABLE  SHIFT("\x3D")  COLOR(RED) "DÅ BOWLAR VI" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE  EVENT
 )
 
 DEFINE_MESSAGE(0x004A, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x07")  QUICKTEXT_ENABLE "You received the " COLOR(RED) "Fairy Ocarina" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This is a memento from Saria.\n"
-"Set it to " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " and press " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "\n"
-"to start playing it!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x07") "On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) "\n"
-"or " COLOR(YELLOW) "[C-Right]" COLOR(DEFAULT) ", and then use that\n"
-COLOR(YELLOW) "[C] " COLOR(DEFAULT) "to start playing it." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x07") "You can play different notes\n"
-"with " COLOR(BLUE) "[A]" COLOR(DEFAULT) " and the four " COLOR(YELLOW) "[C] Buttons" COLOR(DEFAULT) ". \n"
-"Press " COLOR(ADJUSTABLE) "[B]" COLOR(DEFAULT) " to quit playing, or \n"
-"to start your song over again."
+UNSKIPPABLE  ITEM_ICON("\x07")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Älvokarinan" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Det här är ett minne ifrån Saria.\n"
+"Placera den på " COLOR(YELLOW) "[C]" COLOR(DEFAULT) " och tryck " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "\n"
+"för att börja spela på den!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x07") "På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"så kan du placera den på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down]" COLOR(DEFAULT) "\n"
+"eller " COLOR(YELLOW) "[C-Right]" COLOR(DEFAULT) ", använd sedan\n"
+COLOR(YELLOW) "[C] " COLOR(DEFAULT) "för att börja spela." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x07") "Du kan spela olika noter\n"
+"med " COLOR(BLUE) "[A]" COLOR(DEFAULT) " och de fyra " COLOR(YELLOW) "[C] Knapparna" COLOR(DEFAULT) ". \n"
+"Tryck " COLOR(ADJUSTABLE) "[B]" COLOR(DEFAULT) " för att sluta spela, eller \n"
+"för att spela din sång från början."
 )
 
 DEFINE_MESSAGE(0x004B, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x3D")  QUICKTEXT_ENABLE "You got the " COLOR(ADJUSTABLE) "Giant's Knife" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Hold it with both hands and use \n"
-COLOR(ADJUSTABLE) "[B] " COLOR(DEFAULT) "to attack! It's so long, you\n"
-"can't use it with a " COLOR(LIGHTBLUE) "shield" COLOR(DEFAULT) "."
+ITEM_ICON("\x3D")  QUICKTEXT_ENABLE "Du fick " COLOR(ADJUSTABLE) "Jätten's Kniv" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Håll den med båda händerna och använd \n"
+COLOR(ADJUSTABLE) "[B] " COLOR(DEFAULT) "för att attackera! Den är så lång, så att\n"
+"du inte kan använda den med en " COLOR(LIGHTBLUE) "sköld" COLOR(DEFAULT) "."
 )
 
 DEFINE_MESSAGE(0x004C, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x3E")  QUICKTEXT_ENABLE "You got a " COLOR(LIGHTBLUE) "Deku Shield" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Switch to the " COLOR(BLUE) "Equipment \n"
-"Subscreen" COLOR(RED) " " COLOR(DEFAULT) "and select the\n"
-"shield. Press " COLOR(BLUE) "[A] " COLOR(DEFAULT) "to equip it." BOX_BREAK ITEM_ICON("\x3E") "Press " COLOR(LIGHTBLUE) "[R]" COLOR(DEFAULT) " to crouch and\n"
-"defend. If you press " COLOR(LIGHTBLUE) "[R]" COLOR(DEFAULT) " while \n"
-COLOR(LIGHTBLUE) "[Z] Targeting" COLOR(DEFAULT) ", you can move\n"
-"while defending."
+ITEM_ICON("\x3E")  QUICKTEXT_ENABLE "Du fick en " COLOR(LIGHTBLUE) "Dekusköld" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Byt till " COLOR(BLUE) "Utrustnings-skärmen \n"
+" " COLOR(RED) " " COLOR(DEFAULT) "och välj den här\n"
+"skölden. Tryck " COLOR(BLUE) "[A] " COLOR(DEFAULT) "för att utrusta dig med den." BOX_BREAK ITEM_ICON("\x3E") "Tryck " COLOR(LIGHTBLUE) "[R]" COLOR(DEFAULT) " för att huka\n"
+"och försvara dig. Om du trycker " COLOR(LIGHTBLUE) "[R]" COLOR(DEFAULT) " medan du \n"
+COLOR(LIGHTBLUE) "[Z] Siktar" COLOR(DEFAULT) ", så kan du röra dig\n"
+"medan du försvarar dig."
 )
 
 DEFINE_MESSAGE(0x004D, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x3F")  QUICKTEXT_ENABLE "You got a " COLOR(LIGHTBLUE) "Hylian Shield" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Switch to the " COLOR(BLUE) "Equipment \n"
-"Subscreen" COLOR(DEFAULT) " and select this\n"
-"shield, then equip it with " COLOR(BLUE) "[A]" COLOR(DEFAULT) "."
+ITEM_ICON("\x3F")  QUICKTEXT_ENABLE "Du fick en " COLOR(LIGHTBLUE) "Hyliansk Sköld" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Byt till " COLOR(BLUE) "Utrustnings-skärmen \n"
+" " COLOR(DEFAULT) " och välj den här\n"
+"skölden, utrusta dig sedan med den genom att trycka " COLOR(BLUE) "[A]" COLOR(DEFAULT) "."
 )
 
 DEFINE_MESSAGE(0x004E, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x40")  QUICKTEXT_ENABLE "You found the " COLOR(LIGHTBLUE) "Mirror Shield" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"The shield's polished surface can\n"
-"reflect light or energy. Press " COLOR(LIGHTBLUE) "[R]\n"
-COLOR(DEFAULT) "to use it."
+UNSKIPPABLE  ITEM_ICON("\x40")  QUICKTEXT_ENABLE "Du hittade " COLOR(LIGHTBLUE) "Spegelskölden" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Skölden's polerade yta\n"
+"reflekterar ljus eller energi. Tryck " COLOR(LIGHTBLUE) "[R]\n"
+COLOR(DEFAULT) "för att använda den."
 )
 
 DEFINE_MESSAGE(0x004F, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x0B")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Longshot" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"It's an upgraded Hookshot.\n"
-"It extends " COLOR(RED) "twice" COLOR(DEFAULT) " as far!"
+UNSKIPPABLE  ITEM_ICON("\x0B")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Långskottet" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Det här är ett uppgraderat Krokskott.\n"
+"Den sträcker sig " COLOR(RED) "dubbelt" COLOR(DEFAULT) " så långt!"
 )
 
 DEFINE_MESSAGE(0x0050, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x42")  QUICKTEXT_ENABLE "You got a " COLOR(RED) "Goron Tunic" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This heat-resistant tunic is\n"
-"adult size, so it won't fit a kid...\n"
-"Going to a hot place? No worry!"
+ITEM_ICON("\x42")  QUICKTEXT_ENABLE "Du fick en " COLOR(RED) "Goron-tunika" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Denna värme-resistanta tunika är\n"
+"i vuxenstorlek, så den passar inte ett barn...\n"
+"Är du på väg till en varm plats? Oroa dig inte!"
 )
 
 DEFINE_MESSAGE(0x0051, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x43")  QUICKTEXT_ENABLE "You got a " COLOR(BLUE) "Zora Tunic" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This diving suit is adult size,\n"
-"so it won't fit a kid. Wear it,\n"
-"and you won't drown underwater."
+ITEM_ICON("\x43")  QUICKTEXT_ENABLE "Du fick en " COLOR(BLUE) "Zora-tunika" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Den här dykar-uniformen är i vuxenstorlek,\n"
+"så den passar inte ett barn. Klä dig i den,\n"
+"så att du inte drunknar under vattnet."
 )
 
 DEFINE_MESSAGE(0x0052, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "You got a " COLOR(ADJUSTABLE) "Magic Jar" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Your Magic Meter is filled!"
+QUICKTEXT_ENABLE "Du fick en " COLOR(ADJUSTABLE) "Magisk Kruka" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Din Magi-meter fylldes på!"
 )
 
 DEFINE_MESSAGE(0x0053, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x45")  QUICKTEXT_ENABLE "You got the " COLOR(RED) "Iron Boots" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"So heavy, you can't run.\n"
-"So heavy, you can't float."
+UNSKIPPABLE  ITEM_ICON("\x45")  QUICKTEXT_ENABLE "Du fick ett par " COLOR(RED) "Järnskor" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Så tunga, att du inte kan springa.\n"
+"Så tunga, att du inte kan flyta."
 )
 
 DEFINE_MESSAGE(0x0054, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x46")  QUICKTEXT_ENABLE "You got the " COLOR(RED) "Hover Boots" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"With these mysterious boots\n"
-"you can hover above the ground.\n"
-"The downside? No traction!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x46") "You can even use these to\n"
-"walk for short periods where \n"
-"there is no solid ground. Be brave\n"
-"and trust in the boots!"
+UNSKIPPABLE  ITEM_ICON("\x46")  QUICKTEXT_ENABLE "Du fick ett par " COLOR(RED) "Svävarskor" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Med dessa mystiska skor\n"
+"så kan du sväva över marken.\n"
+"Nackdelen? Ingen dragkraft!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x46") "You can even use these to\n"
+"Gå korta perioder över mark\n"
+"som inte är fast. Var modig\n"
+"och lita på skorna!"
 )
 
 DEFINE_MESSAGE(0x0055, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "You got a " COLOR(PURPLE) "Recovery Heart" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Your life energy is recovered!"
+QUICKTEXT_ENABLE "Du fick ett " COLOR(PURPLE) "Återhämtningshjärta" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Din livsenergi har blivit återhämtad!"
 )
 
 DEFINE_MESSAGE(0x0056, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x4B")  QUICKTEXT_ENABLE "You upgraded your quiver to a\n"
-COLOR(RED) "Big Quiver" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Now you can carry more arrows-\n"
-COLOR(YELLOW) "40 " COLOR(DEFAULT) "in total!"
+UNSKIPPABLE  ITEM_ICON("\x4B")  QUICKTEXT_ENABLE "Du uppgraderade ditt kågor till\n"
+COLOR(RED) "Stort Koger" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Nu kan du bära fler pilar-\n"
+COLOR(YELLOW) "40 " COLOR(DEFAULT) "totalt!"
 )
 
 DEFINE_MESSAGE(0x0057, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x4B")  QUICKTEXT_ENABLE "You upgraded your quiver to\n"
-"the " COLOR(RED) "Biggest Quiver" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Now you can carry even more \n"
-"arrows, to a maximum of " COLOR(YELLOW) "50" COLOR(DEFAULT) "!"
+UNSKIPPABLE  ITEM_ICON("\x4B")  QUICKTEXT_ENABLE "Du uppgraderade ditt kågor till\n"
+"det " COLOR(RED) "Största Kogert" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Nu kan du till och med bära ännu fler \n"
+"pilar, ända upp till " COLOR(YELLOW) "50" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x0058, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x4D")  QUICKTEXT_ENABLE "You found a " COLOR(RED) "Bomb Bag" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This bomb-holding bag is made \n"
-"from a Dodongo's stomach!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x02")  QUICKTEXT_ENABLE "You found " COLOR(RED) "20 Bombs" COLOR(DEFAULT) " inside!" QUICKTEXT_DISABLE "\n"
-"Now you can set Bombs to " COLOR(YELLOW) "[C]\n"
-COLOR(DEFAULT) "and blow stuff up! What a lucky \n"
-"guy!"
+UNSKIPPABLE  ITEM_ICON("\x4D")  QUICKTEXT_ENABLE "Du fick en " COLOR(RED) "Bombväska" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Den här specialgjorda bombväskan är tillverkad \n"
+"utav magen från en Dodongo!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x02")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "20 Bomber" COLOR(DEFAULT) " inuti!" QUICKTEXT_DISABLE "\n"
+"Nu kan du placera Bomber på " COLOR(YELLOW) "[C]\n"
+COLOR(DEFAULT) "och spränga saker! Du är lyckligt \n"
+"lottad!"
 )
 
 DEFINE_MESSAGE(0x0059, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x4E")  QUICKTEXT_ENABLE "You got a " COLOR(RED) "Big Bomb Bag" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Now you can carry more \n"
-"Bombs, up to a maximum of " COLOR(YELLOW) "30" COLOR(DEFAULT) "!"
+UNSKIPPABLE  ITEM_ICON("\x4E")  QUICKTEXT_ENABLE "Du fick en " COLOR(RED) "Stor Bombväska" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Nu kan du bära fler \n"
+"Bomber, up till hela " COLOR(YELLOW) "30" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x005A, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x4F")  QUICKTEXT_ENABLE "You got the \n"
-COLOR(RED) "Biggest Bomb Bag" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Now, you can carry up to \n"
-COLOR(YELLOW) "40" COLOR(DEFAULT) " Bombs!"
+UNSKIPPABLE  ITEM_ICON("\x4F")  QUICKTEXT_ENABLE "Du fick den \n"
+COLOR(RED) "Största Bombväskan" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Nu kan du bära upp till \n"
+COLOR(YELLOW) "40" COLOR(DEFAULT) " Bomber!"
 )
 
 DEFINE_MESSAGE(0x005B, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x51")  QUICKTEXT_ENABLE "You found the " COLOR(BLUE) "Silver Gauntlets" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"If you wore them, you would\n"
-"feel power in your arms, the \n"
-"power to lift big things with " COLOR(BLUE) "[A]" COLOR(DEFAULT) "!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x51") "But, these gauntlets won't fit\n"
-"a kid... Plus, you promised to give\n"
-"them to " COLOR(RED) "Nabooru" COLOR(DEFAULT) ". You should keep\n"
-"your word..."
+UNSKIPPABLE  ITEM_ICON("\x51")  QUICKTEXT_ENABLE "Du hittade " COLOR(BLUE) "Silverhandskarna" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Då du har dem på dig, så känner\n"
+"du kraften i dina armar att \n"
+"orka lyfta stora saker " COLOR(BLUE) "[A]" COLOR(DEFAULT) "!" BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x51") "Men, dessa handskar passar inte\n"
+"ett barn... Dessutom så lovade du\n"
+"att ge dem till " COLOR(RED) "Nabooru" COLOR(DEFAULT) ". Du borde\n"
+"stå vid ditt ord..."
 )
 
 DEFINE_MESSAGE(0x005C, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x52")  QUICKTEXT_ENABLE "You found the " COLOR(BLUE) "Golden Gauntlets" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"You can feel even more power \n"
-"coursing through your arms!\n"
-"Grab with " COLOR(BLUE) "[A] " COLOR(DEFAULT) "and lift stuff up!"
+UNSKIPPABLE  ITEM_ICON("\x52")  QUICKTEXT_ENABLE "Du hittade de " COLOR(BLUE) "Gyllene Handskarna" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Du kan till och med känna mer\n"
+"kraft strömma genom dina armar!\n"
+"Greppa tag med " COLOR(BLUE) "[A] " COLOR(DEFAULT) "och lyft upp saker!"
 )
 
 DEFINE_MESSAGE(0x005D, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x1C")  QUICKTEXT_ENABLE "You put a " COLOR(LIGHTBLUE) "Blue Fire" COLOR(DEFAULT) "\n"
-"into the bottle!" QUICKTEXT_DISABLE "\n"
-"This is a cool flame you can\n"
-"use with " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) "," COLOR(YELLOW) " [C-Down]" COLOR(DEFAULT) " or" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "."
+ITEM_ICON("\x1C")  QUICKTEXT_ENABLE "Du stoppade en " COLOR(LIGHTBLUE) "Blå Eld" COLOR(DEFAULT) "\n"
+"in i Flaskan!" QUICKTEXT_DISABLE "\n"
+"Detta här en häftig flamma som du kan\n"
+"använda med " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) "," COLOR(YELLOW) " [C-Down]" COLOR(DEFAULT) " eller" COLOR(YELLOW) " [C-Right]" COLOR(DEFAULT) "."
 )
 
 DEFINE_MESSAGE(0x005E, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x56")  QUICKTEXT_ENABLE "You got an " COLOR(BLUE) "Adult's Wallet" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Adults are allowed to carry a \n"
-"lot of money. Now you can hold \n"
-"up to " COLOR(YELLOW) "200" COLOR(DEFAULT) " " COLOR(YELLOW) "Rupees" COLOR(DEFAULT) "."
+UNSKIPPABLE  ITEM_ICON("\x56")  QUICKTEXT_ENABLE "Du fick en " COLOR(BLUE) "Vuxen's Plånbok" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Vuxna får lov att ha mycket pengar \n"
+"på sig. Nu så kan du bära \n"
+"upp till " COLOR(YELLOW) "200" COLOR(DEFAULT) " " COLOR(YELLOW) "Rupees" COLOR(DEFAULT) "."
 )
 
 DEFINE_MESSAGE(0x005F, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x57")  QUICKTEXT_ENABLE "You got a " COLOR(BLUE) "Giant's Wallet" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"What a huge wallet! Now \n"
-"you can carry up to " COLOR(YELLOW) "500" COLOR(DEFAULT) " " COLOR(YELLOW) "Rupees" COLOR(DEFAULT) "."
+UNSKIPPABLE  ITEM_ICON("\x57")  QUICKTEXT_ENABLE "Du fick en " COLOR(BLUE) "Jätte's Plånbok" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Vilken enorm plånbok! Nu kan \n"
+"du bära upp till " COLOR(YELLOW) "500" COLOR(DEFAULT) " " COLOR(YELLOW) "Rupees" COLOR(DEFAULT) "."
 )
 
 DEFINE_MESSAGE(0x0060, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x77")  QUICKTEXT_ENABLE "You found a " COLOR(RED) "Small Key" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This key will open a locked \n"
-"door. You can use it only\n"
-"in this dungeon."
+ITEM_ICON("\x77")  QUICKTEXT_ENABLE "Du hittade en " COLOR(RED) "Liten Nyckel" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Den här nyckeln kan öppna en låst \n"
+"dörr. Du kan endast använda den\n"
+"i det här området."
 )
 
 DEFINE_MESSAGE(0x0061, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE  COLOR(RED) "Bombchu  (20 pieces)  180 Rupees\n"
-COLOR(DEFAULT) "This looks like a toy mouse, but\n"
-"it's actually a self-propelled time\n"
+QUICKTEXT_ENABLE  COLOR(RED) "Bombchu  (20 Stycken)  180 Rupees\n"
+COLOR(DEFAULT) "Det ser ut som en leksaksmus, men\n"
+"är i själva verket en självgående tidsinställd\n"
 "bomb!" QUICKTEXT_DISABLE  PERSISTENT
 )
 
 DEFINE_MESSAGE(0x0062, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Red Potion   40 Rupees" QUICKTEXT_DISABLE "\n"
+QUICKTEXT_ENABLE "Röd Brygd    40 Rupees" QUICKTEXT_DISABLE "\n"
 "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Buy\n"
-"Don't buy" COLOR(DEFAULT)
+TWO_CHOICE  COLOR(ADJUSTABLE) "Köp\n"
+"Köp inte" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x0063, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Red Potion   50 Rupees" QUICKTEXT_DISABLE "\n"
+QUICKTEXT_ENABLE "Röd Brygd    50 Rupees" QUICKTEXT_DISABLE "\n"
 "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Buy\n"
-"Don't buy" COLOR(DEFAULT)
+TWO_CHOICE  COLOR(ADJUSTABLE) "Köp\n"
+"Köp inte" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x0064, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE  COLOR(RED) "Red Potion   40 Rupees\n"
-COLOR(DEFAULT) "If you drink this, you will\n"
-"recover your life energy.\n"
-"This is a single dose." QUICKTEXT_DISABLE  PERSISTENT
+QUICKTEXT_ENABLE  COLOR(RED) "Röd Brygd    40 Rupees\n"
+COLOR(DEFAULT) "Om du dricker denna, så kommer du\n"
+"att återhämta din livsenergi.\n"
+"Detta är en enstaka dos." QUICKTEXT_DISABLE  PERSISTENT
 )
 
 DEFINE_MESSAGE(0x0065, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE  COLOR(RED) "Red Potion   50 Rupees\n"
-COLOR(DEFAULT) "If you drink this, you will\n"
-"recover your life energy.\n"
-"This is a single dose." QUICKTEXT_DISABLE  PERSISTENT
+QUICKTEXT_ENABLE  COLOR(RED) "Röd Brygd    50 Rupees\n"
+COLOR(DEFAULT) "Om du dricker denna, så kommer du\n"
+"att återhämta din livsenergi.\n"
+"Detta är en enstaka dos." QUICKTEXT_DISABLE  PERSISTENT
 )
 
 DEFINE_MESSAGE(0x0066, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x76")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Dungeon Map" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Press " COLOR(RED) "START " COLOR(DEFAULT) "to get into the \n"
-"Subscreens and look at the\n"
-COLOR(RED) "Map Subscreen" COLOR(DEFAULT) "!" BOX_BREAK ITEM_ICON("\x76")  COLOR(BLUE) "Blue chambers" COLOR(DEFAULT) " are places \n"
-"you have already visited. \n"
-"Your current location is \n"
-"the " COLOR(LIGHTBLUE) "flashing room" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x76") "Move " COLOR(LIGHTBLUE) "[Control-Pad] up and down" COLOR(DEFAULT) " to \n"
-"select a floor to view."
+ITEM_ICON("\x76")  QUICKTEXT_ENABLE "Du fann en " COLOR(RED) "Områdeskarta" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Tryck " COLOR(RED) "START " COLOR(DEFAULT) "För att komma in i \n"
+"Skärmval och titta sedan på\n"
+COLOR(RED) "Kartskärmen" COLOR(DEFAULT) "!" BOX_BREAK ITEM_ICON("\x76")  COLOR(BLUE) "Blå kammare" COLOR(DEFAULT) " är platser \n"
+"du inte har besökt tidigare. \n"
+"Din nuvarande plats är \n"
+"det " COLOR(LIGHTBLUE) "blinkande rummet" COLOR(DEFAULT) "." BOX_BREAK ITEM_ICON("\x76") "Rör " COLOR(LIGHTBLUE) "[Control-Pad] upp och ned" COLOR(DEFAULT) " för att \n"
+"för att välja våning."
 )
 
 DEFINE_MESSAGE(0x0067, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x75")  QUICKTEXT_ENABLE "You found the " COLOR(RED) "Compass" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Now you can see the locations\n"
-"of many hidden things in the\n"
-"dungeon!"
+ITEM_ICON("\x75")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Kompassen" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Nu kan du se vart många\n"
+"dolda ting är placerade i den här\n"
+"platsen!"
 )
 
 DEFINE_MESSAGE(0x0068, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x6F")  QUICKTEXT_ENABLE "You obtained the " COLOR(RED) "Stone of Agony" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"If you equip a " COLOR(LIGHTBLUE) "Rumble Pak" COLOR(DEFAULT) ", it\n"
-"will react to nearby...secrets."
+UNSKIPPABLE  ITEM_ICON("\x6F")  QUICKTEXT_ENABLE "Du hittade " COLOR(RED) "Smärtan's Sten" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Om du kopplar in en " COLOR(LIGHTBLUE) "Rumble Pak" COLOR(DEFAULT) ", så\n"
+"reagerar den då hemligheter är i närheten."
 )
 
 DEFINE_MESSAGE(0x0069, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x23")  QUICKTEXT_ENABLE "You received " COLOR(RED) "Zelda's Letter" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Wow! This letter has Princess\n"
-"Zelda's autograph! Set it to " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "\n"
-"and show it with " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x23") "On the " COLOR(YELLOW) "Select Item Subscreen" COLOR(DEFAULT) ",\n"
-"you can set it to " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down] " COLOR(DEFAULT) "or " COLOR(YELLOW) "[C-Right]" COLOR(DEFAULT) ",\n"
-"and then use that " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "to show it\n"
-"to people."
+UNSKIPPABLE  ITEM_ICON("\x23")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Zelda's Brev" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Wow! Det här brevet har Prinsessan\n"
+"Zelda's autograf! Sätt det på " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "\n"
+"och visa upp den med " COLOR(YELLOW) "[C]" COLOR(DEFAULT) "." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x23") "På " COLOR(YELLOW) "Föremåls-skärmen" COLOR(DEFAULT) ",\n"
+"du kan placera det på " COLOR(YELLOW) "[C-Left]" COLOR(DEFAULT) ", " COLOR(YELLOW) "[C-Down] " COLOR(DEFAULT) "eller " COLOR(YELLOW) "[C-Right]" COLOR(DEFAULT) ",\n"
+"och sedan använda det med " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "för att visa upp\n"
+"det för folk."
 )
 
 DEFINE_MESSAGE(0x006A, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Welcome! May I help you?" QUICKTEXT_DISABLE "\n"
+QUICKTEXT_ENABLE "Välkommen! Hur kan jag stå till tjänst?" QUICKTEXT_DISABLE "\n"
 "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "I want to shop\n"
-"Just looking" COLOR(DEFAULT)
+TWO_CHOICE  COLOR(ADJUSTABLE) "Jag vill handla\n"
+"Bara tittar" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x006B, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Would you like to buy something\n"
-"else?" QUICKTEXT_DISABLE "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Yes\n"
-"No" COLOR(DEFAULT)
+QUICKTEXT_ENABLE "Vill du köpa någonting\n"
+"annat?" QUICKTEXT_DISABLE "\n"
+TWO_CHOICE  COLOR(ADJUSTABLE) "Ja\n"
+"Nej" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x006C, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x49")  QUICKTEXT_ENABLE "Your " COLOR(RED) "Deku Seeds Bullet Bag \n"
-COLOR(DEFAULT) "has become bigger!" QUICKTEXT_DISABLE "\n"
-"Now you can carry more bullets!\n"
-"This bag can hold " COLOR(YELLOW) "50" COLOR(RED) " " COLOR(DEFAULT) "bullets!"
+ITEM_ICON("\x49")  QUICKTEXT_ENABLE "Din " COLOR(RED) "Dekufrö-kulpåse \n"
+COLOR(DEFAULT) "har blivit större!" QUICKTEXT_DISABLE "\n"
+"Nu kan du bära fler kulor!\n"
+"Den här väska kan bära upp till " COLOR(YELLOW) "50" COLOR(RED) " " COLOR(DEFAULT) "kulor!"
 )
 
 DEFINE_MESSAGE(0x006D, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_VARIABLE,
-"Open the chest and...Surprise!\n"
-"If you find a Key inside, you'll \n"
-"be able to advance. Left or\n"
-"right--try your luck!" BOX_BREAK COLOR(RED) "10 Rupees " COLOR(DEFAULT) "to play. Do you want \n"
-"to try it?\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Yes\n"
-"No" COLOR(DEFAULT)
+"Öppna kistan och...Överraskning!\n"
+"Om du hittar en nyckel inuti, Så får\n"
+"möjlighet att fortsätta. Vänster eller\n"
+"höger--testa lyckan!" BOX_BREAK COLOR(RED) "10 Rupees " COLOR(DEFAULT) "för att spela. Vill du göra \n"
+"ett försök?\n"
+TWO_CHOICE  COLOR(ADJUSTABLE) "Ja\n"
+"Nej" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x006E, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_VARIABLE,
-"Great! You are a real gambler!"
+"Kanon! Du är en riktig hasardspelare!"
 )
 
 DEFINE_MESSAGE(0x006F, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "You got a " COLOR(ADJUSTABLE) "Green Rupee" COLOR(DEFAULT) "!\n"
-"That's " COLOR(ADJUSTABLE) "one Rupee" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE
+QUICKTEXT_ENABLE "Du fick en " COLOR(ADJUSTABLE) "Grön Rupee" COLOR(DEFAULT) "!\n"
+"Det är " COLOR(ADJUSTABLE) "en Rupee" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE
 )
 
 DEFINE_MESSAGE(0x0070, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x04")  QUICKTEXT_ENABLE "You got the " COLOR(RED) "Fire Arrow" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Set it to " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "and your arrows will\n"
-"be powered up! If you hit\n"
-"your target, it will catch fire."
+UNSKIPPABLE  ITEM_ICON("\x04")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Eldpilen" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Sätt den på " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "så kommer dina pilar\n"
+"att få kraften! Om du träffar\n"
+"ditt mål, så kommer det att börja brinna."
 )
 
 DEFINE_MESSAGE(0x0071, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x0C")  QUICKTEXT_ENABLE "You got the " COLOR(BLUE) "Ice Arrow" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Set it to " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "and your arrows will\n"
-"be powered up! If you hit your \n"
-"target, it will freeze." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0C") "This arrow magic is granted\n"
-"only to those who complete the \n"
-"difficult training of the Gerudos,\n"
-"so use it with pride!"
+UNSKIPPABLE  ITEM_ICON("\x0C")  QUICKTEXT_ENABLE "Du fick " COLOR(BLUE) "Ispilen" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Sätt den på " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "så kommer dina pilar\n"
+"att få kraften! Om du träffar \n"
+"ditt mål, så kommer det att frysa." BOX_BREAK UNSKIPPABLE  ITEM_ICON("\x0C") "Den här pilmagin tillägnas\n"
+"endast de som klarar att fullfölja \n"
+"Gerudostammen's tuffa träning,\n"
+"så använd den med stolthet!"
 )
 
 DEFINE_MESSAGE(0x0072, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x12")  QUICKTEXT_ENABLE "You got the " COLOR(LIGHTBLUE) "Light Arrow" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Set it to " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "and your arrows will\n"
-"be powered up! The light of\n"
-"justice will smite evil!"
+UNSKIPPABLE  ITEM_ICON("\x12")  QUICKTEXT_ENABLE "Du fick " COLOR(LIGHTBLUE) "Ljuspilen" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Sätt den på " COLOR(YELLOW) "[C] " COLOR(DEFAULT) "så kommer dina pilar\n"
+"att få kraften! Rättvisan's ljus\n"
+"kommer att besegra all ondska!"
 )
 
 DEFINE_MESSAGE(0x0073, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  SHIFT("\x28") "You have learned the\n"
-SHIFT("\x2F")  COLOR(ADJUSTABLE) "Minuet of Forest" COLOR(DEFAULT) "!"
+UNSKIPPABLE  SHIFT("\x28") "Du har lärt dig \n"
+SHIFT("\x2F")  COLOR(ADJUSTABLE) "Skogs-Menuetten" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x0074, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  SHIFT("\x28") "You have learned the\n"
-SHIFT("\x37")  COLOR(RED) "Bolero of Fire" COLOR(DEFAULT) "!"
+UNSKIPPABLE  SHIFT("\x28") "Du har lärt dig \n"
+SHIFT("\x37")  COLOR(RED) "Eld's-Bolero" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x0075, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  SHIFT("\x28") "You have learned the \n"
-SHIFT("\x29")  COLOR(BLUE) "Serenade of Water" COLOR(DEFAULT) "!"
+UNSKIPPABLE  SHIFT("\x28") "Du har lärt dig \n"
+SHIFT("\x29")  COLOR(BLUE) "Vatten-Serenaden" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x0076, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  SHIFT("\x28") "You have learned the \n"
-SHIFT("\x2D")  COLOR(YELLOW) "Requiem of Spirit" COLOR(DEFAULT) "!"
+UNSKIPPABLE  SHIFT("\x28") "Du har lärt dig \n"
+SHIFT("\x2D")  COLOR(YELLOW) "Själen's Klagosång" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x0077, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  SHIFT("\x28") "You have learned the \n"
-SHIFT("\x28")  COLOR(PURPLE) "Nocturne of Shadow" COLOR(DEFAULT) "!"
+UNSKIPPABLE  SHIFT("\x28") "Du har lärt dig \n"
+SHIFT("\x28")  COLOR(PURPLE) "Skuggan's Nocturne" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x0078, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  SHIFT("\x28") "You have learned the \n"
-SHIFT("\x32")  COLOR(LIGHTBLUE) "Prelude of Light" COLOR(DEFAULT) "!"
+UNSKIPPABLE  SHIFT("\x28") "Du har lärt dig \n"
+SHIFT("\x32")  COLOR(LIGHTBLUE) "Ljuset's Preludium" COLOR(DEFAULT) "!"
 )
 
 DEFINE_MESSAGE(0x0079, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x50")  QUICKTEXT_ENABLE "You got the " COLOR(RED) "Goron's Bracelet" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"Now you can pull up Bomb \n"
-"Flowers. Stand next to one and\n"
-"use " COLOR(BLUE) "[A]" COLOR(DEFAULT) " to pull it up!"
+UNSKIPPABLE  ITEM_ICON("\x50")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Goron's Armband" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Nu kan du rycka upp \n"
+"Bomb-Blommor. Stå vid sidan om en och\n"
+"använd " COLOR(BLUE) "[A]" COLOR(DEFAULT) " för att rycka upp den!"
 )
 
 DEFINE_MESSAGE(0x007A, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-ITEM_ICON("\x1D")  QUICKTEXT_ENABLE "You put a " COLOR(RED) "Bug " COLOR(DEFAULT) "in the bottle!" QUICKTEXT_DISABLE "\n"
-"You can release it by pressing\n"
-COLOR(YELLOW) "[C]" COLOR(DEFAULT) ". This kind of bug prefers to\n"
-"live in small holes in the ground."
+ITEM_ICON("\x1D")  QUICKTEXT_ENABLE "Du stoppade ett " COLOR(RED) "Kryp " COLOR(DEFAULT) "i flaskan!" QUICKTEXT_DISABLE "\n"
+"Du kan släppa lös den genom att trycka\n"
+COLOR(YELLOW) "[C]" COLOR(DEFAULT) ". Denna typen utav kryp tycker om att\n"
+"leva i små hål i marken."
 )
 
 DEFINE_MESSAGE(0x007B, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x70")  QUICKTEXT_ENABLE "You obtained the " COLOR(RED) "Gerudo's \n"
-"Membership Card" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"You can get into the Gerudo's\n"
-"training ground in their hideout."
+UNSKIPPABLE  ITEM_ICON("\x70")  QUICKTEXT_ENABLE "Du har fått " COLOR(RED) "Gerudo's \n"
+"Medlemskort" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Du har nu tillträde till Gerudo's\n"
+"träningsområde i deras gömställe."
 )
 
 DEFINE_MESSAGE(0x007C, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Bombs  10 pieces  50 Rupees" QUICKTEXT_DISABLE "\n"
+QUICKTEXT_ENABLE "Bomber  10 stycken  50 Rupees" QUICKTEXT_DISABLE "\n"
 "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Buy\n"
-"Don't buy" COLOR(DEFAULT)
+TWO_CHOICE  COLOR(ADJUSTABLE) "Köp\n"
+"Köp inte" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x007D, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Arrows  50 pieces  90 Rupees" QUICKTEXT_DISABLE "\n"
+QUICKTEXT_ENABLE "Pilar  50 stycken  90 Rupees" QUICKTEXT_DISABLE "\n"
 "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Buy\n"
-"Don't buy" COLOR(DEFAULT)
+TWO_CHOICE  COLOR(ADJUSTABLE) "Köp\n"
+"Köp inte" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x007E, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Fish   200 Rupees" QUICKTEXT_DISABLE "\n"
+QUICKTEXT_ENABLE "Fisk   200 Rupees" QUICKTEXT_DISABLE "\n"
 "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Buy\n"
-"Don't buy" COLOR(DEFAULT)
+TWO_CHOICE  COLOR(ADJUSTABLE) "Köp\n"
+"Köp inte" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x007F, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Deku Nuts   5 Pieces   15 Rupees" QUICKTEXT_DISABLE "\n"
+QUICKTEXT_ENABLE "Dekunötter   5 stycken   15 Rupees" QUICKTEXT_DISABLE "\n"
 "\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Buy\n"
-"Don't buy" COLOR(DEFAULT)
+TWO_CHOICE  COLOR(ADJUSTABLE) "Köp\n"
+"Köp inte" COLOR(DEFAULT)
 )
 
 DEFINE_MESSAGE(0x0080, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x6C")  QUICKTEXT_ENABLE "You got the " COLOR(ADJUSTABLE) "Kokiri's Emerald" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This is the Spiritual Stone of \n"
-"the Forest, now entrusted to \n"
-"you by the Great Deku Tree."
+UNSKIPPABLE  ITEM_ICON("\x6C")  QUICKTEXT_ENABLE "Du fick " COLOR(ADJUSTABLE) "Kokiri's Smaragd" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Det här är Skogen's Själasten \n"
+"som hädanefter har anförtrotts \n"
+"dig utav det Stora Dekuträdet."
 )
 
 DEFINE_MESSAGE(0x0081, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x6D")  QUICKTEXT_ENABLE "You obtained the " COLOR(RED) "Goron's Ruby" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This is the Spiritual Stone of \n"
-"Fire passed down by the Gorons!"
+UNSKIPPABLE  ITEM_ICON("\x6D")  QUICKTEXT_ENABLE "Du fick " COLOR(RED) "Goron's Rubin" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Det här är Elden's själasten som \n"
+"Goronstammen nu har anförtrott dig!"
 )
 
 DEFINE_MESSAGE(0x0082, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE  ITEM_ICON("\x6E")  QUICKTEXT_ENABLE "You obtained " COLOR(BLUE) "Zora's Sapphire" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
-"This is the Spiritual Stone of\n"
-"Water passed down by the\n"
-"Zoras!"
+UNSKIPPABLE  ITEM_ICON("\x6E")  QUICKTEXT_ENABLE "Du fick " COLOR(BLUE) "Zora's Safir" COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
+"Det här är Vattnet's Själasten som\n"
+"Zorastammen nu har anförtrott dig!"
 )
 
 DEFINE_MESSAGE(0x0083, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-QUICKTEXT_ENABLE "Shop around by moving the \n"
-COLOR(LIGHTBLUE) "[Control-Pad] " COLOR(DEFAULT) "left or right.\n"
-TWO_CHOICE  COLOR(ADJUSTABLE) "Talk to the owner\n"
-"Quit" COLOR(DEFAULT)  QUICKTEXT_DISABLE
+QUICKTEXT_ENABLE "Handla genom att flytta \n"
+COLOR(LIGHTBLUE) "[Control-Pad] " COLOR(DEFAULT) "vänster eller höger.\n"
+TWO_CHOICE  COLOR(ADJUSTABLE) "Tala med ägaren\n"
+"Avsluta" COLOR(DEFAULT)  QUICKTEXT_DISABLE
 )
+
 
 DEFINE_MESSAGE(0x0084, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
 QUICKTEXT_ENABLE "Thanks a lot!" QUICKTEXT_DISABLE  PERSISTENT
