@@ -469,7 +469,7 @@ DEFINE_MESSAGE(0x0041, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
 UNSKIPPABLE  ITEM_ICON("\x6A")  QUICKTEXT_ENABLE "Du fick " COLOR(PURPLE) "Skuggmedaljen\n"
 " " COLOR(DEFAULT) "!" QUICKTEXT_DISABLE "\n"
 "Impa vaknade upp som en Vise och\n"
-"skänker dig härmed sina krafter!""
+"skänker dig härmed sina krafter!"
 )
 
 DEFINE_MESSAGE(0x0042, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_MIDDLE,
