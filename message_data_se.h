@@ -5098,8 +5098,8 @@ COLOR(RED) "Hyliansk mor " COLOR(DEFAULT) "och hennes " COLOR(RED) "bebis" COLOR
 )
 
 DEFINE_MESSAGE(0x1066, TEXTBOX_TYPE_BLACK, TEXTBOX_POS_MIDDLE,
-UNSKIPPABLE "You are a " COLOR(LIGHTBLUE) "Hylian" COLOR(DEFAULT) ", and were\n"
-"always bound to leave this forest." BOX_BREAK UNSKIPPABLE "Och nu...\n"
+UNSKIPPABLE "Du är en " COLOR(LIGHTBLUE) "Hylian" COLOR(DEFAULT) ", och har alltid\n"
+"varit menad att lämna den här skogen." BOX_BREAK UNSKIPPABLE "Och nu...\n"
 "Så har du lärt dig om \n"
 "ditt öde...\n"
 "Så nu vet du vad du måste göra..." BOX_BREAK UNSKIPPABLE "Det är helt riktigt...\n"
