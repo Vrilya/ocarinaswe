@@ -5083,7 +5083,7 @@ DEFINE_MESSAGE(0x1065, TEXTBOX_TYPE_BLUE, TEXTBOX_POS_TOP,
 "För många år sedan, före Hyrules\n"
 "Konung förenade landet, så pågick\n"
 "det ett våldsamt krig i vår värld." BOX_BREAK_DELAYED("\x5A") "En dag, så försökte en\n"
-COLOR(RED) "Hyliansk mor " COLOR(DEFAULT) "and hennes " COLOR(RED) "bebis" COLOR(DEFAULT) "fly\n"
+COLOR(RED) "Hyliansk mor " COLOR(DEFAULT) "och hennes " COLOR(RED) "bebis" COLOR(DEFAULT) "fly\n"
 "genom att ta sig till den \n"
 "förbjudna skogen." BOX_BREAK_DELAYED("\x5A") "Modern var väldigt illa skadad...\n"
 "Hennes enda val var att anförtro\n"
