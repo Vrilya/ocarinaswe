@@ -1,5 +1,4 @@
 # 🗡️ Legenden om Zelda - Tidens okarina
-(Ocarina of Time på svenska!)
 
 ## 📖 Om Projektet
 
