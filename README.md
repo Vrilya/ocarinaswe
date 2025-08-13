@@ -74,6 +74,19 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 - **Övriga verktyg**: Kommer att publiceras vid senare tillfälle
 - **z64decompress**: [GitHub Repository](https://github.com/z64utils/z64decompress/)
 
+## 📜 Användning & Rättigheter
+
+Jag delar **inte** med mig av ROM-filer och kan därför inte hjälpa till med att skaffa dem.  
+Utöver det gäller: *Gör vad du vill ska vara lagen*, som en viss engelsk poet en gång skrev.
+
+Du behöver inte fråga mig om lov för att:  
+- Göra egna repros med den här översättningen  
+- Skriva om, ändra eller vidareutveckla texten  
+- Använda rader du tycker om i din egen översättning  
+- Skapa helt nya projekt baserade på mitt arbete  
+
+Kort sagt - använd, förändra och sprid hur du vill.
+
 ---
 
 <div align="center">
