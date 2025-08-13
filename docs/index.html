@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html translate="no">
+<head>
+	<title>Legenden om Zelda: Ocarina of Time - Nintendo 64 Patcher</title>
+	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content="Nintendo 64 ROM patcher för Tidens okarina med magisk Zelda-atmosfär"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	
+	<!-- cache -->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+	<!-- MD5 library for reliable hashing -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+	<!-- Marc Robledo's RomPatcher.js moduler (individuellt laddade) -->
+	<script type="text/javascript" src="./rom-patcher-js/modules/BinFile.js" 
+			onload="console.log('BinFile.js loaded')"
+			onerror="console.error('Failed to load BinFile.js')"></script>
+	<script type="text/javascript" src="./rom-patcher-js/modules/HashCalculator.js"
+			onload="console.log('HashCalculator.js loaded')"
+			onerror="console.error('Failed to load HashCalculator.js')"></script>
+	<script type="text/javascript" src="./rom-patcher-js/modules/RomPatcher.format.bps.js"
+			onload="console.log('BPS.js loaded')"
+			onerror="console.error('Failed to load BPS.js')"></script>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+			background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+			min-height: 100vh;
+			padding: 20px;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		/* Simple, robust animations */
+		.triforce {
+			position: fixed;
+			background-image: url('./images/tri.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		.fairy {
+			position: fixed;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: 1;
+			box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+		}
+
+		.fairy.green { background: #4ade80; color: #4ade80; }
+		.fairy.blue { background: #60a5fa; color: #60a5fa; }
+		.fairy.red { background: #f87171; color: #f87171; }
+
+		/* Keyframe animations */
+		@keyframes fall {
+			from {
+				transform: translateY(0) rotate(0deg);
+				opacity: 0;
+			}
+			15% {
+				opacity: 1;
+			}
+			85% {
+				opacity: 1;
+			}
+			to {
+				transform: translateY(calc(100vh + 500px)) rotate(720deg);
+				opacity: 0;
+			}
+		}
+
+		@keyframes float {
+			0%, 100% {
+				transform: translate(0, 0) scale(1);
+			}
+			25% {
+				transform: translate(25px, -15px) scale(1.1);
+			}
+			50% {
+				transform: translate(-15px, -30px) scale(0.9);
+			}
+			75% {
+				transform: translate(-25px, -10px) scale(1.05);
+			}
+		}
+
+		@keyframes fadeOut {
+			from {
+				opacity: 1;
+				transform: scale(1);
+			}
+			to {
+				opacity: 0;
+				transform: scale(0.3);
+			}
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			background: rgba(255, 255, 255, 0.95);
+			border-radius: 15px;
+			padding: 30px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+						0 0 30px rgba(102, 126, 234, 0.2);
+			backdrop-filter: blur(10px);
+			position: relative;
+			z-index: 10;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.header h1 {
+			color: #333;
+			font-size: 2.5em;
+			margin-bottom: 10px;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.header p {
+			color: #666;
+			font-size: 1.1em;
+		}
+
+		.status {
+			background: linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%);
+			color: #2d5a2d;
+			padding: 15px;
+			border-radius: 8px;
+			margin-bottom: 25px;
+			border-left: 4px solid #4caf50;
+			box-shadow: 0 2px 10px rgba(76, 175, 80, 0.1);
+		}
+
+		.status.error {
+			background: linear-gradient(135deg, #ffe8e8 0%, #fff0f0 100%);
+			color: #8b0000;
+			border-left-color: #f44336;
+			box-shadow: 0 2px 10px rgba(244, 67, 54, 0.1);
+		}
+
+		.status.loading {
+			background: linear-gradient(135deg, #fff3cd 0%, #fef8e1 100%);
+			color: #856404;
+			border-left-color: #ffc107;
+			box-shadow: 0 2px 10px rgba(255, 193, 7, 0.1);
+		}
+
+		.file-input-area {
+			border: 3px dashed #ddd;
+			border-radius: 12px;
+			padding: 40px;
+			text-align: center;
+			margin: 25px 0;
+			transition: all 0.3s ease;
+			cursor: pointer;
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+		}
+
+		.file-input-area:hover {
+			border-color: #667eea;
+			background: rgba(102, 126, 234, 0.05);
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+		}
+
+		.file-input-area.dragover {
+			border-color: #667eea;
+			background: rgba(102, 126, 234, 0.1);
+			transform: scale(1.02);
+			box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+		}
+
+		.file-input {
+			display: none;
+		}
+
+		.file-input-text {
+			font-size: 1.2em;
+			color: #333;
+			margin-bottom: 8px;
+		}
+
+		.file-input-subtext {
+			color: #666;
+			font-size: 0.9em;
+		}
+
+		.button {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			border: none;
+			padding: 15px 30px;
+			border-radius: 25px;
+			font-size: 16px;
+			font-weight: bold;
+			cursor: pointer;
+			width: 100%;
+			transition: all 0.3s ease;
+			margin-top: 20px;
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.button:hover:not(:disabled) {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+		}
+
+		.button:disabled {
+			background: #ccc;
+			cursor: not-allowed;
+			transform: none;
+			box-shadow: none;
+		}
+
+		.rom-info {
+			background: rgba(255, 255, 255, 0.8);
+			border-radius: 10px;
+			padding: 20px;
+			margin: 20px 0;
+			border: 1px solid rgba(102, 126, 234, 0.2);
+		}
+
+		.rom-info-row {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+			padding: 5px 0;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		}
+
+		.rom-info-label {
+			font-weight: bold;
+			color: #333;
+		}
+
+		.rom-info-value {
+			font-family: monospace;
+			color: #666;
+			word-break: break-all;
+		}
+
+		.credits {
+			text-align: center;
+			margin-top: 30px;
+			font-size: 0.9em;
+			color: #666;
+		}
+
+		.credits a {
+			color: #667eea;
+			text-decoration: none;
+		}
+
+		.credits a:hover {
+			text-decoration: underline;
+		}
+
+		.progress-bar {
+			width: 100%;
+			height: 4px;
+			background: rgba(255, 255, 255, 0.3);
+			border-radius: 2px;
+			overflow: hidden;
+			margin-top: 10px;
+		}
+
+		.progress-fill {
+			height: 100%;
+			background: linear-gradient(90deg, #667eea, #764ba2);
+			transition: width 0.3s ease;
+		}
+
+		.progress-bar.loading .progress-fill {
+			animation: loading 2s ease-in-out infinite;
+		}
+
+		@keyframes loading {
+			0%, 100% { width: 30%; }
+			50% { width: 70%; }
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1 style="font-size: 1.8em; color: #999; font-weight: normal; margin-bottom: 5px;">Legenden om Zelda</h1>
+			<h1 style="font-size: 2.8em; margin-bottom: 10px;">Tidens okarina</h1>
+			<p>Lägg till din ROM-fil för att applicera patchen</p>
+		</div>
+
+		<div id="status" class="status loading">
+			<strong>🔄 Laddar Tidens okarina patch...</strong>
+			<div class="progress-bar loading">
+				<div class="progress-fill" style="width: 30%"></div>
+			</div>
+		</div>
+
+		<div class="file-input-area" id="dropArea">
+			<div class="file-input-text">📁 Klicka här eller dra en ROM-fil</div>
+			<div class="file-input-subtext">Endast Nintendo 64 ROM-filer (.z64)</div>
+			<div class="file-input-subtext" style="margin-top: 5px; font-size: 0.8em; color: #999;">
+				Endast kompatibel ROM accepteras MD5: E040DE91A74B61E3201DB0E2323F768A
+			</div>
+			<input type="file" id="romFile" class="file-input" accept=".z64">
+		</div>
+
+		<div id="romInfo" class="rom-info" style="display: none;">
+			<div class="rom-info-row">
+				<div class="rom-info-label">Filnamn:</div>
+				<div class="rom-info-value" id="fileName"></div>
+			</div>
+			<div class="rom-info-row">
+				<div class="rom-info-label">Storlek:</div>
+				<div class="rom-info-value" id="fileSize"></div>
+			</div>
+			<div class="rom-info-row">
+				<div class="rom-info-label">MD5:</div>
+				<div class="rom-info-value" id="md5Hash"></div>
+			</div>
+			<div class="rom-info-row">
+				<div class="rom-info-label">CRC32:</div>
+				<div class="rom-info-value" id="crc32"></div>
+			</div>
+			<div class="rom-info-row">
+				<div class="rom-info-label">Status:</div>
+				<div class="rom-info-value" id="romStatus"></div>
+			</div>
+		</div>
+
+		<button id="patchButton" class="button" disabled>Applicera patch</button>
+		
+		<div class="credits">
+			RomPatcher.js av <a href="https://github.com/marcrobledo/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo</a>
+		</div>
+	</div>
+
+	<script>
+		// Animation manager class (din ursprungliga kod)
+		class AnimationManager {
+			constructor() {
+				this.triforces = [];
+				this.fairies = [];
+				this.running = true;
+			}
+
+			init() {
+				this.createInitialElements();
+				this.startIntervals();
+			}
+
+			createInitialElements() {
+				// Create initial triforces
+				for (let i = 0; i < 6; i++) {
+					setTimeout(() => this.createTriforce(), i * 1000);
+				}
+
+				// Create initial fairies
+				for (let i = 0; i < 8; i++) {
+					setTimeout(() => this.createFairy(), i * 500);
+				}
+			}
+
+			startIntervals() {
+				// New triforce every 2 seconds
+				setInterval(() => {
+					if (this.running) this.createTriforce();
+				}, 2000);
+
+				// Check and maintain fairy count
+				setInterval(() => {
+					if (this.running && this.fairies.length < 8) {
+						this.createFairy();
+					}
+				}, 1000);
+			}
+
+			createTriforce() {
+				const element = document.createElement('div');
+				element.className = 'triforce';
+
+				// Random properties
+				const size = 20 + Math.random() * 40; // 20-60px
+				const x = Math.random() * (window.innerWidth - size);
+				const duration = 8 + Math.random() * 6; // 8-14 seconds
+				const opacity = 0.3 + Math.random() * 0.5; // 0.3-0.8
+
+				// Set styles - IMPORTANT: Start from very top
+				element.style.left = x + 'px';
+				element.style.top = '-300px'; // Start way above screen
+				element.style.width = size + 'px';
+				element.style.height = size + 'px';
+				element.style.opacity = opacity;
+				element.style.animation = `fall ${duration}s linear forwards`;
+
+				document.body.appendChild(element);
+				this.triforces.push(element);
+
+				// Clean up
+				setTimeout(() => {
+					if (element.parentNode) {
+						element.parentNode.removeChild(element);
+					}
+					const index = this.triforces.indexOf(element);
+					if (index > -1) {
+						this.triforces.splice(index, 1);
+					}
+				}, duration * 1000);
+			}
+
+			createFairy() {
+				const element = document.createElement('div');
+				const colors = ['green', 'blue', 'red'];
+				const color = colors[Math.floor(Math.random() * colors.length)];
+				element.className = `fairy ${color}`;
+
+				// Random properties
+				const size = 6 + Math.random() * 6; // 6-12px
+				const x = Math.random() * window.innerWidth;
+				const y = Math.random() * window.innerHeight;
+				const floatDuration = 4 + Math.random() * 3; // 4-7 seconds
+				const lifetime = 10 + Math.random() * 8; // 10-18 seconds
+				const opacity = 0.7 + Math.random() * 0.3; // 0.7-1.0
+
+				// Set styles
+				element.style.left = x + 'px';
+				element.style.top = y + 'px';
+				element.style.width = size + 'px';
+				element.style.height = size + 'px';
+				element.style.opacity = opacity;
+				element.style.animation = `float ${floatDuration}s ease-in-out infinite`;
+
+				document.body.appendChild(element);
+				this.fairies.push(element);
+
+				// Start fade out
+				setTimeout(() => {
+					element.style.animation = `fadeOut 2s ease-out forwards`;
+				}, (lifetime - 2) * 1000);
+
+				// Clean up
+				setTimeout(() => {
+					if (element.parentNode) {
+						element.parentNode.removeChild(element);
+					}
+					const index = this.fairies.indexOf(element);
+					if (index > -1) {
+						this.fairies.splice(index, 1);
+					}
+				}, lifetime * 1000);
+			}
+		}
+
+		// Applikationslogik som använder Marc Robledo's riktiga RomPatcher.js
+		let loadedPatch = null;
+		let romFileData = null;
+		const expectedMD5 = 'E040DE91A74B61E3201DB0E2323F768A';
+
+		// Ladda BPS-filen automatiskt med RomPatcher.js (vänta tills allt är laddat)
+		async function loadBPSPatch() {
+			try {
+				// Debug: Kolla vad som är tillgängligt
+				console.log('Checking for RomPatcher dependencies...');
+				console.log('BinFile:', typeof BinFile);
+				console.log('BPS:', typeof BPS);
+				console.log('window.BinFile:', typeof window.BinFile);
+				console.log('window.BPS:', typeof window.BPS);
+				
+				// Vänta tills RomPatcher.js är laddat
+				if (typeof BinFile === 'undefined' || typeof BPS === 'undefined') {
+					console.log('Dependencies not ready, retrying in 100ms...');
+					setTimeout(loadBPSPatch, 100); // Försök igen om 100ms
+					return;
+				}
+
+				updateStatus('🔄 Laddar patch...', 'loading');
+				console.log('Starting patch load...');
+				
+				const response = await fetch('./patch/Tidens_okarina.bps');
+				console.log('Fetch response:', response.status);
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				
+				const arrayBuffer = await response.arrayBuffer();
+				console.log('ArrayBuffer size:', arrayBuffer.byteLength);
+				const patchFile = new BinFile(arrayBuffer);
+				console.log('BinFile created:', patchFile);
+				
+				// Använd Marc Robledo's riktiga BPS-parser
+				loadedPatch = BPS.fromFile(patchFile);
+				console.log('Patch loaded successfully:', loadedPatch);
+				
+				updateStatus('✅ Patch laddad framgångsrikt! Välj ROM-fil nedan.', 'ready');
+				
+			} catch (error) {
+				console.error('Error loading Tidens_okarina.bps:', error);
+				updateStatus('❌ Fel vid laddning av patch: ' + error.message, 'error');
+			}
+		}
+
+		function updateStatus(message, type) {
+			const statusEl = document.getElementById('status');
+			statusEl.innerHTML = message;
+			statusEl.className = 'status ' + type;
+		}
+
+		function calculateMD5(arrayBuffer) {
+			const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
+			return CryptoJS.MD5(wordArray).toString().toUpperCase();
+		}
+
+		async function handleROMFile(file) {
+			try {
+				updateStatus('🔄 Läser ROM-fil...', 'loading');
+				
+				const arrayBuffer = await file.arrayBuffer();
+				romFileData = new BinFile(arrayBuffer);
+				
+				// Beräkna checksums med Marc Robledo's funktioner
+				const md5 = calculateMD5(arrayBuffer);
+				const crc32 = romFileData.hashCRC32().toString(16).toUpperCase().padStart(8, '0');
+				
+				// Uppdatera ROM info
+				document.getElementById('fileName').textContent = file.name;
+				document.getElementById('fileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+				document.getElementById('md5Hash').textContent = md5;
+				document.getElementById('crc32').textContent = crc32;
+				
+				// Kontrollera kompatibilitet
+				const isCompatible = md5 === expectedMD5;
+				document.getElementById('romStatus').textContent = isCompatible ? 'Kompatibel ✅' : 'Inkompatibel ❌';
+				document.getElementById('romStatus').style.color = isCompatible ? '#28a745' : '#dc3545';
+				
+				document.getElementById('romInfo').style.display = 'block';
+				document.getElementById('patchButton').disabled = !isCompatible;
+				
+				if (isCompatible) {
+					updateStatus('✅ ROM laddad och verifierad - Redo att patcha!', 'ready');
+				} else {
+					updateStatus('❌ Fel ROM-fil. Endast kompatibel ROM accepteras.', 'error');
+				}
+				
+			} catch (error) {
+				updateStatus('❌ Fel vid läsning av ROM: ' + error.message, 'error');
+			}
+		}
+
+		async function applyPatch() {
+			if (!loadedPatch || !romFileData) {
+				updateStatus('❌ Patch eller ROM saknas', 'error');
+				return;
+			}
+
+			try {
+				updateStatus('🔄 Applicerar patch...', 'loading');
+				
+				// Använd Marc Robledo's riktiga apply-funktion
+				const patchedRom = loadedPatch.apply(romFileData, true);
+				
+				// Skapa download
+				const blob = new Blob([patchedRom._u8array], { type: 'application/octet-stream' });
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = 'Zelda_OoT_Tidens_Okarina.z64';
+				a.click();
+				URL.revokeObjectURL(url);
+				
+				updateStatus('✅ Patch applicerad framgångsrikt! Nedladdning startad.', 'ready');
+				
+			} catch (error) {
+				updateStatus('❌ Fel vid patchning: ' + error.message, 'error');
+			}
+		}
+
+		// Event listeners och initialisering
+		document.addEventListener('DOMContentLoaded', () => {
+			const dropArea = document.getElementById('dropArea');
+			const romFile = document.getElementById('romFile');
+			const patchButton = document.getElementById('patchButton');
+
+			// Initiera animationer
+			const animationManager = new AnimationManager();
+			animationManager.init();
+
+			// File input
+			dropArea.addEventListener('click', () => romFile.click());
+			romFile.addEventListener('change', (e) => {
+				if (e.target.files[0]) handleROMFile(e.target.files[0]);
+			});
+
+			// Drag and drop
+			dropArea.addEventListener('dragover', (e) => {
+				e.preventDefault();
+				dropArea.classList.add('dragover');
+			});
+
+			dropArea.addEventListener('dragleave', () => {
+				dropArea.classList.remove('dragover');
+			});
+
+			dropArea.addEventListener('drop', (e) => {
+				e.preventDefault();
+				dropArea.classList.remove('dragover');
+				if (e.dataTransfer.files[0]) handleROMFile(e.dataTransfer.files[0]);
+			});
+
+			// Patch button
+			patchButton.addEventListener('click', applyPatch);
+
+			// Ladda BPS patch automatiskt
+			loadBPSPatch();
+		});
+	</script>
+</body>
+</html>
