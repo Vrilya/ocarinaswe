@@ -66,7 +66,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 
 - **Discord**: `.vrilya`
 - **Email**: `vinterhjarta@gmail.com`
-- **YouTube**: Du kan även kommentera här.
+- **YouTube**: Du kan även kommentera på min YouTube-kanal.
 
 ## 🛠️ Verktyg & Resurser
 
