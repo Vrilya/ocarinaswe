@@ -32,10 +32,11 @@ Den enklaste metoden är att använda webbverktyget jag har satt upp här:
 1. Ladda ner patch-filen från **[Releases](https://github.com/Vrilya/ocarinaswe/releases)**
 2. Använd ditt föredragna verktyg för att applicera patchen
 
-> **Notera:** ROM-filen måste vara:  
-> - **Database match:** Legend of Zelda, The - Ocarina of Time (Europe) (En,Fr,De)  
-> - **MD5:** `E040DE91A74B61E3201DB0E2323F768A`  
-> Detta är samma version som såldes i Sverige.
+💡 **Notera:**  
+ROM-filen måste vara:  
+- **Database match:** Legend of Zelda, The - Ocarina of Time (Europe) (En,Fr,De)  
+- **MD5:** `E040DE91A74B61E3201DB0E2323F768A`  
+Detta är samma version som såldes i Sverige.
 
 ### 🚢 Ship of Harkinian Setup
 
