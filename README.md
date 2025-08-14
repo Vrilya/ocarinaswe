@@ -40,7 +40,7 @@ Detta är samma version som såldes i Sverige.
 
 ### 🚢 Ship of Harkinian Setup
 
-Det enklaste är att ladda ner en 7z-fil med den färdiga OTR-filen via GameBanana:  
+Det enklaste är att ladda ner den färdiga OTR-filen via GameBanana:  
 **[📥 Direktlänk till modens sida här](https://gamebanana.com/mods/613613)**  
 Packa upp arkivet och placera `Svenska.otr` i `mods`-mappen i din Ship of Harkinian-installation.  
 
