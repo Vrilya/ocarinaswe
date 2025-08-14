@@ -72,6 +72,7 @@ Om folk gillar den här översättningen och det finns tillräckligt med intress
 Har du frågor eller synpunkter? Kontakta mig gärna:
 
 - **Discord**: `.vrilya`
+- **Steam**: `Vrilya`
 - **Email**: `vinterhjarta@gmail.com`
 - **YouTube**: Du kan även kommentera på min YouTube-kanal.
 
