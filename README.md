@@ -22,7 +22,7 @@ En del av arbetet har bestått i att själv kartlägga PAL-ROM:en och dokumenter
 Videor från översättningen kan du hitta här:
 **[🔗 Vrilyas YouTube-kanal](https://www.youtube.com/@brinkofdeath)**
 
-## 🚀 Installation
+## 🚀 Patchning av ROM och Ship of Harkinian
 
 ### 💻 Webbläsare (Rekommenderat)
 Den enklaste metoden är att använda webbverktyget jag har satt upp här:
