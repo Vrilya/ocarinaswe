@@ -64,300 +64,339 @@
 		.fairy.blue { background: #60a5fa; color: #60a5fa; }
 		.fairy.red { background: #f87171; color: #f87171; }
 
-		/* Keyframe animations */
 		@keyframes fall {
 			from {
 				transform: translateY(0) rotate(0deg);
-				opacity: 0;
-			}
-			15% {
-				opacity: 1;
-			}
-			85% {
-				opacity: 1;
 			}
 			to {
-				transform: translateY(calc(100vh + 500px)) rotate(720deg);
-				opacity: 0;
+				transform: translateY(calc(100vh + 400px)) rotate(360deg);
 			}
 		}
 
 		@keyframes float {
 			0%, 100% {
-				transform: translate(0, 0) scale(1);
+				transform: translate(0, 0);
 			}
 			25% {
-				transform: translate(25px, -15px) scale(1.1);
+				transform: translate(20px, -20px);
 			}
 			50% {
-				transform: translate(-15px, -30px) scale(0.9);
+				transform: translate(-20px, 20px);
 			}
 			75% {
-				transform: translate(-25px, -10px) scale(1.05);
+				transform: translate(20px, 20px);
 			}
 		}
 
 		@keyframes fadeOut {
-			from {
-				opacity: 1;
-				transform: scale(1);
-			}
 			to {
 				opacity: 0;
-				transform: scale(0.3);
 			}
 		}
 
 		.container {
-			max-width: 600px;
+			max-width: 800px;
 			margin: 0 auto;
 			background: rgba(255, 255, 255, 0.95);
-			border-radius: 15px;
-			padding: 30px;
-			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
-						0 0 30px rgba(102, 126, 234, 0.2);
-			backdrop-filter: blur(10px);
+			border-radius: 16px;
+			padding: 40px;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 			position: relative;
 			z-index: 10;
-			border: 1px solid rgba(255, 255, 255, 0.2);
 		}
 
 		.header {
 			text-align: center;
-			margin-bottom: 30px;
+			margin-bottom: 40px;
 		}
 
-		.header h1 {
-			color: #333;
-			font-size: 2.5em;
+		.logo {
+			max-width: 300px;
+			height: auto;
+			margin-bottom: 20px;
+		}
+
+		h1 {
+			color: #1a1a2e;
+			font-size: 28px;
 			margin-bottom: 10px;
-			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
 		}
 
-		.header p {
+		.subtitle {
 			color: #666;
-			font-size: 1.1em;
+			font-size: 16px;
 		}
 
-		.status {
-			background: linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%);
-			color: #2d5a2d;
+		.info-box {
+			background: #e3f2fd;
+			border-left: 4px solid #2196f3;
 			padding: 15px;
-			border-radius: 8px;
-			margin-bottom: 25px;
-			border-left: 4px solid #4caf50;
-			box-shadow: 0 2px 10px rgba(76, 175, 80, 0.1);
+			margin-bottom: 30px;
+			border-radius: 4px;
 		}
 
-		.status.error {
-			background: linear-gradient(135deg, #ffe8e8 0%, #fff0f0 100%);
-			color: #8b0000;
-			border-left-color: #f44336;
-			box-shadow: 0 2px 10px rgba(244, 67, 54, 0.1);
+		.info-box h3 {
+			color: #1976d2;
+			margin-bottom: 10px;
+			font-size: 16px;
 		}
 
-		.status.loading {
-			background: linear-gradient(135deg, #fff3cd 0%, #fef8e1 100%);
-			color: #856404;
-			border-left-color: #ffc107;
-			box-shadow: 0 2px 10px rgba(255, 193, 7, 0.1);
+		.info-box ul {
+			margin: 10px 0 0 20px;
+			color: #555;
 		}
 
-		.file-input-area {
-			border: 3px dashed #ddd;
+		.info-box li {
+			margin: 5px 0;
+			font-size: 14px;
+		}
+
+		.info-box code {
+			background: rgba(0,0,0,0.05);
+			padding: 2px 6px;
+			border-radius: 3px;
+			font-family: 'Courier New', monospace;
+			font-size: 12px;
+		}
+
+		.upload-section {
+			margin: 30px 0;
+		}
+
+		.upload-area {
+			border: 3px dashed #cbd5e0;
 			border-radius: 12px;
 			padding: 40px;
 			text-align: center;
-			margin: 25px 0;
+			background: #f8fafc;
 			transition: all 0.3s ease;
 			cursor: pointer;
-			background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 		}
 
-		.file-input-area:hover {
-			border-color: #667eea;
-			background: rgba(102, 126, 234, 0.05);
-			transform: translateY(-2px);
-			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+		.upload-area:hover {
+			border-color: #4299e1;
+			background: #ebf8ff;
 		}
 
-		.file-input-area.dragover {
-			border-color: #667eea;
-			background: rgba(102, 126, 234, 0.1);
-			transform: scale(1.02);
-			box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+		.upload-area.drag-over {
+			border-color: #3182ce;
+			background: #bee3f8;
 		}
 
-		.file-input {
+		.upload-icon {
+			font-size: 48px;
+			margin-bottom: 15px;
+		}
+
+		.upload-text {
+			color: #2d3748;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		.upload-hint {
+			color: #718096;
+			font-size: 14px;
+		}
+
+		input[type="file"] {
 			display: none;
 		}
 
-		.file-input-text {
-			font-size: 1.2em;
-			color: #333;
+		.status {
+			padding: 15px;
+			margin: 20px 0;
+			border-radius: 8px;
+			font-weight: 500;
+			display: none;
+		}
+
+		.status.loading {
+			background: #fff3cd;
+			color: #856404;
+			border: 1px solid #ffeaa7;
+			display: block;
+		}
+
+		.status.success {
+			background: #d4edda;
+			color: #155724;
+			border: 1px solid #c3e6cb;
+			display: block;
+		}
+
+		.status.error {
+			background: #f8d7da;
+			color: #721c24;
+			border: 1px solid #f5c6cb;
+			display: block;
+		}
+
+		.status.info {
+			background: #d1ecf1;
+			color: #0c5460;
+			border: 1px solid #bee5eb;
+			display: block;
+		}
+
+		.version-info {
+			background: #e8f5e9;
+			border-left: 4px solid #4caf50;
+			padding: 15px;
+			margin: 20px 0;
+			border-radius: 4px;
+			display: none;
+		}
+
+		.version-info.show {
+			display: block;
+		}
+
+		.version-info h3 {
+			color: #2e7d32;
 			margin-bottom: 8px;
+			font-size: 16px;
 		}
 
-		.file-input-subtext {
-			color: #666;
-			font-size: 0.9em;
+		.version-info p {
+			color: #555;
+			margin: 5px 0;
+			font-size: 14px;
 		}
 
-		.button {
+		.btn {
 			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 			color: white;
+			padding: 15px 40px;
 			border: none;
-			padding: 15px 30px;
-			border-radius: 25px;
-			font-size: 16px;
-			font-weight: bold;
+			border-radius: 8px;
+			font-size: 18px;
+			font-weight: 600;
 			cursor: pointer;
-			width: 100%;
 			transition: all 0.3s ease;
+			width: 100%;
 			margin-top: 20px;
-			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 		}
 
-		.button:hover:not(:disabled) {
+		.btn:hover:not(:disabled) {
 			transform: translateY(-2px);
-			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+			box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 		}
 
-		.button:disabled {
-			background: #ccc;
+		.btn:active:not(:disabled) {
+			transform: translateY(0);
+		}
+
+		.btn:disabled {
+			background: #cbd5e0;
 			cursor: not-allowed;
-			transform: none;
-			box-shadow: none;
+			opacity: 0.6;
 		}
 
-		.rom-info {
-			background: rgba(255, 255, 255, 0.8);
-			border-radius: 10px;
-			padding: 20px;
-			margin: 20px 0;
-			border: 1px solid rgba(102, 126, 234, 0.2);
-		}
-
-		.rom-info-row {
-			display: flex;
-			justify-content: space-between;
-			margin-bottom: 10px;
-			padding: 5px 0;
-			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-		}
-
-		.rom-info-label {
-			font-weight: bold;
-			color: #333;
-		}
-
-		.rom-info-value {
-			font-family: monospace;
-			color: #666;
-			word-break: break-all;
-		}
-
-		.credits {
+		.footer {
+			margin-top: 40px;
 			text-align: center;
-			margin-top: 30px;
-			font-size: 0.9em;
-			color: #666;
+			color: #718096;
+			font-size: 14px;
+			padding-top: 20px;
+			border-top: 1px solid #e2e8f0;
 		}
 
-		.credits a {
-			color: #667eea;
+		.footer a {
+			color: #4299e1;
 			text-decoration: none;
 		}
 
-		.credits a:hover {
+		.footer a:hover {
 			text-decoration: underline;
 		}
 
-		.progress-bar {
-			width: 100%;
-			height: 4px;
-			background: rgba(255, 255, 255, 0.3);
-			border-radius: 2px;
-			overflow: hidden;
-			margin-top: 10px;
-		}
+		@media (max-width: 768px) {
+			.container {
+				padding: 20px;
+			}
 
-		.progress-fill {
-			height: 100%;
-			background: linear-gradient(90deg, #667eea, #764ba2);
-			transition: width 0.3s ease;
-		}
+			h1 {
+				font-size: 24px;
+			}
 
-		.progress-bar.loading .progress-fill {
-			animation: loading 2s ease-in-out infinite;
-		}
-
-		@keyframes loading {
-			0%, 100% { width: 30%; }
-			50% { width: 70%; }
+			.logo {
+				max-width: 200px;
+			}
 		}
 	</style>
 </head>
 <body>
 	<div class="container">
 		<div class="header">
-			<h1 style="font-size: 1.8em; color: #999; font-weight: normal; margin-bottom: 5px;">Legenden om Zelda</h1>
-			<h1 style="font-size: 2.8em; margin-bottom: 10px;">Tidens okarina</h1>
-			<p>Lägg till din ROM-fil för att applicera patchen</p>
+			<img src="./images/triforce.png" alt="Triforce" class="logo">
+			<h1>Legenden om Zelda: Ocarina of Time</h1>
+			<p class="subtitle">Nintendo 64 ROM Patcher för Tidens Okarina</p>
 		</div>
 
-		<div id="status" class="status loading">
-			<strong>🔄 Laddar patch för Tidens okarina...</strong>
-			<div class="progress-bar loading">
-				<div class="progress-fill" style="width: 30%"></div>
-			</div>
+		<div class="info-box">
+			<h3>📋 Stödda ROM-versioner</h3>
+			<p>Denna patcher stöder följande Ocarina of Time ROM-versioner:</p>
+			<ul>
+				<li><strong>PAL v1.0</strong> - MD5: <code>e040de91a74b61e3201db0e2323f768a</code></li>
+				<li><strong>NTSC v1.0</strong> - MD5: <code>5bd1fe107bf8106b2ab6650abecd54d6</code></li>
+				<li><strong>NTSC Rev 1 (v1.1)</strong> - MD5: <code>721fdcc6f5f34be55c43a807f2a16af4</code></li>
+				<li><strong>NTSC Rev 2 (v1.2)</strong> - MD5: <code>57a9719ad547c516342e1a15d5c28c3d</code></li>
+			</ul>
+			<p style="margin-top: 10px; font-size: 13px; color: #666;">
+				Patchern identifierar automatiskt din ROM-version och väljer rätt patch-fil.
+			</p>
 		</div>
 
-		<div class="file-input-area" id="dropArea">
-			<div class="file-input-text">📁 Klicka eller dra din ROM-fil hit</div>
-			<div class="file-input-subtext">Endast kompatibel ROM accepteras</div>
-			<div class="file-input-subtext" style="margin-top: 5px; font-size: 0.8em; color: #999;">
-				MD5: E040DE91A74B61E3201DB0E2323F768A
-			</div>
-			<input type="file" id="romFile" class="file-input" accept=".z64">
-		</div>
-
-		<div id="romInfo" class="rom-info" style="display: none;">
-			<div class="rom-info-row">
-				<div class="rom-info-label">Filnamn:</div>
-				<div class="rom-info-value" id="fileName"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">Storlek:</div>
-				<div class="rom-info-value" id="fileSize"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">MD5:</div>
-				<div class="rom-info-value" id="md5Hash"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">CRC32:</div>
-				<div class="rom-info-value" id="crc32"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">Status:</div>
-				<div class="rom-info-value" id="romStatus"></div>
+		<div class="upload-section">
+			<div class="upload-area" id="dropZone">
+				<div class="upload-icon">🎮</div>
+				<div class="upload-text">Dra och släpp din ROM-fil här</div>
+				<div class="upload-hint">eller klicka för att välja fil</div>
+				<input type="file" id="romFile" accept=".z64,.n64,.v64">
 			</div>
 		</div>
 
-		<button id="patchButton" class="button" disabled>Applicera patch</button>
-		
-		<div class="credits">
-			RomPatcher.js av <a href="https://github.com/marcrobledo/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo</a>
+		<div id="status" class="status"></div>
+
+		<div id="versionInfo" class="version-info">
+			<h3>✅ ROM Identifierad</h3>
+			<p id="versionDetails"></p>
+		</div>
+
+		<button id="applyBtn" class="btn" disabled>Applicera Patch</button>
+
+		<div class="footer">
+			Bygger på <a href="https://www.marcrobledo.com/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo's RomPatcher.js</a>
 		</div>
 	</div>
 
 	<script>
-		// Animation manager class (din ursprungliga kod)
+		// ROM version mapping
+		const ROM_VERSIONS = {
+			'e040de91a74b61e3201db0e2323f768a': {
+				name: 'PAL v1.0',
+				patch: 'Tidens_okarina.bps',
+				description: 'PAL (Europa) version 1.0'
+			},
+			'5bd1fe107bf8106b2ab6650abecd54d6': {
+				name: 'NTSC v1.0',
+				patch: 'Tidens_okarina_NTSC10.bps',
+				description: 'NTSC (USA/Japan) version 1.0'
+			},
+			'721fdcc6f5f34be55c43a807f2a16af4': {
+				name: 'NTSC Rev 1 (v1.1)',
+				patch: 'Tidens_okarina_NTSC11.bps',
+				description: 'NTSC (USA/Japan) version 1.1'
+			},
+			'57a9719ad547c516342e1a15d5c28c3d': {
+				name: 'NTSC Rev 2 (v1.2)',
+				patch: 'Tidens_okarina_NTSC12.bps',
+				description: 'NTSC (USA/Japan) version 1.2'
+			}
+		};
+
+		// Animation manager class
 		class AnimationManager {
 			constructor() {
 				this.triforces = [];
@@ -472,167 +511,199 @@
 			}
 		}
 
-		// Applikationslogik som använder Marc Robledo's riktiga RomPatcher.js
+		// Application state
 		let loadedPatch = null;
 		let romFileData = null;
-		const expectedMD5 = 'E040DE91A74B61E3201DB0E2323F768A';
+		let detectedVersion = null;
 
-		// Ladda BPS-filen automatiskt med RomPatcher.js (vänta tills allt är laddat)
-		async function loadBPSPatch() {
+		// Start animations
+		const animManager = new AnimationManager();
+		animManager.init();
+
+		// DOM elements
+		const dropZone = document.getElementById('dropZone');
+		const romFileInput = document.getElementById('romFile');
+		const applyBtn = document.getElementById('applyBtn');
+		const statusDiv = document.getElementById('status');
+		const versionInfo = document.getElementById('versionInfo');
+		const versionDetails = document.getElementById('versionDetails');
+
+		// Helper function to update status
+		function updateStatus(message, type) {
+			statusDiv.textContent = message;
+			statusDiv.className = `status ${type}`;
+		}
+
+		// Helper function to calculate MD5
+		function calculateMD5(arrayBuffer) {
+			const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
+			const hash = CryptoJS.MD5(wordArray);
+			return hash.toString(CryptoJS.enc.Hex).toLowerCase();
+		}
+
+		// Handle ROM file selection
+		async function handleRomFile(file) {
+			if (!file) return;
+
+			updateStatus('🔍 Läser ROM-fil och identifierar version...', 'loading');
+			versionInfo.classList.remove('show');
+			applyBtn.disabled = true;
+			loadedPatch = null;
+			detectedVersion = null;
+
 			try {
-				// Debug: Kolla vad som är tillgängligt
-				console.log('Checking for RomPatcher dependencies...');
-				console.log('BinFile:', typeof BinFile);
-				console.log('BPS:', typeof BPS);
-				console.log('window.BinFile:', typeof window.BinFile);
-				console.log('window.BPS:', typeof window.BPS);
-				
-				// Vänta tills RomPatcher.js är laddat
-				if (typeof BinFile === 'undefined' || typeof BPS === 'undefined') {
-					console.log('Dependencies not ready, retrying in 100ms...');
-					setTimeout(loadBPSPatch, 100); // Försök igen om 100ms
+				const arrayBuffer = await file.arrayBuffer();
+				romFileData = new BinFile(arrayBuffer);
+				romFileData.fileName = file.name;
+
+				// Calculate MD5
+				updateStatus('🔐 Beräknar MD5 checksum...', 'loading');
+				const md5Hash = calculateMD5(arrayBuffer);
+				console.log('ROM MD5:', md5Hash);
+
+				// Check if this ROM version is supported
+				const versionInfo_data = ROM_VERSIONS[md5Hash];
+				if (!versionInfo_data) {
+					updateStatus(
+						`❌ Okänd ROM-version! MD5: ${md5Hash}. Kontrollera att du använder en av de stödda versionerna.`,
+						'error'
+					);
 					return;
 				}
 
-				updateStatus('🔄 Laddar patch...', 'loading');
-				console.log('Starting patch load...');
-				
-				const response = await fetch('./patch/Tidens_okarina.bps');
-				console.log('Fetch response:', response.status);
+				detectedVersion = versionInfo_data;
+				updateStatus('✅ ROM-version identifierad! Laddar rätt patch...', 'success');
+
+				// Show version info
+				versionDetails.innerHTML = `
+					<strong>Version:</strong> ${versionInfo_data.name}<br>
+					<strong>Beskrivning:</strong> ${versionInfo_data.description}<br>
+					<strong>MD5:</strong> <code>${md5Hash}</code><br>
+					<strong>Patch-fil:</strong> ${versionInfo_data.patch}
+				`;
+				versionInfo.classList.add('show');
+
+				// Load the correct patch
+				await loadPatchForVersion(versionInfo_data);
+
+			} catch (error) {
+				console.error('Error processing ROM:', error);
+				updateStatus(`❌ Fel vid bearbetning av ROM: ${error.message}`, 'error');
+			}
+		}
+
+		// Load patch file based on detected version
+		async function loadPatchForVersion(versionInfo_data) {
+			try {
+				// Wait for dependencies
+				if (typeof BinFile === 'undefined' || typeof BPS === 'undefined') {
+					console.log('Dependencies not ready, retrying...');
+					setTimeout(() => loadPatchForVersion(versionInfo_data), 100);
+					return;
+				}
+
+				updateStatus(`🔄 Laddar patch ${versionInfo_data.patch}...`, 'loading');
+
+				const response = await fetch(`./patch/${versionInfo_data.patch}`);
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
-				
+
 				const arrayBuffer = await response.arrayBuffer();
-				console.log('ArrayBuffer size:', arrayBuffer.byteLength);
 				const patchFile = new BinFile(arrayBuffer);
-				console.log('BinFile created:', patchFile);
-				
-				// Använd Marc Robledo's riktiga BPS-parser
+
+				// Parse BPS patch
 				loadedPatch = BPS.fromFile(patchFile);
 				console.log('Patch loaded successfully:', loadedPatch);
-				
-				updateStatus('✅ Patch laddad framgångsrikt! Välj din ROM-fil nedan.', 'ready');
-				
+
+				updateStatus(
+					`✅ Allt är redo! Patch för ${versionInfo_data.name} är laddad. Klicka "Applicera Patch" nedan.`,
+					'success'
+				);
+				applyBtn.disabled = false;
+
 			} catch (error) {
-				console.error('Error loading Tidens_okarina.bps:', error);
-				updateStatus('❌ Fel vid laddning av patch: ' + error.message, 'error');
+				console.error('Error loading patch:', error);
+				updateStatus(`❌ Fel vid laddning av patch: ${error.message}`, 'error');
+				throw error;
 			}
 		}
 
-		function updateStatus(message, type) {
-			const statusEl = document.getElementById('status');
-			statusEl.innerHTML = message;
-			statusEl.className = 'status ' + type;
-		}
-
-		function calculateMD5(arrayBuffer) {
-			const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
-			return CryptoJS.MD5(wordArray).toString().toUpperCase();
-		}
-
-		async function handleROMFile(file) {
-			try {
-				updateStatus('🔄 Läser ROM-fil...', 'loading');
-				
-				const arrayBuffer = await file.arrayBuffer();
-				romFileData = new BinFile(arrayBuffer);
-				
-				// Beräkna checksums med Marc Robledo's funktioner
-				const md5 = calculateMD5(arrayBuffer);
-				const crc32 = romFileData.hashCRC32().toString(16).toUpperCase().padStart(8, '0');
-				
-				// Uppdatera ROM info
-				document.getElementById('fileName').textContent = file.name;
-				document.getElementById('fileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
-				document.getElementById('md5Hash').textContent = md5;
-				document.getElementById('crc32').textContent = crc32;
-				
-				// Kontrollera kompatibilitet
-				const isCompatible = md5 === expectedMD5;
-				document.getElementById('romStatus').textContent = isCompatible ? 'Kompatibel ✅' : 'Inkompatibel ❌';
-				document.getElementById('romStatus').style.color = isCompatible ? '#28a745' : '#dc3545';
-				
-				document.getElementById('romInfo').style.display = 'block';
-				document.getElementById('patchButton').disabled = !isCompatible;
-				
-				if (isCompatible) {
-					updateStatus('✅ ROM laddad och verifierad - Redo att patcha!', 'ready');
-				} else {
-					updateStatus('❌ Fel ROM-fil. Endast kompatibel ROM accepteras.', 'error');
-				}
-				
-			} catch (error) {
-				updateStatus('❌ Fel vid läsning av ROM: ' + error.message, 'error');
-			}
-		}
-
+		// Apply patch
 		async function applyPatch() {
 			if (!loadedPatch || !romFileData) {
-				updateStatus('❌ Patch eller ROM saknas', 'error');
+				updateStatus('❌ Patch eller ROM-fil saknas!', 'error');
 				return;
 			}
 
 			try {
-				updateStatus('🔄 Applicerar patch...', 'loading');
-				
-				// Använd Marc Robledo's riktiga apply-funktion
+				applyBtn.disabled = true;
+				updateStatus('⚙️ Applicerar patch...', 'loading');
+
+				// Apply the patch
 				const patchedRom = loadedPatch.apply(romFileData, true);
-				
-				// Skapa download
+				console.log('Patch applied successfully');
+
+				// Create download
+				updateStatus('💾 Skapar nedladdning...', 'loading');
+
+				const originalName = romFileData.fileName.replace(/\.[^/.]+$/, '');
+				const patchedFileName = `${originalName}_patchad.z64`;
+
 				const blob = new Blob([patchedRom._u8array], { type: 'application/octet-stream' });
 				const url = URL.createObjectURL(blob);
+
 				const a = document.createElement('a');
 				a.href = url;
-				a.download = 'LoZ_-_Tidens_Okarina.z64';
+				a.download = patchedFileName;
+				document.body.appendChild(a);
 				a.click();
-				URL.revokeObjectURL(url);
-				
-				updateStatus('✅ Patch applicerad framgångsrikt! Nedladdning startad.', 'ready');
-				
+				document.body.removeChild(a);
+
+				setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+				updateStatus('✅ Patch applicerad! Nedladdning startad.', 'success');
+				applyBtn.disabled = false;
+
 			} catch (error) {
-				updateStatus('❌ Fel vid patchning: ' + error.message, 'error');
+				console.error('Error applying patch:', error);
+				updateStatus(`❌ Fel vid applicering av patch: ${error.message}`, 'error');
+				applyBtn.disabled = false;
 			}
 		}
 
-		// Event listeners och initialisering
-		document.addEventListener('DOMContentLoaded', () => {
-			const dropArea = document.getElementById('dropArea');
-			const romFile = document.getElementById('romFile');
-			const patchButton = document.getElementById('patchButton');
+		// Drag and drop handlers
+		dropZone.addEventListener('click', () => romFileInput.click());
 
-			// Initiera animationer
-			const animationManager = new AnimationManager();
-			animationManager.init();
-
-			// File input
-			dropArea.addEventListener('click', () => romFile.click());
-			romFile.addEventListener('change', (e) => {
-				if (e.target.files[0]) handleROMFile(e.target.files[0]);
-			});
-
-			// Drag and drop
-			dropArea.addEventListener('dragover', (e) => {
-				e.preventDefault();
-				dropArea.classList.add('dragover');
-			});
-
-			dropArea.addEventListener('dragleave', () => {
-				dropArea.classList.remove('dragover');
-			});
-
-			dropArea.addEventListener('drop', (e) => {
-				e.preventDefault();
-				dropArea.classList.remove('dragover');
-				if (e.dataTransfer.files[0]) handleROMFile(e.dataTransfer.files[0]);
-			});
-
-			// Patch button
-			patchButton.addEventListener('click', applyPatch);
-
-			// Ladda BPS patch automatiskt
-			loadBPSPatch();
+		dropZone.addEventListener('dragover', (e) => {
+			e.preventDefault();
+			dropZone.classList.add('drag-over');
 		});
+
+		dropZone.addEventListener('dragleave', () => {
+			dropZone.classList.remove('drag-over');
+		});
+
+		dropZone.addEventListener('drop', (e) => {
+			e.preventDefault();
+			dropZone.classList.remove('drag-over');
+			const file = e.dataTransfer.files[0];
+			if (file) {
+				handleRomFile(file);
+			}
+		});
+
+		romFileInput.addEventListener('change', (e) => {
+			const file = e.target.files[0];
+			if (file) {
+				handleRomFile(file);
+			}
+		});
+
+		applyBtn.addEventListener('click', applyPatch);
+
+		console.log('BPS Patcher initialized - Multi-version support enabled');
+		console.log('Supported versions:', Object.keys(ROM_VERSIONS).length);
 	</script>
 </body>
 </html>
