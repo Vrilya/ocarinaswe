@@ -35,14 +35,17 @@ Den enklaste metoden är att använda webbverktyget jag har satt upp här:
 💡 **Notera:**  
 ROM-filen måste vara något av dessa:  
 - **Database match:** Legend of Zelda, The - Ocarina of Time (Europe) (En,Fr,De)  
-- **MD5:** `E040DE91A74B61E3201DB0E2323F768A`  
+- **MD5:** `E040DE91A74B61E3201DB0E2323F768A`
 Ovanstående är samma version som såldes i Sverige.
 - **Database match:** Legend of Zelda, The - Ocarina of Time (USA)
-- **MD5:** `5bd1fe107bf8106b2ab6650abecd54d6`  
+- **MD5:** `5bd1fe107bf8106b2ab6650abecd54d6`
 - **Database match:** Legend of Zelda, The - Ocarina of Time (USA) (Rev 1)
-- **MD5:** `721fdcc6f5f34be55c43a807f2a16af4`  
+- **MD5:** `721fdcc6f5f34be55c43a807f2a16af4`
 - **Database match:** Legend of Zelda, The - Ocarina of Time (USA) (Rev 2)
-- **MD5:** `57a9719ad547c516342e1a15d5c28c3d`  
+- **MD5:** `57a9719ad547c516342e1a15d5c28c3d`
+- **Database match:** Legend of Zelda, The - Ocarina of Time - Master Quest (USA) (GameCube)
+- **SHA-1:** `8b5d13aac69bfbf989861cfdc50b1d840945fc1d`
+- **MD5:** `da35577fe54579f6a266931cc75f512d`
 
 ### 🚢 Ship of Harkinian Setup
 
