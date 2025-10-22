@@ -45,7 +45,7 @@ Ovanstående är samma version som såldes i Sverige.
 - **MD5:** `57a9719ad547c516342e1a15d5c28c3d`
 - **Database match:** Legend of Zelda, The - Ocarina of Time - Master Quest (USA) (GameCube)
 - **SHA-1:** `8b5d13aac69bfbf989861cfdc50b1d840945fc1d`
-- **MD5:** `da35577fe54579f6a266931cc75f512d`
+- **MD5:**   `da35577fe54579f6a266931cc75f512d`
 
 ### 🚢 Ship of Harkinian Setup
 
