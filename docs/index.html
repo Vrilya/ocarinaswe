@@ -6,7 +6,7 @@
 <head>
 	<title>Legenden om Zelda: Ocarina of Time - Nintendo 64 Patcher</title>
 	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content="Nintendo 64 ROM patcher för Tidens okarina"/>
+	<meta name="description" content="Nintendo 64 ROM patcher fÃ¶r Tidens okarina"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 	
 	<!-- cache -->
@@ -429,14 +429,14 @@
 		</div>
 
 		<button class="info-button" id="infoButton">
-			ℹ️ Stödda ROM-versioner
+			â„¹ï¸ StÃ¶dda ROM-versioner
 		</button>
 
 		<div class="upload-section">
 			<div class="upload-area" id="dropZone">
-				<div class="upload-icon">🎮</div>
-				<div class="upload-text">Dra och släpp din ROM-fil här</div>
-				<div class="upload-hint">eller klicka för att välja fil</div>
+				<div class="upload-icon">ðŸŽ®</div>
+				<div class="upload-text">Dra och slÃ¤pp din ROM-fil hÃ¤r</div>
+				<div class="upload-hint">eller klicka fÃ¶r att vÃ¤lja fil</div>
 				<input type="file" id="romFile" accept=".z64,.n64,.v64">
 			</div>
 		</div>
@@ -444,23 +444,23 @@
 		<div id="status" class="status"></div>
 
 		<div id="versionInfo" class="version-info">
-			<h3>✅ ROM Identifierad</h3>
+			<h3>âœ… ROM Identifierad</h3>
 			<p id="versionDetails"></p>
 		</div>
 
 		<button id="applyBtn" class="btn" disabled>Applicera Patch</button>
 
 		<div class="footer">
-			Bygger på <a href="https://www.marcrobledo.com/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo's RomPatcher.js</a>
+			Bygger pÃ¥ <a href="https://www.marcrobledo.com/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo's RomPatcher.js</a>
 		</div>
 	</div>
 
 	<!-- Modal for ROM versions info -->
 	<div class="modal-overlay" id="infoModal">
 		<div class="modal-content">
-			<button class="modal-close" id="closeModal">×</button>
-			<h2>📋 Stödda ROM-versioner</h2>
-			<p>Denna patcher stöder följande Ocarina of Time ROM-versioner:</p>
+			<button class="modal-close" id="closeModal">Ã—</button>
+			<h2>ðŸ“‹ StÃ¶dda ROM-versioner</h2>
+			<p>Denna patcher stÃ¶der fÃ¶ljande Ocarina of Time ROM-versioner:</p>
 			<ul>
 				<li>
 					<strong>PAL v1.0</strong> (Europa version 1.0)<br>
@@ -484,8 +484,8 @@
 				</li>
 			</ul>
 			<p>
-				Patchern identifierar automatiskt din ROM-version genom att beräkna MD5-checksumman 
-				och väljer sedan rätt patch-fil. Du behöver inte göra något annat än att välja din ROM-fil.
+				Patchern identifierar automatiskt din ROM-version genom att berÃ¤kna MD5-checksumman 
+				och vÃ¤ljer sedan rÃ¤tt patch-fil. Du behÃ¶ver inte gÃ¶ra nÃ¥got annat Ã¤n att vÃ¤lja din ROM-fil.
 			</p>
 		</div>
 	</div>
@@ -496,27 +496,32 @@
 			'e040de91a74b61e3201db0e2323f768a': {
 				name: 'PAL v1.0',
 				patch: 'Tidens_okarina_PAL10.bps',
-				description: 'PAL (Europa) version 1.0'
+				description: 'PAL (Europa) version 1.0',
+				outputName: 'Tidens_okarina-PAL10.z64'
 			},
 			'5bd1fe107bf8106b2ab6650abecd54d6': {
 				name: 'NTSC v1.0',
 				patch: 'Tidens_okarina_NTSC10.bps',
-				description: 'NTSC (USA/Japan) version 1.0'
+				description: 'NTSC (USA/Japan) version 1.0',
+				outputName: 'Tidens_okarina-NTSC10.z64'
 			},
 			'721fdcc6f5f34be55c43a807f2a16af4': {
 				name: 'NTSC Rev 1 (v1.1)',
 				patch: 'Tidens_okarina_NTSC11.bps',
-				description: 'NTSC (USA/Japan) version 1.1'
+				description: 'NTSC (USA/Japan) version 1.1',
+				outputName: 'Tidens_okarina-NTSC11.z64'
 			},
 			'57a9719ad547c516342e1a15d5c28c3d': {
 				name: 'NTSC Rev 2 (v1.2)',
 				patch: 'Tidens_okarina_NTSC12.bps',
-				description: 'NTSC (USA/Japan) version 1.2'
+				description: 'NTSC (USA/Japan) version 1.2',
+				outputName: 'Tidens_okarina-NTSC12.z64'
 			},
 			'da35577fe54579f6a266931cc75f512d': {
 				name: 'Master Quest NTSC',
 				patch: 'Tidens_okarina_NTSCMQ.bps',
-				description: 'MQ NTSC (gc-us-mq)'
+				description: 'MQ NTSC (gc-us-mq)',
+				outputName: 'Tidens_okarina-NTSCMQ.z64'
 			}
 		};
 
@@ -687,7 +692,7 @@
 		async function handleRomFile(file) {
 			if (!file) return;
 
-			updateStatus('🔍 Läser ROM-fil och identifierar version...', 'loading');
+			updateStatus('ðŸ” LÃ¤ser ROM-fil och identifierar version...', 'loading');
 			versionInfo.classList.remove('show');
 			applyBtn.disabled = true;
 			loadedPatch = null;
@@ -699,7 +704,7 @@
 				romFileData.fileName = file.name;
 
 				// Calculate MD5
-				updateStatus('🔐 Beräknar MD5 checksum...', 'loading');
+				updateStatus('ðŸ” BerÃ¤knar MD5 checksum...', 'loading');
 				const md5Hash = calculateMD5(arrayBuffer);
 				console.log('ROM MD5:', md5Hash);
 
@@ -707,14 +712,14 @@
 				const versionInfo_data = ROM_VERSIONS[md5Hash];
 				if (!versionInfo_data) {
 					updateStatus(
-						`❌ Okänd ROM-version! MD5: ${md5Hash}. Kontrollera att du använder en av de stödda versionerna.`,
+						`âŒ OkÃ¤nd ROM-version! MD5: ${md5Hash}. Kontrollera att du anvÃ¤nder en av de stÃ¶dda versionerna.`,
 						'error'
 					);
 					return;
 				}
 
 				detectedVersion = versionInfo_data;
-				updateStatus('✅ ROM-version identifierad! Laddar rätt patch...', 'success');
+				updateStatus('âœ… ROM-version identifierad! Laddar rÃ¤tt patch...', 'success');
 
 				// Show version info
 				versionDetails.innerHTML = `
@@ -730,7 +735,7 @@
 
 			} catch (error) {
 				console.error('Error processing ROM:', error);
-				updateStatus(`❌ Fel vid bearbetning av ROM: ${error.message}`, 'error');
+				updateStatus(`âŒ Fel vid bearbetning av ROM: ${error.message}`, 'error');
 			}
 		}
 
@@ -744,7 +749,7 @@
 					return;
 				}
 
-				updateStatus(`🔄 Laddar patch ${versionInfo_data.patch}...`, 'loading');
+				updateStatus(`ðŸ”„ Laddar patch ${versionInfo_data.patch}...`, 'loading');
 
 				const response = await fetch(`./patch/${versionInfo_data.patch}`);
 				if (!response.ok) {
@@ -759,14 +764,14 @@
 				console.log('Patch loaded successfully:', loadedPatch);
 
 				updateStatus(
-					`✅ Patch för ${versionInfo_data.name} är laddad. Klicka "Applicera Patch".`,
+					`âœ… Patch fÃ¶r ${versionInfo_data.name} Ã¤r laddad. Klicka "Applicera Patch".`,
 					'success'
 				);
 				applyBtn.disabled = false;
 
 			} catch (error) {
 				console.error('Error loading patch:', error);
-				updateStatus(`❌ Fel vid laddning av patch: ${error.message}`, 'error');
+				updateStatus(`âŒ Fel vid laddning av patch: ${error.message}`, 'error');
 				throw error;
 			}
 		}
@@ -774,23 +779,22 @@
 		// Apply patch
 		async function applyPatch() {
 			if (!loadedPatch || !romFileData) {
-				updateStatus('❌ Patch eller ROM-fil saknas!', 'error');
+				updateStatus('âŒ Patch eller ROM-fil saknas!', 'error');
 				return;
 			}
 
 			try {
 				applyBtn.disabled = true;
-				updateStatus('⚙️ Applicerar patch...', 'loading');
+				updateStatus('âš™ï¸ Applicerar patch...', 'loading');
 
 				// Apply the patch
 				const patchedRom = loadedPatch.apply(romFileData, true);
 				console.log('Patch applied successfully');
 
 				// Create download
-				updateStatus('💾 Skapar nedladdning...', 'loading');
+				updateStatus('ðŸ’¾ Skapar nedladdning...', 'loading');
 
-				const originalName = romFileData.fileName.replace(/\.[^/.]+$/, '');
-				const patchedFileName = `${originalName}_patchad.z64`;
+				const patchedFileName = detectedVersion.outputName;
 
 				const blob = new Blob([patchedRom._u8array], { type: 'application/octet-stream' });
 				const url = URL.createObjectURL(blob);
@@ -804,12 +808,12 @@
 
 				setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-				updateStatus('✅ Patch applicerad! Nedladdning startad.', 'success');
+				updateStatus('âœ… Patch applicerad! Nedladdning startad.', 'success');
 				applyBtn.disabled = false;
 
 			} catch (error) {
 				console.error('Error applying patch:', error);
-				updateStatus(`❌ Fel vid applicering av patch: ${error.message}`, 'error');
+				updateStatus(`âŒ Fel vid applicering av patch: ${error.message}`, 'error');
 				applyBtn.disabled = false;
 			}
 		}
