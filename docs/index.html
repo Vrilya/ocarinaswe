@@ -6,7 +6,7 @@
 <head>
 	<title>Legenden om Zelda: Ocarina of Time - Nintendo 64 Patcher</title>
 	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content="Nintendo 64 ROM patcher fÃ¶r Tidens okarina"/>
+	<meta name="description" content="Nintendo 64 ROM patcher för Tidens okarina"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 	
 	<!-- cache -->
@@ -429,14 +429,14 @@
 		</div>
 
 		<button class="info-button" id="infoButton">
-			â„¹ï¸ StÃ¶dda ROM-versioner
+			ℹ️ Stödda ROM-versioner
 		</button>
 
 		<div class="upload-section">
 			<div class="upload-area" id="dropZone">
-				<div class="upload-icon">ðŸŽ®</div>
-				<div class="upload-text">Dra och slÃ¤pp din ROM-fil hÃ¤r</div>
-				<div class="upload-hint">eller klicka fÃ¶r att vÃ¤lja fil</div>
+				<div class="upload-icon">🎮</div>
+				<div class="upload-text">Dra och släpp din ROM-fil här</div>
+				<div class="upload-hint">eller klicka för att välja fil</div>
 				<input type="file" id="romFile" accept=".z64,.n64,.v64">
 			</div>
 		</div>
@@ -444,23 +444,23 @@
 		<div id="status" class="status"></div>
 
 		<div id="versionInfo" class="version-info">
-			<h3>âœ… ROM Identifierad</h3>
+			<h3>✅ ROM Identifierad</h3>
 			<p id="versionDetails"></p>
 		</div>
 
 		<button id="applyBtn" class="btn" disabled>Applicera Patch</button>
 
 		<div class="footer">
-			Bygger pÃ¥ <a href="https://www.marcrobledo.com/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo's RomPatcher.js</a>
+			Bygger på <a href="https://www.marcrobledo.com/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo's RomPatcher.js</a>
 		</div>
 	</div>
 
 	<!-- Modal for ROM versions info -->
 	<div class="modal-overlay" id="infoModal">
 		<div class="modal-content">
-			<button class="modal-close" id="closeModal">Ã—</button>
-			<h2>ðŸ“‹ StÃ¶dda ROM-versioner</h2>
-			<p>Denna patcher stÃ¶der fÃ¶ljande Ocarina of Time ROM-versioner:</p>
+			<button class="modal-close" id="closeModal">×</button>
+			<h2>📋 Stödda ROM-versioner</h2>
+			<p>Denna patcher stöder följande Ocarina of Time ROM-versioner:</p>
 			<ul>
 				<li>
 					<strong>PAL v1.0</strong> (Europa version 1.0)<br>
@@ -484,8 +484,8 @@
 				</li>
 			</ul>
 			<p>
-				Patchern identifierar automatiskt din ROM-version genom att berÃ¤kna MD5-checksumman 
-				och vÃ¤ljer sedan rÃ¤tt patch-fil. Du behÃ¶ver inte gÃ¶ra nÃ¥got annat Ã¤n att vÃ¤lja din ROM-fil.
+				Patchern identifierar automatiskt din ROM-version genom att beräkna MD5-checksumman 
+				och väljer sedan rätt patch-fil. Du behöver inte göra något annat än att välja din ROM-fil.
 			</p>
 		</div>
 	</div>
@@ -692,7 +692,7 @@
 		async function handleRomFile(file) {
 			if (!file) return;
 
-			updateStatus('ðŸ” LÃ¤ser ROM-fil och identifierar version...', 'loading');
+			updateStatus('🔍 Läser ROM-fil och identifierar version...', 'loading');
 			versionInfo.classList.remove('show');
 			applyBtn.disabled = true;
 			loadedPatch = null;
@@ -704,7 +704,7 @@
 				romFileData.fileName = file.name;
 
 				// Calculate MD5
-				updateStatus('ðŸ” BerÃ¤knar MD5 checksum...', 'loading');
+				updateStatus('🔐 Beräknar MD5 checksum...', 'loading');
 				const md5Hash = calculateMD5(arrayBuffer);
 				console.log('ROM MD5:', md5Hash);
 
@@ -712,14 +712,14 @@
 				const versionInfo_data = ROM_VERSIONS[md5Hash];
 				if (!versionInfo_data) {
 					updateStatus(
-						`âŒ OkÃ¤nd ROM-version! MD5: ${md5Hash}. Kontrollera att du anvÃ¤nder en av de stÃ¶dda versionerna.`,
+						`❌ Okänd ROM-version! MD5: ${md5Hash}. Kontrollera att du använder en av de stödda versionerna.`,
 						'error'
 					);
 					return;
 				}
 
 				detectedVersion = versionInfo_data;
-				updateStatus('âœ… ROM-version identifierad! Laddar rÃ¤tt patch...', 'success');
+				updateStatus('✅ ROM-version identifierad! Laddar rätt patch...', 'success');
 
 				// Show version info
 				versionDetails.innerHTML = `
@@ -735,7 +735,7 @@
 
 			} catch (error) {
 				console.error('Error processing ROM:', error);
-				updateStatus(`âŒ Fel vid bearbetning av ROM: ${error.message}`, 'error');
+				updateStatus(`❌ Fel vid bearbetning av ROM: ${error.message}`, 'error');
 			}
 		}
 
@@ -749,7 +749,7 @@
 					return;
 				}
 
-				updateStatus(`ðŸ”„ Laddar patch ${versionInfo_data.patch}...`, 'loading');
+				updateStatus(`🔄 Laddar patch ${versionInfo_data.patch}...`, 'loading');
 
 				const response = await fetch(`./patch/${versionInfo_data.patch}`);
 				if (!response.ok) {
@@ -764,14 +764,14 @@
 				console.log('Patch loaded successfully:', loadedPatch);
 
 				updateStatus(
-					`âœ… Patch fÃ¶r ${versionInfo_data.name} Ã¤r laddad. Klicka "Applicera Patch".`,
+					`✅ Patch för ${versionInfo_data.name} är laddad. Klicka "Applicera Patch".`,
 					'success'
 				);
 				applyBtn.disabled = false;
 
 			} catch (error) {
 				console.error('Error loading patch:', error);
-				updateStatus(`âŒ Fel vid laddning av patch: ${error.message}`, 'error');
+				updateStatus(`❌ Fel vid laddning av patch: ${error.message}`, 'error');
 				throw error;
 			}
 		}
@@ -779,20 +779,20 @@
 		// Apply patch
 		async function applyPatch() {
 			if (!loadedPatch || !romFileData) {
-				updateStatus('âŒ Patch eller ROM-fil saknas!', 'error');
+				updateStatus('❌ Patch eller ROM-fil saknas!', 'error');
 				return;
 			}
 
 			try {
 				applyBtn.disabled = true;
-				updateStatus('âš™ï¸ Applicerar patch...', 'loading');
+				updateStatus('⚙️ Applicerar patch...', 'loading');
 
 				// Apply the patch
 				const patchedRom = loadedPatch.apply(romFileData, true);
 				console.log('Patch applied successfully');
 
 				// Create download
-				updateStatus('ðŸ’¾ Skapar nedladdning...', 'loading');
+				updateStatus('💾 Skapar nedladdning...', 'loading');
 
 				const patchedFileName = detectedVersion.outputName;
 
@@ -808,12 +808,12 @@
 
 				setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-				updateStatus('âœ… Patch applicerad! Nedladdning startad.', 'success');
+				updateStatus('✅ Patch applicerad! Nedladdning startad.', 'success');
 				applyBtn.disabled = false;
 
 			} catch (error) {
 				console.error('Error applying patch:', error);
-				updateStatus(`âŒ Fel vid applicering av patch: ${error.message}`, 'error');
+				updateStatus(`❌ Fel vid applicering av patch: ${error.message}`, 'error');
 				applyBtn.disabled = false;
 			}
 		}
