@@ -67,7 +67,7 @@ Om du hellre vill skapa filen själv manuellt:
    ```
    https://soh.xoas.eu.org/
    ```
-   - Välj `OTRMod_Svenska.txt` under "Choose a script"  
+   - Välj `OTRMod_PAL10.txt` under "Choose a script"  
    - Välj den dekomprimerade ROM-filen under "Choose a ROM"  
    - Klicka på "Generate OTR"
 4. **Installera moden**:  
