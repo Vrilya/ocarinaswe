@@ -37,6 +37,9 @@ ROM-filen måste vara någon av dessa:
 - **Database match:** Legend of Zelda, The - Ocarina of Time (Europe) (En,Fr,De)  
 - **SHA-1:** `328a1f1beba30ce5e178f031662019eb32c5f3b5`
 - **MD5:** `E040DE91A74B61E3201DB0E2323F768A`
+- **Database match:** Legend of Zelda, The - Ocarina of Time (Europe) (En,Fr,De) (Rev 1)
+- **SHA-1:** `cfbb98d392e4a9d39da8285d10cbef3974c2f012`
+- **MD5:** `d714580dd74c2c033f5e1b6dc0aeac77`
 - **Database match:** Legend of Zelda, The - Ocarina of Time (USA)
 - **SHA-1:** `ad69c91157f6705e8ab06c79fe08aad47bb57ba7`
 - **MD5:** `5bd1fe107bf8106b2ab6650abecd54d6`
