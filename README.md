@@ -41,8 +41,8 @@ ROM-filen måste vara någon av dessa:
 - **SHA-1:** `cfbb98d392e4a9d39da8285d10cbef3974c2f012`
 - **MD5:** `d714580dd74c2c033f5e1b6dc0aeac77`
 - **Database match:** Legend of Zelda, The - Ocarina of Time - Master Quest (Europe) (En,Fr,De) (GameCube)
-- **SHA-1:** `8b5d13aac69bfbf989861cfdc50b1d840945fc1d`
-- **MD5:** `f46239439f59a2a594ef83cf68ef65043b1bffe2`
+- **SHA-1:** `f46239439f59a2a594ef83cf68ef65043b1bffe2`
+- **MD5:** `1618403427e4344a57833043db5ce3c3`
 - **Database match:** Legend of Zelda, The - Ocarina of Time (USA)
 - **SHA-1:** `ad69c91157f6705e8ab06c79fe08aad47bb57ba7`
 - **MD5:** `5bd1fe107bf8106b2ab6650abecd54d6`
