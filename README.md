@@ -4,7 +4,7 @@
 
 Detta projekt tillhandahåller en komplett svensk översättning av **The Legend of Zelda: Ocarina of Time** (Tidens okarina). Arbetet har pågått av och till under cirka tre år och bygger på en noggrann genomgång av det japanska originalmanuset, korsrefererat mot det engelska, tyska och franska skriptet. Målet har varit att skapa en svensk text som låter naturligt samtidigt som den förblir trogen det japanska källmaterialet.
 
-En del av arbetet har bestått i att själv kartlägga PAL-ROM:en och dokumentera var alla bitmapbilder jag behövde fanns. Jag har byggt egna verktyg i Python och C#, bland annat för extrahering/konvertering av bitmappar samt en editor för redigering av spelets text.
+En del av arbetet har bestått i att själv kartlägga PAL-ROM:en och dokumentera var alla bitmapbilder jag behövde fanns. Jag har byggt egna verktyg från grunden i Python och C#, bland annat för yaz0-kryptering/dekryptering, extrahering/konvertering av bitmappar samt en editor för redigering av spelets text.
 
 Jag har även återinfört Nintendo 64-färgerna för knapparna i GameCube-ROM:arna och återinfört Nintendo 64-bootlogon. För GameCube-utgåvornas PAL-ROM, som normalt körs i MPAL (60 Hz, 3.58 MHz färgburst), har jag bytt ut spelets videointerface mot standard-PAL (4.43 MHz) så att spelet visas korrekt på en europeisk Nintendo 64.
 
