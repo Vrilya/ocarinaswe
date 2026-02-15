@@ -73,7 +73,7 @@ Packa upp arkivet och placera `Svenska.otr` i `mods`-mappen i din Ship of Harkin
 Om du hellre vill skapa filen själv manuellt:  
 
 1. **Ladda ner** `OTRMod_PAL10.txt` från [Releases](https://github.com/Vrilya/ocarinaswe/releases)  
-2. **Dekomprimera din redan patchade ROM** med z64decompress (Bara PAL än så länge):  
+2. **Dekomprimera din redan patchade ROM** med yaz0encdec (Bara PAL 1.0 än så länge):  
    ```
    https://github.com/z64utils/z64decompress/
    ```
@@ -106,7 +106,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 
 - **Bitmap-verktyg**: Redan tillgängligt på min GitHub
 - **Övriga verktyg**: Kommer att publiceras vid senare tillfälle
-- **z64decompress**: [GitHub Repository](https://github.com/z64utils/z64decompress/)
+- **yaz0encdec**: [GitHub Repository](https://github.com/Vrilya/yaz0encdec)
 
 ## 📜 Användning & Rättigheter
 
