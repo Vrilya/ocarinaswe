@@ -105,7 +105,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 ## 🛠️ Verktyg & Resurser
 
 - **Bitmap-verktyg (VOoTIE)**: [GitHub Repository](https://github.com/Vrilya/VOoTIE)
-- **Kompressor/dekompreccos (yaz0encdec)**: [GitHub Repository](https://github.com/Vrilya/yaz0encdec)
+- **Yaz0-Kompressor/dekompreccor (yaz0encdec)**: [GitHub Repository](https://github.com/Vrilya/yaz0encdec)
 - **Övriga verktyg**: Kommer att publiceras vid senare tillfälle
 
 ## 📜 Användning & Rättigheter
