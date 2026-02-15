@@ -75,7 +75,7 @@ Om du hellre vill skapa filen själv manuellt:
 1. **Ladda ner** `OTRMod_PAL10.txt` från [Releases](https://github.com/Vrilya/ocarinaswe/releases)  
 2. **Dekomprimera din redan patchade ROM** med yaz0encdec (Bara PAL 1.0 än så länge):  
    ```
-   https://github.com/z64utils/z64decompress/
+   https://github.com/Vrilya/yaz0encdec
    ```
 3. **Generera OTR-filen** på:  
    ```
