@@ -107,6 +107,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 - **Bitmap-verktyg (VOoTIE)**: [GitHub Repository](https://github.com/Vrilya/VOoTIE)
 - **Yaz0-Kompressor/dekompressor (yaz0encdec)**: [GitHub Repository](https://github.com/Vrilya/yaz0encdec)
 - **Texteditorn jag utvecklade för det här projektet (OoT Text Editor)**: [GitHub Repository](https://github.com/Vrilya/oottexteditor)
+- **Workflow för batch-hantering av hela projektet (OoT Workflow)**: [GitHub Repository](https://github.com/Vrilya/oot-workflow)
 
 ## 📜 Användning & Rättigheter
 
