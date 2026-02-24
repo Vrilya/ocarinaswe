@@ -6,7 +6,7 @@ Detta projekt tillhandahåller en komplett svensk översättning av **The Legend
 
 En del av arbetet har bestått i att själv kartlägga PAL-ROM:en och dokumentera var alla bitmapbilder jag behövde fanns. Jag har byggt egna verktyg från grunden i Python, C och C#, bland annat för yaz0-komprimering/dekomprimering, extrahering/konvertering av bitmappar samt en editor för redigering av spelets text.
 
-Jag har även ändrat tillbaka till Nintendo 64-färger för knappar i GameCube-ROM:arna och återinfört Nintendo 64-bootlogon. För GameCube-ROM:arna man hittar på PAL-bonusskivor har jag bytt ut spelets videointerface (NTSC) mot standard-PAL så att spelet visas korrekt på europeiska Nintendo 64.
+Jag har även ändrat tillbaka till Nintendo 64-färger för knappar i GameCube-ROM:arna och återinfört Nintendo 64-bootlogon. För GameCube-ROM:arna man hittar på PAL-bonusskivor har jag bytt ut spelets videointerface (NTSC) mot standard-PAL så att spelet visas korrekt på europeiska Nintendo 64..
 
 ## 🖼️ Screenshots
 
