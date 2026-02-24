@@ -14,7 +14,7 @@ Jag har även ändrat tillbaka till Nintendo 64-färger för knappar i GameCube-
 
 | <img src="https://vrilya.github.io/ocarinaswe/images/ganon.png" width="300" alt="Ganon"> | <img src="https://vrilya.github.io/ocarinaswe/images/kingdodongo.png" width="300" alt="King Dodongo"> |
 |:---:|:---:|
-| <img src="https://vrilya.github.io/ocarinaswe/images/kingsgrave.png" width="300" alt="King's Grave"> | <img src="https://vrilya.github.io/ocarinaswe/images/title.png" width="300" alt="Title Screen"> |
+| <img src="https://vrilya.github.io/ocarinaswe/images/kingsgrave1.png" width="300" alt="King's Grave"> | <img src="https://vrilya.github.io/ocarinaswe/images/title.png" width="300" alt="Title Screen"> |
 | <img src="https://vrilya.github.io/ocarinaswe/images/ui.png" width="300" alt="UI"> | <img src="https://vrilya.github.io/ocarinaswe/images/zeldaletter.png" width="300" alt="Zelda Letter"> |
 
 </div>
