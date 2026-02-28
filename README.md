@@ -66,7 +66,7 @@ ROM-filen måste vara någon av dessa:
 
 ### 🚢 Ship of Harkinian Setup
 
-Det enklaste är att ladda ner den färdiga OTR-filen via GameBanana:  
+Det enklaste sättet är att ladda ner den färdiga OTR-filen via GameBanana:  
 **[📥 Direktlänk till modens sida här](https://gamebanana.com/mods/613613)**  
 Packa upp arkivet och placera `Svenska.otr` i `mods`-mappen i din Ship of Harkinian-installation.  
 
