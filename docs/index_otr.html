@@ -488,7 +488,7 @@
 				console.log('window.xdelta:', typeof window.xdelta);
 				
 				// Vänta tills RomPatcher.js är laddat
-				if (typeof BinFile === 'undefined' || typeof xdelta === 'undefined') {
+				if (typeof BinFile === 'undefined' || typeof VCDIFF === 'undefined') {
 					console.log('Dependencies not ready, retrying in 100ms...');
 					setTimeout(loadxdeltaPatch, 100); // Försök igen om 100ms
 					return;
@@ -509,7 +509,7 @@
 				console.log('BinFile created:', patchFile);
 				
 				// Använd Marc Robledo's riktiga xdelta-parser
-				loadedPatch = xdelta.fromFile(patchFile);
+				loadedPatch = VCDIFF.fromFile(patchFile);
 				console.log('Patch loaded successfully:', loadedPatch);
 				
 				updateStatus('✅ Patch laddad framgångsrikt! Välj din ROM-fil nedan.', 'ready');
