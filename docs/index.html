@@ -24,7 +24,7 @@
 	<script type="text/javascript" src="./rom-patcher-js/modules/HashCalculator.js"
 			onload="console.log('HashCalculator.js loaded')"
 			onerror="console.error('Failed to load HashCalculator.js')"></script>
-	<script type="text/javascript" src="./rom-patcher-js/modules/RomPatcher.format.bps.js"
+	<script type="text/javascript" src="./rom-patcher-js/modules/RomPatcher.format.vcdiff.js"
 			onload="console.log('BPS.js loaded')"
 			onerror="console.error('Failed to load BPS.js')"></script>
 
@@ -511,55 +511,55 @@
 		const ROM_VERSIONS = {
 			'e040de91a74b61e3201db0e2323f768a': {
 				name: 'PAL v1.0',
-				patch: 'Tidens_okarina-PAL10.bps',
+				patch: 'Tidens_okarina-PAL10.xdelta',
 				description: 'PAL (Europa) version 1.0',
 				outputName: 'Tidens_okarina-PAL10.z64'
 			},
 			'd714580dd74c2c033f5e1b6dc0aeac77': {
 				name: 'PAL v1.1',
-				patch: 'Tidens_okarina-PAL11.bps',
+				patch: 'Tidens_okarina-PAL11.xdelta',
 				description: 'PAL (Europa) version 1.1',
 				outputName: 'Tidens_okarina-PAL11.z64'
 			},
 			'2c27b4e000e85fd78dbca551f1b1c965': {
 				name: 'PAL GC',
-				patch: 'Tidens_okarina-PALGC.bps',
+				patch: 'Tidens_okarina-PALGC.xdelta',
 				description: 'PAL GameCube',
 				outputName: 'Tidens_okarina-PALGC.z64'
 			},
 			'1618403427e4344a57833043db5ce3c3': {
 				name: 'PAL GameCube MQ',
-				patch: 'Tidens_okarina-PALMQ.bps',
+				patch: 'Tidens_okarina-PALMQ.xdelta',
 				description: 'PAL GameCube MQ',
 				outputName: 'Tidens_okarina-PALMQ.z64'
 			},
 			'5bd1fe107bf8106b2ab6650abecd54d6': {
 				name: 'NTSC v1.0',
-				patch: 'Tidens_okarina-NTSC10.bps',
+				patch: 'Tidens_okarina-NTSC10.xdelta',
 				description: 'NTSC (USA/Japan) version 1.0',
 				outputName: 'Tidens_okarina-NTSC10.z64'
 			},
 			'721fdcc6f5f34be55c43a807f2a16af4': {
 				name: 'NTSC Rev 1 (v1.1)',
-				patch: 'Tidens_okarina-NTSC11.bps',
+				patch: 'Tidens_okarina-NTSC11.xdelta',
 				description: 'NTSC (USA/Japan) version 1.1',
 				outputName: 'Tidens_okarina-NTSC11.z64'
 			},
 			'57a9719ad547c516342e1a15d5c28c3d': {
 				name: 'NTSC Rev 2 (v1.2)',
-				patch: 'Tidens_okarina-NTSC12.bps',
+				patch: 'Tidens_okarina-NTSC12.xdelta',
 				description: 'NTSC (USA/Japan) version 1.2',
 				outputName: 'Tidens_okarina-NTSC12.z64'
 			},
 			'cd09029edcfb7c097ac01986a0f83d3f': {
 				name: 'NTSC GameCube',
-				patch: 'Tidens_okarina-NTSCGC.bps',
+				patch: 'Tidens_okarina-NTSCGC.xdelta',
 				description: 'NTSC GameCube',
 				outputName: 'Tidens_okarina-NTSCGC.z64'
 			},
 			'da35577fe54579f6a266931cc75f512d': {
 				name: 'Master Quest NTSC',
-				patch: 'Tidens_okarina-NTSCMQ.bps',
+				patch: 'Tidens_okarina-NTSCMQ.xdelta',
 				description: 'MQ NTSC (gc-us-mq)',
 				outputName: 'Tidens_okarina-NTSCMQ.z64'
 			}
@@ -783,7 +783,7 @@
 		async function loadPatchForVersion(versionInfo_data) {
 			try {
 				// Wait for dependencies
-				if (typeof BinFile === 'undefined' || typeof BPS === 'undefined') {
+				if (typeof BinFile === 'undefined' || typeof VCDIFF === 'undefined') {
 					console.log('Dependencies not ready, retrying...');
 					setTimeout(() => loadPatchForVersion(versionInfo_data), 100);
 					return;
@@ -800,7 +800,7 @@
 				const patchFile = new BinFile(arrayBuffer);
 
 				// Parse BPS patch
-				loadedPatch = BPS.fromFile(patchFile);
+				loadedPatch = VCDIFF.fromFile(patchFile);
 				console.log('Patch loaded successfully:', loadedPatch);
 
 				updateStatus(
