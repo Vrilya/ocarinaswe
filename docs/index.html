@@ -14,19 +14,10 @@
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 
-	<!-- MD5 library for reliable hashing -->
-	<script src="./crypto-js.min.js"></script>
-
-	<!-- Marc Robledo's RomPatcher.js moduler (individuellt laddade) -->
-	<script type="text/javascript" src="./rom-patcher-js/modules/BinFile.js" 
-			onload="console.log('BinFile.js loaded')"
-			onerror="console.error('Failed to load BinFile.js')"></script>
-	<script type="text/javascript" src="./rom-patcher-js/modules/HashCalculator.js"
-			onload="console.log('HashCalculator.js loaded')"
-			onerror="console.error('Failed to load HashCalculator.js')"></script>
-	<script type="text/javascript" src="./rom-patcher-js/modules/RomPatcher.format.vcdiff.js"
-			onload="console.log('BPS.js loaded')"
-			onerror="console.error('Failed to load BPS.js')"></script>
+	<!-- Egna bibliotek – ingen extern kod -->
+	<script src="./lib/Checksums.js"></script>
+	<script src="./lib/DataBuffer.js"></script>
+	<script src="./lib/XdeltaPatcher.js"></script>
 
 	<style>
 		* {
@@ -449,10 +440,6 @@
 		</div>
 
 		<button id="applyBtn" class="btn" disabled>Applicera Patch</button>
-
-		<div class="footer">
-			Bygger på <a href="https://www.marcrobledo.com/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo's RomPatcher.js</a>
-		</div>
 	</div>
 
 	<!-- Modal for ROM versions info -->
@@ -721,11 +708,9 @@
 			statusDiv.className = `status ${type}`;
 		}
 
-		// Helper function to calculate MD5
+		// Beräkna MD5-checksumma
 		function calculateMD5(arrayBuffer) {
-			const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
-			const hash = CryptoJS.MD5(wordArray);
-			return hash.toString(CryptoJS.enc.Hex).toLowerCase();
+			return Checksums.md5(arrayBuffer);
 		}
 
 		// Handle ROM file selection
@@ -740,8 +725,8 @@
 
 			try {
 				const arrayBuffer = await file.arrayBuffer();
-				romFileData = new BinFile(arrayBuffer);
-				romFileData.fileName = file.name;
+				romFileData = new DataBuffer(arrayBuffer);
+				romFileData.name = file.name;
 
 				// Calculate MD5
 				updateStatus('🔐 Beräknar MD5 checksum...', 'loading');
@@ -779,16 +764,9 @@
 			}
 		}
 
-		// Load patch file based on detected version
+		// Ladda rätt patchfil för identifierad ROM-version
 		async function loadPatchForVersion(versionInfo_data) {
 			try {
-				// Wait for dependencies
-				if (typeof BinFile === 'undefined' || typeof VCDIFF === 'undefined') {
-					console.log('Dependencies not ready, retrying...');
-					setTimeout(() => loadPatchForVersion(versionInfo_data), 100);
-					return;
-				}
-
 				updateStatus(`🔄 Laddar patch ${versionInfo_data.patch}...`, 'loading');
 
 				const response = await fetch(`./patch/${versionInfo_data.patch}`);
@@ -797,10 +775,9 @@
 				}
 
 				const arrayBuffer = await response.arrayBuffer();
-				const patchFile = new BinFile(arrayBuffer);
+				const patchFile = new DataBuffer(arrayBuffer);
 
-				// Parse BPS patch
-				loadedPatch = VCDIFF.fromFile(patchFile);
+				loadedPatch = XdeltaPatcher.load(patchFile);
 				console.log('Patch loaded successfully:', loadedPatch);
 
 				updateStatus(
@@ -836,7 +813,7 @@
 
 				const patchedFileName = detectedVersion.outputName;
 
-				const blob = new Blob([patchedRom._u8array], { type: 'application/octet-stream' });
+				const blob = new Blob([patchedRom.data], { type: 'application/octet-stream' });
 				const url = URL.createObjectURL(blob);
 
 				const a = document.createElement('a');

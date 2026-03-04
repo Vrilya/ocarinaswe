@@ -11,19 +11,10 @@
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 
-	<!-- MD5 library for reliable hashing -->
-	<script src="./crypto-js.min.js"></script>
-
-	<!-- Marc Robledo's RomPatcher.js moduler (individuellt laddade) -->
-	<script type="text/javascript" src="./rom-patcher-js/modules/BinFile.js" 
-			onload="console.log('BinFile.js loaded')"
-			onerror="console.error('Failed to load BinFile.js')"></script>
-	<script type="text/javascript" src="./rom-patcher-js/modules/HashCalculator.js"
-			onload="console.log('HashCalculator.js loaded')"
-			onerror="console.error('Failed to load HashCalculator.js')"></script>
-	<script type="text/javascript" src="./rom-patcher-js/modules/RomPatcher.format.vcdiff.js"
-			onload="console.log('xdelta.js loaded')"
-			onerror="console.error('Failed to load vcdiff.js')"></script>
+	<!-- Egna bibliotek – ingen extern kod -->
+	<script src="./lib/Checksums.js"></script>
+	<script src="./lib/DataBuffer.js"></script>
+	<script src="./lib/XdeltaPatcher.js"></script>
 
 	<style>
 		* {
@@ -261,22 +252,6 @@
 			word-break: break-all;
 		}
 
-		.credits {
-			text-align: center;
-			margin-top: 30px;
-			font-size: 0.9em;
-			color: #666;
-		}
-
-		.credits a {
-			color: #667eea;
-			text-decoration: none;
-		}
-
-		.credits a:hover {
-			text-decoration: underline;
-		}
-
 		.progress-bar {
 			width: 100%;
 			height: 4px;
@@ -350,10 +325,6 @@
 		</div>
 
 		<button id="patchButton" class="button" disabled>Applicera patch</button>
-		
-		<div class="credits">
-			RomPatcher.js av <a href="https://github.com/marcrobledo/RomPatcher.js/" target="_blank" rel="noopener">Marc Robledo</a>
-		</div>
 	</div>
 
 	<script>
@@ -477,45 +448,26 @@
 		let romFileData = null;
 		const expectedMD5 = 'E040DE91A74B61E3201DB0E2323F768A';
 
-		// Ladda xdelta-filen automatiskt med RomPatcher.js (vänta tills allt är laddat)
+		// Ladda xdelta-patchen automatiskt
 		async function loadxdeltaPatch() {
 			try {
-				// Debug: Kolla vad som är tillgängligt
-				console.log('Checking for RomPatcher dependencies...');
-				console.log('BinFile:', typeof BinFile);
-				console.log('xdelta:', typeof xdelta);
-				console.log('window.BinFile:', typeof window.BinFile);
-				console.log('window.xdelta:', typeof window.xdelta);
-				
-				// Vänta tills RomPatcher.js är laddat
-				if (typeof BinFile === 'undefined' || typeof VCDIFF === 'undefined') {
-					console.log('Dependencies not ready, retrying in 100ms...');
-					setTimeout(loadxdeltaPatch, 100); // Försök igen om 100ms
-					return;
+				updateStatus('🔄 Laddar patch...', 'loading');
+
+				const response = await fetch('./patch/Tidens_okarina-PALOTR.xdelta');
+				if (!response.ok) {
+					throw new Error(`HTTP-fel: ${response.status}`);
 				}
 
-				updateStatus('🔄 Laddar patch...', 'loading');
-				console.log('Starting patch load...');
-				
-				const response = await fetch('./patch/Tidens_okarina-PALOTR.xdelta');
-				console.log('Fetch response:', response.status);
-				if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-				}
-				
 				const arrayBuffer = await response.arrayBuffer();
-				console.log('ArrayBuffer size:', arrayBuffer.byteLength);
-				const patchFile = new BinFile(arrayBuffer);
-				console.log('BinFile created:', patchFile);
-				
-				// Använd Marc Robledo's riktiga xdelta-parser
-				loadedPatch = VCDIFF.fromFile(patchFile);
-				console.log('Patch loaded successfully:', loadedPatch);
-				
+				const patchFile   = new DataBuffer(arrayBuffer);
+
+				loadedPatch = XdeltaPatcher.load(patchFile);
+				console.log('Patch laddad:', loadedPatch);
+
 				updateStatus('✅ Patch laddad framgångsrikt! Välj din ROM-fil nedan.', 'ready');
-				
+
 			} catch (error) {
-				console.error('Error loading Tidens_okarina-PALOTR.xdelta:', error);
+				console.error('Fel vid laddning av Tidens_okarina-PALOTR.xdelta:', error);
 				updateStatus('❌ Fel vid laddning av patch: ' + error.message, 'error');
 			}
 		}
@@ -527,8 +479,7 @@
 		}
 
 		function calculateMD5(arrayBuffer) {
-			const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
-			return CryptoJS.MD5(wordArray).toString().toUpperCase();
+			return Checksums.md5(arrayBuffer).toUpperCase();
 		}
 
 		async function handleROMFile(file) {
@@ -536,11 +487,11 @@
 				updateStatus('🔄 Läser ROM-fil...', 'loading');
 				
 				const arrayBuffer = await file.arrayBuffer();
-				romFileData = new BinFile(arrayBuffer);
-				
-				// Beräkna checksums med Marc Robledo's funktioner
-				const md5 = calculateMD5(arrayBuffer);
-				const crc32 = romFileData.hashCRC32().toString(16).toUpperCase().padStart(8, '0');
+				romFileData = new DataBuffer(arrayBuffer);
+
+				// Beräkna checksummor
+				const md5   = calculateMD5(arrayBuffer);
+				const crc32 = Checksums.crc32(arrayBuffer).toString(16).toUpperCase().padStart(8, '0');
 				
 				// Uppdatera ROM info
 				document.getElementById('fileName').textContent = file.name;
@@ -576,11 +527,10 @@
 			try {
 				updateStatus('🔄 Applicerar patch...', 'loading');
 				
-				// Använd Marc Robledo's riktiga apply-funktion
-				const patchedRom = loadedPatch.apply(romFileData, true);
-				
-				// Skapa download
-				const blob = new Blob([patchedRom._u8array], { type: 'application/octet-stream' });
+				const patchedRom = loadedPatch.apply(romFileData);
+
+				// Skapa nedladdning
+				const blob = new Blob([patchedRom.data], { type: 'application/octet-stream' });
 				const url = URL.createObjectURL(blob);
 				const a = document.createElement('a');
 				a.href = url;
