@@ -1,22 +1,22 @@
 const XdeltaPatcher = (function () {
 
-    // --- Flaggor i filhuvudet ---
+    // --- File header flags ---
     const HDR_SECONDARY  = 0x01;
     const HDR_CODETABLE  = 0x02;
     const HDR_APPDATA    = 0x04;
 
-    // --- Flaggor per fönster ---
+    // --- Per-window flags ---
     const WIN_FROM_SOURCE = 0x01;
     const WIN_FROM_TARGET = 0x02;
     const WIN_HAS_ADLER   = 0x04;
 
-    // --- Instruktionstyper ---
+    // --- Instruction types ---
     const OP_NOOP = 0;
     const OP_ADD  = 1;
     const OP_RUN  = 2;
     const OP_COPY = 3;
 
-    // --- Byggnad av standard-kodtabell ---
+    // --- Default code table ---
     function buildDefaultCodeTable() {
         const noOp  = { type: OP_NOOP, size: 0, mode: 0 };
         const table = [];
@@ -73,7 +73,7 @@ const XdeltaPatcher = (function () {
     const CODE_TABLE = buildDefaultCodeTable();
 
 
-    // --- Adresscache för COPY-instruktioner ---
+    // --- Address cache for COPY instructions ---
     class AddrCache {
         constructor(nearSlots, sameSlots) {
             this.nearCount = nearSlots;
@@ -105,7 +105,7 @@ const XdeltaPatcher = (function () {
                 addr = this.sameBuf[m * 256 + this.reader.readByte()];
             }
 
-            // Uppdatera cache
+            // Update cache
             if (this.nearCount > 0) {
                 this.nearBuf[this.nextNear] = addr;
                 this.nextNear = (this.nextNear + 1) % this.nearCount;
@@ -119,7 +119,7 @@ const XdeltaPatcher = (function () {
     }
 
 
-    // --- Bytström för att läsa ur en DataBuffer ---
+    // --- Byte stream for reading from a DataBuffer ---
     class ByteStream {
         constructor(buf, startAt) {
             this.buf = buf;
@@ -143,7 +143,7 @@ const XdeltaPatcher = (function () {
             return v >>> 0;
         }
 
-        // Läs ett variabellängt 7-bitars kodat heltal
+        // Read a variable-length 7-bit encoded integer
         read7bit() {
             let val = 0, octet;
             do {
@@ -164,7 +164,7 @@ const XdeltaPatcher = (function () {
         apply(sourceBuf) {
             const stream = new ByteStream(this.patchBuf, 0);
 
-            // Kontrollera magiska bytes
+            // Verify magic bytes
             if (stream.readByte() !== 0xD6 ||
                 stream.readByte() !== 0xC3 ||
                 stream.readByte() !== 0xC4) {
@@ -172,7 +172,7 @@ const XdeltaPatcher = (function () {
             }
             stream.readByte(); // versionsbyte
 
-            // Läs filhuvudets flaggor
+            // Read file header flags
             const headerFlags = stream.readByte();
 
             if (headerFlags & HDR_SECONDARY) {
@@ -193,7 +193,7 @@ const XdeltaPatcher = (function () {
 
             const dataOffset = stream.pos;
 
-            // Första genomgång: räkna ut totalt utdatastorlek
+            // First pass: calculate total output size
             let outputSize = 0;
             while (!stream.atEnd()) {
                 const winFlags = stream.readByte();
@@ -215,7 +215,7 @@ const XdeltaPatcher = (function () {
             const addrCache = new AddrCache(4, 3);
             let   writeHead = 0;
 
-            // Andra genomgång: applicera varje fönster
+            // Second pass: apply each window
             stream.pos = dataOffset;
             while (!stream.atEnd()) {
                 const winFlags  = stream.readByte();
@@ -238,16 +238,16 @@ const XdeltaPatcher = (function () {
                 const instrLen  = stream.read7bit();
                 const addrLen   = stream.read7bit();
 
-                if (winFlags & WIN_HAS_ADLER) stream.skip(4); // ignorera kontrollsumma
+                if (winFlags & WIN_HAS_ADLER) stream.skip(4); // skip checksum
 
-                // Tre separata byteströmmar för detta fönster
+                // Three separate byte streams for this window
                 const addRunStream = new ByteStream(this.patchBuf, stream.pos);
                 const instrStream  = new ByteStream(this.patchBuf, stream.pos + addRunLen);
                 const addrStream   = new ByteStream(this.patchBuf, stream.pos + addRunLen + instrLen);
 
                 addrCache.prepare(addrStream);
 
-                let consumed      = 0; // hur många bytes vi skrivit i fönstret
+                let consumed      = 0; // bytes written in this window
                 const instrEnd    = instrStream.pos + instrLen;
 
                 while (instrStream.pos < instrEnd) {
@@ -304,7 +304,7 @@ const XdeltaPatcher = (function () {
     }
 
 
-    // Publikt gränssnitt
+    // Public interface
     return {
         load(patchBuffer) {
             return new Patcher(patchBuffer);

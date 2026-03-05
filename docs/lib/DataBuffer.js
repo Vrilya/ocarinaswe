@@ -19,27 +19,27 @@ class DataBuffer {
         this.size = this.data.length;
     }
 
-    // Flytta läspositionen
+    // Move the read position
     seek(position) {
         this.pos = position;
     }
 
-    // Hoppa förbi ett antal byte
+    // Skip a number of bytes
     skip(count) {
         this.pos += count;
     }
 
-    // Kontrollera om vi nått slutet
+    // Check if we've reached the end
     atEnd() {
         return this.pos >= this.size;
     }
 
-    // Läs en byte utan tecken
+    // Read one unsigned byte
     readByte() {
         return this.data[this.pos++];
     }
 
-    // Läs 32-bit unsigned int, big-endian
+    // Read 32-bit unsigned int, big-endian
     readUint32BE() {
         const d = this.data;
         const v = (d[this.pos] * 0x1000000) +
@@ -50,12 +50,12 @@ class DataBuffer {
         return v >>> 0;
     }
 
-    // Skriv en byte
+    // Write one byte
     writeByte(value) {
         this.data[this.pos++] = value & 0xFF;
     }
 
-    // Kopiera ett antal byte till en annan DataBuffer
+    // Copy a number of bytes to another DataBuffer
     copyRangeTo(target, targetOffset, count) {
         for (let i = 0; i < count; i++) {
             target.data[targetOffset + i] = this.data[this.pos + i];
@@ -63,7 +63,7 @@ class DataBuffer {
         this.pos += count;
     }
 
-    // Returnera en ny DataBuffer med en del av innehållet
+    // Return a new DataBuffer with a slice of the content
     extract(start, length) {
         const end = (length !== undefined) ? start + length : this.size;
         const slice = new DataBuffer(this.data.buffer.slice(start, end));
@@ -71,7 +71,7 @@ class DataBuffer {
         return slice;
     }
 
-    // Beräkna CRC32 för hela bufferten
+    // Compute CRC32 for the entire buffer
     hashCRC32() {
         return Checksums.crc32(this.data.buffer);
     }

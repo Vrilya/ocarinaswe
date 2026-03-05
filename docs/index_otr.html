@@ -1,588 +1,708 @@
 <!DOCTYPE html>
-<html translate="no">
+<html lang="sv">
 <head>
-	<title>Legenden om Zelda: Ocarina of Time - Nintendo 64 Patcher</title>
-	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content="Nintendo 64 ROM patcher för Tidens okarina"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-	
-	<!-- cache -->
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Tidens okarina OTR-verktyg</title>
 
-	<!-- Egna bibliotek – ingen extern kod -->
-	<script src="./lib/Checksums.js"></script>
-	<script src="./lib/DataBuffer.js"></script>
-	<script src="./lib/XdeltaPatcher.js"></script>
+    <script src="./lib/Checksums.js"></script>
+    <script src="./lib/DataBuffer.js"></script>
+    <script src="./lib/XdeltaPatcher.js"></script>
 
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		body {
-			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-			background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
-			min-height: 100vh;
-			padding: 20px;
-			overflow-x: hidden;
-			position: relative;
-		}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-		/* Simple, robust animations */
-		.triforce {
-			position: fixed;
-			background-image: url('./images/tri.png');
-			background-size: contain;
-			background-repeat: no-repeat;
-			background-position: center;
-			pointer-events: none;
-			z-index: 1;
-		}
+        .triforce {
+            position: fixed;
+            background-image: url('./images/tri.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-		.fairy {
-			position: fixed;
-			border-radius: 50%;
-			pointer-events: none;
-			z-index: 1;
-			box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
-		}
+        .fairy {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+        }
 
-		.fairy.green { background: #4ade80; color: #4ade80; }
-		.fairy.blue { background: #60a5fa; color: #60a5fa; }
-		.fairy.red { background: #f87171; color: #f87171; }
+        .fairy.green { background: #4ade80; color: #4ade80; }
+        .fairy.blue  { background: #60a5fa; color: #60a5fa; }
+        .fairy.red   { background: #f87171; color: #f87171; }
 
-		/* Keyframe animations */
-		@keyframes fall {
-			from {
-				transform: translateY(0) rotate(0deg);
-				opacity: 0;
-			}
-			15% {
-				opacity: 1;
-			}
-			85% {
-				opacity: 1;
-			}
-			to {
-				transform: translateY(calc(100vh + 500px)) rotate(720deg);
-				opacity: 0;
-			}
-		}
+        @keyframes fall {
+            from { transform: translateY(0) rotate(0deg); }
+            to   { transform: translateY(calc(100vh + 400px)) rotate(360deg); }
+        }
 
-		@keyframes float {
-			0%, 100% {
-				transform: translate(0, 0) scale(1);
-			}
-			25% {
-				transform: translate(25px, -15px) scale(1.1);
-			}
-			50% {
-				transform: translate(-15px, -30px) scale(0.9);
-			}
-			75% {
-				transform: translate(-25px, -10px) scale(1.05);
-			}
-		}
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25%       { transform: translate(20px, -20px); }
+            50%       { transform: translate(-20px, 20px); }
+            75%       { transform: translate(20px, 20px); }
+        }
 
-		@keyframes fadeOut {
-			from {
-				opacity: 1;
-				transform: scale(1);
-			}
-			to {
-				opacity: 0;
-				transform: scale(0.3);
-			}
-		}
+        @keyframes fadeOut {
+            to { opacity: 0; }
+        }
 
-		.container {
-			max-width: 600px;
-			margin: 0 auto;
-			background: rgba(255, 255, 255, 0.95);
-			border-radius: 15px;
-			padding: 30px;
-			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
-						0 0 30px rgba(102, 126, 234, 0.2);
-			backdrop-filter: blur(10px);
-			position: relative;
-			z-index: 10;
-			border: 1px solid rgba(255, 255, 255, 0.2);
-		}
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 30px rgba(102, 126, 234, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-		.header {
-			text-align: center;
-			margin-bottom: 30px;
-		}
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-		.header h1 {
-			color: #333;
-			font-size: 2.5em;
-			margin-bottom: 10px;
-			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-		}
+        .header h1 {
+            margin: 0;
+        }
 
-		.header p {
-			color: #666;
-			font-size: 1.1em;
-		}
+        .upload-section {
+            margin: 20px 0;
+        }
 
-		.status {
-			background: linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%);
-			color: #2d5a2d;
-			padding: 15px;
-			border-radius: 8px;
-			margin-bottom: 25px;
-			border-left: 4px solid #4caf50;
-			box-shadow: 0 2px 10px rgba(76, 175, 80, 0.1);
-		}
+        .upload-area {
+            border: 3px dashed #cbd5e0;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-		.status.error {
-			background: linear-gradient(135deg, #ffe8e8 0%, #fff0f0 100%);
-			color: #8b0000;
-			border-left-color: #f44336;
-			box-shadow: 0 2px 10px rgba(244, 67, 54, 0.1);
-		}
+        .upload-area:hover {
+            border-color: #4299e1;
+            background: #ebf8ff;
+        }
 
-		.status.loading {
-			background: linear-gradient(135deg, #fff3cd 0%, #fef8e1 100%);
-			color: #856404;
-			border-left-color: #ffc107;
-			box-shadow: 0 2px 10px rgba(255, 193, 7, 0.1);
-		}
+        .upload-area.drag-over {
+            border-color: #3182ce;
+            background: #bee3f8;
+        }
 
-		.file-input-area {
-			border: 3px dashed #ddd;
-			border-radius: 12px;
-			padding: 40px;
-			text-align: center;
-			margin: 25px 0;
-			transition: all 0.3s ease;
-			cursor: pointer;
-			background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-		}
+        .upload-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
 
-		.file-input-area:hover {
-			border-color: #667eea;
-			background: rgba(102, 126, 234, 0.05);
-			transform: translateY(-2px);
-			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-		}
+        .upload-text {
+            color: #2d3748;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
 
-		.file-input-area.dragover {
-			border-color: #667eea;
-			background: rgba(102, 126, 234, 0.1);
-			transform: scale(1.02);
-			box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-		}
+        .upload-hint {
+            color: #718096;
+            font-size: 13px;
+        }
 
-		.file-input {
-			display: none;
-		}
+        input[type="file"] {
+            display: none;
+        }
 
-		.file-input-text {
-			font-size: 1.2em;
-			color: #333;
-			margin-bottom: 8px;
-		}
+        .info-button {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1976d2;
+            border: 2px solid #2196f3;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
 
-		.file-input-subtext {
-			color: #666;
-			font-size: 0.9em;
-		}
+        .info-button:hover {
+            background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+        }
 
-		.button {
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-			color: white;
-			border: none;
-			padding: 15px 30px;
-			border-radius: 25px;
-			font-size: 16px;
-			font-weight: bold;
-			cursor: pointer;
-			width: 100%;
-			transition: all 0.3s ease;
-			margin-top: 20px;
-			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-		}
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
 
-		.button:hover:not(:disabled) {
-			transform: translateY(-2px);
-			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-		}
+        .modal-overlay.show {
+            display: flex;
+        }
 
-		.button:disabled {
-			background: #ccc;
-			cursor: not-allowed;
-			transform: none;
-			box-shadow: none;
-		}
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
 
-		.rom-info {
-			background: rgba(255, 255, 255, 0.8);
-			border-radius: 10px;
-			padding: 20px;
-			margin: 20px 0;
-			border: 1px solid rgba(102, 126, 234, 0.2);
-		}
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9) translateY(-20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
 
-		.rom-info-row {
-			display: flex;
-			justify-content: space-between;
-			margin-bottom: 10px;
-			padding: 5px 0;
-			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-		}
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f5f5f5;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
 
-		.rom-info-label {
-			font-weight: bold;
-			color: #333;
-		}
+        .modal-close:hover {
+            background: #e0e0e0;
+            color: #333;
+            transform: rotate(90deg);
+        }
 
-		.rom-info-value {
-			font-family: monospace;
-			color: #666;
-			word-break: break-all;
-		}
+        .modal-content h2 {
+            color: #1976d2;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
 
-		.progress-bar {
-			width: 100%;
-			height: 4px;
-			background: rgba(255, 255, 255, 0.3);
-			border-radius: 2px;
-			overflow: hidden;
-			margin-top: 10px;
-		}
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
 
-		.progress-fill {
-			height: 100%;
-			background: linear-gradient(90deg, #667eea, #764ba2);
-			transition: width 0.3s ease;
-		}
+        .modal-content li {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
 
-		.progress-bar.loading .progress-fill {
-			animation: loading 2s ease-in-out infinite;
-		}
+        .modal-content li strong {
+            color: #1976d2;
+            display: block;
+            margin-bottom: 5px;
+        }
 
-		@keyframes loading {
-			0%, 100% { width: 30%; }
-			50% { width: 70%; }
-		}
-	</style>
+        .modal-content code {
+            background: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            word-break: break-all;
+        }
+
+        .modal-content p {
+            color: #666;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+            display: block;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .version-info {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .version-info.show {
+            display: block;
+        }
+
+        .version-info h3 {
+            color: #2e7d32;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .version-info p {
+            color: #555;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .progress-wrap {
+            background: #e2e8f0;
+            border-radius: 4px;
+            height: 6px;
+            overflow: hidden;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .progress-wrap.visible {
+            display: block;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 0.1s;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            text-decoration: none;
+            text-align: center;
+            display: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn.visible {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<h1 style="font-size: 1.8em; color: #999; font-weight: normal; margin-bottom: 5px;">Legenden om Zelda</h1>
-			<h1 style="font-size: 2.8em; margin-bottom: 10px;">Tidens okarina</h1>
-			<p>Lägg till din ROM-fil för att applicera patchen</p>
-		</div>
 
-		<div id="status" class="status loading">
-			<strong>🔄 Laddar patch för Tidens okarina...</strong>
-			<div class="progress-bar loading">
-				<div class="progress-fill" style="width: 30%"></div>
-			</div>
-		</div>
+<div class="container">
+    <div class="header">
+        <h1 style="font-size: 1.8em; font-weight: normal; margin-bottom: 5px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.7;">Tidens okarina</h1>
+        <h1 style="font-size: 2.8em; margin-bottom: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">OTR-verktyg</h1>
+    </div>
 
-		<div class="file-input-area" id="dropArea">
-			<div class="file-input-text">📁 Klicka eller dra din ROM-fil hit</div>
-			<div class="file-input-subtext">Endast kompatibel ROM accepteras</div>
-			<div class="file-input-subtext" style="margin-top: 5px; font-size: 0.8em; color: #999;">
-				MD5: E040DE91A74B61E3201DB0E2323F768A
-			</div>
-			<input type="file" id="romFile" class="file-input" accept=".z64">
-		</div>
+    <button class="info-button" id="infoButton">
+        ℹ️ Stödda ROM-versioner
+    </button>
 
-		<div id="romInfo" class="rom-info" style="display: none;">
-			<div class="rom-info-row">
-				<div class="rom-info-label">Filnamn:</div>
-				<div class="rom-info-value" id="fileName"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">Storlek:</div>
-				<div class="rom-info-value" id="fileSize"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">MD5:</div>
-				<div class="rom-info-value" id="md5Hash"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">CRC32:</div>
-				<div class="rom-info-value" id="crc32"></div>
-			</div>
-			<div class="rom-info-row">
-				<div class="rom-info-label">Status:</div>
-				<div class="rom-info-value" id="romStatus"></div>
-			</div>
-		</div>
+    <div class="upload-section">
+        <div class="upload-area" id="drop-zone">
+            <div class="upload-icon">🎮</div>
+            <div class="upload-text">Dra och släpp din ROM-fil här</div>
+            <div class="upload-hint">eller klicka för att välja fil</div>
+            <input type="file" id="file-input" accept=".z64,.n64,.v64">
+        </div>
+    </div>
 
-		<button id="patchButton" class="button" disabled>Applicera patch</button>
-	</div>
+    <div id="status" class="status"></div>
 
-	<script>
-		// Animation manager class (din ursprungliga kod)
-		class AnimationManager {
-			constructor() {
-				this.triforces = [];
-				this.fairies = [];
-				this.running = true;
-			}
+    <div id="version-info" class="version-info">
+        <h3>ROM identifierad</h3>
+        <p id="version-details"></p>
+    </div>
 
-			init() {
-				this.createInitialElements();
-				this.startIntervals();
-			}
+    <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
 
-			createInitialElements() {
-				// Create initial triforces
-				for (let i = 0; i < 6; i++) {
-					setTimeout(() => this.createTriforce(), i * 1000);
-				}
+    <a id="dl-otr" class="btn">Ladda ner OTR-fil</a>
+</div>
 
-				// Create initial fairies
-				for (let i = 0; i < 8; i++) {
-					setTimeout(() => this.createFairy(), i * 500);
-				}
-			}
+<!-- Modal for ROM versions info -->
+<div class="modal-overlay" id="infoModal">
+    <div class="modal-content">
+        <button class="modal-close" id="closeModal">×</button>
+        <h2>📋 Stödda ROM-versioner</h2>
+        <p>Denna patcher stöder följande Ocarina of Time ROM-versioner:</p>
+        <ul>
+            <li><strong>PAL v1.0</strong> (Europa version 1.0)<br>MD5: <code>e040de91a74b61e3201db0e2323f768a</code></li>
+            <li><strong>PAL v1.1</strong> (Europa version 1.1)<br>MD5: <code>d714580dd74c2c033f5e1b6dc0aeac77</code></li>
+            <li><strong>PAL GC</strong> (Europa GameCube)<br>MD5: <code>2c27b4e000e85fd78dbca551f1b1c965</code></li>
+            <li><strong>PAL GC Master Quest</strong> (Europa GameCube MQ)<br>MD5: <code>1618403427e4344a57833043db5ce3c3</code></li>
+            <li><strong>NTSC v1.0</strong> (USA/JP version 1.0)<br>MD5: <code>5bd1fe107bf8106b2ab6650abecd54d6</code></li>
+            <li><strong>NTSC Rev 1 (v1.1)</strong> (USA/JP version 1.1)<br>MD5: <code>721fdcc6f5f34be55c43a807f2a16af4</code></li>
+            <li><strong>NTSC Rev 2 (v1.2)</strong> (USA/JP version 1.2)<br>MD5: <code>57a9719ad547c516342e1a15d5c28c3d</code></li>
+            <li><strong>NTSC GC</strong> (USA/JP GameCube)<br>MD5: <code>cd09029edcfb7c097ac01986a0f83d3f</code></li>
+            <li><strong>NTSC GC Master Quest</strong> (USA/JP GameCube MQ)<br>MD5: <code>da35577fe54579f6a266931cc75f512d</code></li>
+        </ul>
+        <p>Verktyget identifierar automatiskt din ROM-version genom att beräkna MD5-checksumman.</p>
+    </div>
+</div>
 
-			startIntervals() {
-				// New triforce every 2 seconds
-				setInterval(() => {
-					if (this.running) this.createTriforce();
-				}, 2000);
+<script src="lib/miniflate.js"></script>
+<script src="lib/yaz0decompress.js"></script>
+<script src="lib/otrpacker.js"></script>
 
-				// Check and maintain fairy count
-				setInterval(() => {
-					if (this.running && this.fairies.length < 8) {
-						this.createFairy();
-					}
-				}, 1000);
-			}
+<script>
+    const PATCH_VERSIONS = {
+        'e040de91a74b61e3201db0e2323f768a': {
+            name: 'PAL v1.0',
+            description: 'PAL (Europa) version 1.0',
+            patch: 'Tidens_okarina-PAL10.xdelta',
+            script: 'scriptfiles/pal10.txt'
+        },
+        'd714580dd74c2c033f5e1b6dc0aeac77': {
+            name: 'PAL v1.1',
+            description: 'PAL (Europa) version 1.1',
+            patch: 'Tidens_okarina-PAL11.xdelta',
+            script: 'scriptfiles/pal11.txt'
+        },
+        '2c27b4e000e85fd78dbca551f1b1c965': {
+            name: 'PAL GC',
+            description: 'PAL GameCube',
+            patch: 'Tidens_okarina-PALGC.xdelta',
+            script: 'scriptfiles/palgc.txt'
+        },
+        '1618403427e4344a57833043db5ce3c3': {
+            name: 'PAL GC Master Quest',
+            description: 'PAL GameCube Master Quest',
+            patch: 'Tidens_okarina-PALMQ.xdelta',
+            script: 'scriptfiles/palmq.txt'
+        },
+        '5bd1fe107bf8106b2ab6650abecd54d6': {
+            name: 'NTSC v1.0',
+            description: 'NTSC (USA/Japan) version 1.0',
+            patch: 'Tidens_okarina-NTSC10.xdelta',
+            script: 'scriptfiles/ntsc10.txt'
+        },
+        '721fdcc6f5f34be55c43a807f2a16af4': {
+            name: 'NTSC Rev 1 (v1.1)',
+            description: 'NTSC (USA/Japan) version 1.1',
+            patch: 'Tidens_okarina-NTSC11.xdelta',
+            script: 'scriptfiles/ntsc11.txt'
+        },
+        '57a9719ad547c516342e1a15d5c28c3d': {
+            name: 'NTSC Rev 2 (v1.2)',
+            description: 'NTSC (USA/Japan) version 1.2',
+            patch: 'Tidens_okarina-NTSC12.xdelta',
+            script: 'scriptfiles/ntsc12.txt'
+        },
+        'cd09029edcfb7c097ac01986a0f83d3f': {
+            name: 'NTSC GC',
+            description: 'NTSC GameCube',
+            patch: 'Tidens_okarina-NTSCGC.xdelta',
+            script: 'scriptfiles/ntscgc.txt'
+        },
+        'da35577fe54579f6a266931cc75f512d': {
+            name: 'NTSC GC Master Quest',
+            description: 'NTSC GameCube Master Quest',
+            patch: 'Tidens_okarina-NTSCMQ.xdelta',
+            script: 'scriptfiles/ntscmq.txt'
+        }
+    };
 
-			createTriforce() {
-				const element = document.createElement('div');
-				element.className = 'triforce';
+    // Animation manager
+    class AnimationManager {
+        constructor() {
+            this.triforces = [];
+            this.fairies = [];
+            this.running = true;
+        }
 
-				// Random properties
-				const size = 20 + Math.random() * 40; // 20-60px
-				const x = Math.random() * (window.innerWidth - size);
-				const duration = 8 + Math.random() * 6; // 8-14 seconds
-				const opacity = 0.3 + Math.random() * 0.5; // 0.3-0.8
+        init() {
+            this.createInitialElements();
+            this.startIntervals();
+        }
 
-				// Set styles - IMPORTANT: Start from very top
-				element.style.left = x + 'px';
-				element.style.top = '-300px'; // Start way above screen
-				element.style.width = size + 'px';
-				element.style.height = size + 'px';
-				element.style.opacity = opacity;
-				element.style.animation = `fall ${duration}s linear forwards`;
+        createInitialElements() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => this.createTriforce(), i * 1000);
+            }
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => this.createFairy(), i * 500);
+            }
+        }
 
-				document.body.appendChild(element);
-				this.triforces.push(element);
+        startIntervals() {
+            setInterval(() => {
+                if (this.running) this.createTriforce();
+            }, 2000);
+            setInterval(() => {
+                if (this.running && this.fairies.length < 8) {
+                    this.createFairy();
+                }
+            }, 1000);
+        }
 
-				// Clean up
-				setTimeout(() => {
-					if (element.parentNode) {
-						element.parentNode.removeChild(element);
-					}
-					const index = this.triforces.indexOf(element);
-					if (index > -1) {
-						this.triforces.splice(index, 1);
-					}
-				}, duration * 1000);
-			}
+        createTriforce() {
+            const element = document.createElement('div');
+            element.className = 'triforce';
+            const size = 20 + Math.random() * 40;
+            const x = Math.random() * (window.innerWidth - size);
+            const duration = 8 + Math.random() * 6;
+            const opacity = 0.3 + Math.random() * 0.5;
+            element.style.left = x + 'px';
+            element.style.top = '-300px';
+            element.style.width = size + 'px';
+            element.style.height = size + 'px';
+            element.style.opacity = opacity;
+            element.style.animation = `fall ${duration}s linear forwards`;
+            document.body.appendChild(element);
+            this.triforces.push(element);
+            setTimeout(() => {
+                if (element.parentNode) element.parentNode.removeChild(element);
+                const index = this.triforces.indexOf(element);
+                if (index > -1) this.triforces.splice(index, 1);
+            }, duration * 1000);
+        }
 
-			createFairy() {
-				const element = document.createElement('div');
-				const colors = ['green', 'blue', 'red'];
-				const color = colors[Math.floor(Math.random() * colors.length)];
-				element.className = `fairy ${color}`;
+        createFairy() {
+            const element = document.createElement('div');
+            const colors = ['green', 'blue', 'red'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            element.className = `fairy ${color}`;
+            const size = 6 + Math.random() * 6;
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            const floatDuration = 4 + Math.random() * 3;
+            const lifetime = 10 + Math.random() * 8;
+            const opacity = 0.7 + Math.random() * 0.3;
+            element.style.left = x + 'px';
+            element.style.top = y + 'px';
+            element.style.width = size + 'px';
+            element.style.height = size + 'px';
+            element.style.opacity = opacity;
+            element.style.animation = `float ${floatDuration}s ease-in-out infinite`;
+            document.body.appendChild(element);
+            this.fairies.push(element);
+            setTimeout(() => {
+                element.style.animation = `fadeOut 2s ease-out forwards`;
+            }, (lifetime - 2) * 1000);
+            setTimeout(() => {
+                if (element.parentNode) element.parentNode.removeChild(element);
+                const index = this.fairies.indexOf(element);
+                if (index > -1) this.fairies.splice(index, 1);
+            }, lifetime * 1000);
+        }
+    }
 
-				// Random properties
-				const size = 6 + Math.random() * 6; // 6-12px
-				const x = Math.random() * window.innerWidth;
-				const y = Math.random() * window.innerHeight;
-				const floatDuration = 4 + Math.random() * 3; // 4-7 seconds
-				const lifetime = 10 + Math.random() * 8; // 10-18 seconds
-				const opacity = 0.7 + Math.random() * 0.3; // 0.7-1.0
+    const animManager = new AnimationManager();
+    animManager.init();
 
-				// Set styles
-				element.style.left = x + 'px';
-				element.style.top = y + 'px';
-				element.style.width = size + 'px';
-				element.style.height = size + 'px';
-				element.style.opacity = opacity;
-				element.style.animation = `float ${floatDuration}s ease-in-out infinite`;
+    // Modal handlers
+    const infoButton = document.getElementById('infoButton');
+    const infoModal  = document.getElementById('infoModal');
+    const closeModal = document.getElementById('closeModal');
+    infoButton.addEventListener('click', () => infoModal.classList.add('show'));
+    closeModal.addEventListener('click', () => infoModal.classList.remove('show'));
+    infoModal.addEventListener('click', e => { if (e.target === infoModal) infoModal.classList.remove('show'); });
 
-				document.body.appendChild(element);
-				this.fairies.push(element);
+    // DOM-element
+    const dropZone    = document.getElementById('drop-zone');
+    const fileInput   = document.getElementById('file-input');
+    const statusDiv   = document.getElementById('status');
+    const versionInfo = document.getElementById('version-info');
+    const versionDetails = document.getElementById('version-details');
+    const progressWrap = document.getElementById('progress-wrap');
+    const progressBar  = document.getElementById('progress-bar');
+    const dlOtr       = document.getElementById('dl-otr');
 
-				// Start fade out
-				setTimeout(() => {
-					element.style.animation = `fadeOut 2s ease-out forwards`;
-				}, (lifetime - 2) * 1000);
+    let pendingUrl = null;
 
-				// Clean up
-				setTimeout(() => {
-					if (element.parentNode) {
-						element.parentNode.removeChild(element);
-					}
-					const index = this.fairies.indexOf(element);
-					if (index > -1) {
-						this.fairies.splice(index, 1);
-					}
-				}, lifetime * 1000);
-			}
-		}
+    function setStatus(msg, type) {
+        statusDiv.textContent = msg;
+        statusDiv.className = 'status ' + (type || 'loading');
+    }
 
-		// Applikationslogik som använder Marc Robledo's riktiga RomPatcher.js
-		let loadedPatch = null;
-		let romFileData = null;
-		const expectedMD5 = 'E040DE91A74B61E3201DB0E2323F768A';
+    function setProgress(fraction) {
+        progressWrap.classList.add('visible');
+        progressBar.style.width = (fraction * 100).toFixed(1) + '%';
+    }
 
-		// Ladda xdelta-patchen automatiskt
-		async function loadxdeltaPatch() {
-			try {
-				updateStatus('🔄 Laddar patch...', 'loading');
+    // Drag & drop
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (file) handleFile(file);
+    });
+    dropZone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files[0]) handleFile(fileInput.files[0]);
+        fileInput.value = '';
+    });
 
-				const response = await fetch('./patch/Tidens_okarina-PALOTR.xdelta');
-				if (!response.ok) {
-					throw new Error(`HTTP-fel: ${response.status}`);
-				}
+    async function handleFile(file) {
+        if (pendingUrl) { URL.revokeObjectURL(pendingUrl); pendingUrl = null; }
+        dlOtr.classList.remove('visible');
+        versionInfo.classList.remove('show');
+        progressWrap.classList.remove('visible');
+        setProgress(0);
 
-				const arrayBuffer = await response.arrayBuffer();
-				const patchFile   = new DataBuffer(arrayBuffer);
+        try {
+            setStatus('Laser in ROM och beraknar MD5...');
+            const arrayBuffer = await file.arrayBuffer();
+            const md5Hash = Checksums.md5(arrayBuffer);
+            console.log('ROM MD5:', md5Hash);
 
-				loadedPatch = XdeltaPatcher.load(patchFile);
-				console.log('Patch laddad:', loadedPatch);
+            const version = PATCH_VERSIONS[md5Hash];
+            if (!version) {
+                setStatus(
+                    'Okand ROM-version! MD5: ' + md5Hash + '. Kontrollera att du anvander en av de stodda versionerna.',
+                    'error'
+                );
+                return;
+            }
 
-				updateStatus('✅ Patch laddad framgångsrikt! Välj din ROM-fil nedan.', 'ready');
+            versionDetails.innerHTML =
+                '<strong>Version:</strong> ' + version.name + '<br>' +
+                '<strong>Beskrivning:</strong> ' + version.description;
+            versionInfo.classList.add('show');
+            setProgress(0.1);
 
-			} catch (error) {
-				console.error('Fel vid laddning av Tidens_okarina-PALOTR.xdelta:', error);
-				updateStatus('❌ Fel vid laddning av patch: ' + error.message, 'error');
-			}
-		}
+            setStatus('Laddar patch ' + version.patch + '...');
+            const patchResponse = await fetch('./patch/' + version.patch);
+            if (!patchResponse.ok) throw new Error('Kunde inte ladda patch: HTTP ' + patchResponse.status);
+            const patchBuffer = await patchResponse.arrayBuffer();
+            const patchFile = new DataBuffer(patchBuffer);
+            setProgress(0.2);
 
-		function updateStatus(message, type) {
-			const statusEl = document.getElementById('status');
-			statusEl.innerHTML = message;
-			statusEl.className = 'status ' + type;
-		}
+            setStatus('Applicerar patch – skapar Tidens okarina ROM...');
+            const romData = new DataBuffer(arrayBuffer);
+            const loadedPatch = XdeltaPatcher.load(patchFile);
+            const patchedRom = loadedPatch.apply(romData, true);
+            const patchedData = patchedRom.data;
+            console.log('Patch applicerad. Storlek:', patchedData.length, 'bytes');
+            setProgress(0.4);
 
-		function calculateMD5(arrayBuffer) {
-			return Checksums.md5(arrayBuffer).toUpperCase();
-		}
+            setStatus('Laddar skriptfil...');
+            const scriptResponse = await fetch(version.script);
+            if (!scriptResponse.ok) throw new Error('Kunde inte ladda skriptfil: HTTP ' + scriptResponse.status);
+            const scriptText = await scriptResponse.text();
+            setProgress(0.5);
 
-		async function handleROMFile(file) {
-			try {
-				updateStatus('🔄 Läser ROM-fil...', 'loading');
-				
-				const arrayBuffer = await file.arrayBuffer();
-				romFileData = new DataBuffer(arrayBuffer);
+            setStatus('Dekomprimerar Tidens okarina ROM...');
+            let decompData, detectedVersion;
+            await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    try {
+                        const result = decompressRom(patchedData, f => setProgress(0.5 + f * 0.3));
+                        decompData = result.data;
+                        detectedVersion = result.version;
+                        resolve();
+                    } catch (err) {
+                        reject(err);
+                    }
+                }, 50);
+            });
+            console.log('Dekomprimerad. Version:', detectedVersion);
 
-				// Beräkna checksummor
-				const md5   = calculateMD5(arrayBuffer);
-				const crc32 = Checksums.crc32(arrayBuffer).toString(16).toUpperCase().padStart(8, '0');
-				
-				// Uppdatera ROM info
-				document.getElementById('fileName').textContent = file.name;
-				document.getElementById('fileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
-				document.getElementById('md5Hash').textContent = md5;
-				document.getElementById('crc32').textContent = crc32;
-				
-				// Kontrollera kompatibilitet
-				const isCompatible = md5 === expectedMD5;
-				document.getElementById('romStatus').textContent = isCompatible ? 'Kompatibel ✅' : 'Inkompatibel ❌';
-				document.getElementById('romStatus').style.color = isCompatible ? '#28a745' : '#dc3545';
-				
-				document.getElementById('romInfo').style.display = 'block';
-				document.getElementById('patchButton').disabled = !isCompatible;
-				
-				if (isCompatible) {
-					updateStatus('✅ ROM laddad och verifierad - Redo att patcha!', 'ready');
-				} else {
-					updateStatus('❌ Fel ROM-fil. Endast kompatibel ROM accepteras.', 'error');
-				}
-				
-			} catch (error) {
-				updateStatus('❌ Fel vid läsning av ROM: ' + error.message, 'error');
-			}
-		}
+            setStatus('Genererar OTR-arkiv...');
+            const { data: otrData, name: otrName } = await buildOtr(decompData, scriptText);
+            setProgress(1);
 
-		async function applyPatch() {
-			if (!loadedPatch || !romFileData) {
-				updateStatus('❌ Patch eller ROM saknas', 'error');
-				return;
-			}
+            const blob = new Blob([otrData], { type: 'application/octet-stream' });
+            pendingUrl = URL.createObjectURL(blob);
+            dlOtr.href = pendingUrl;
+            dlOtr.download = otrName;
+            dlOtr.classList.add('visible');
 
-			try {
-				updateStatus('🔄 Applicerar patch...', 'loading');
-				
-				const patchedRom = loadedPatch.apply(romFileData);
+            const sizeMB = (otrData.byteLength / 1024 / 1024).toFixed(1);
+            setStatus('Klar! ' + version.name + ' – ' + sizeMB + ' MB. Klicka pa knappen for att ladda ner.', 'success');
 
-				// Skapa nedladdning
-				const blob = new Blob([patchedRom.data], { type: 'application/octet-stream' });
-				const url = URL.createObjectURL(blob);
-				const a = document.createElement('a');
-				a.href = url;
-				a.download = 'Tidens_okarina-PALOTR.z64';
-				a.click();
-				URL.revokeObjectURL(url);
-				
-				updateStatus('✅ Patch applicerad framgångsrikt! Nedladdning startad.', 'ready');
-				
-			} catch (error) {
-				updateStatus('❌ Fel vid patchning: ' + error.message, 'error');
-			}
-		}
+        } catch (err) {
+            console.error(err);
+            setStatus('Fel: ' + err.message, 'error');
+        }
+    }
+</script>
 
-		// Event listeners och initialisering
-		document.addEventListener('DOMContentLoaded', () => {
-			const dropArea = document.getElementById('dropArea');
-			const romFile = document.getElementById('romFile');
-			const patchButton = document.getElementById('patchButton');
-
-			// Initiera animationer
-			const animationManager = new AnimationManager();
-			animationManager.init();
-
-			// File input
-			dropArea.addEventListener('click', () => romFile.click());
-			romFile.addEventListener('change', (e) => {
-				if (e.target.files[0]) handleROMFile(e.target.files[0]);
-			});
-
-			// Drag and drop
-			dropArea.addEventListener('dragover', (e) => {
-				e.preventDefault();
-				dropArea.classList.add('dragover');
-			});
-
-			dropArea.addEventListener('dragleave', () => {
-				dropArea.classList.remove('dragover');
-			});
-
-			dropArea.addEventListener('drop', (e) => {
-				e.preventDefault();
-				dropArea.classList.remove('dragover');
-				if (e.dataTransfer.files[0]) handleROMFile(e.dataTransfer.files[0]);
-			});
-
-			// Patch button
-			patchButton.addEventListener('click', applyPatch);
-
-			// Ladda xdelta patch automatiskt
-			loadxdeltaPatch();
-		});
-	</script>
 </body>
 </html>

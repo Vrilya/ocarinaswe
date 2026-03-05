@@ -1,7 +1,4 @@
-.header {
-			text-align: center;
-			margin-bottom: 20px;
-		}<!DOCTYPE html>
+<!DOCTYPE html>
 <html translate="no">
 <head>
 	<title>Legenden om Zelda: Ocarina of Time - Nintendo 64 Patcher</title>
@@ -9,12 +6,10 @@
 	<meta name="description" content="Nintendo 64 ROM patcher för Tidens okarina"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 	
-	<!-- cache -->
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 
-	<!-- Egna bibliotek – ingen extern kod -->
 	<script src="./lib/Checksums.js"></script>
 	<script src="./lib/DataBuffer.js"></script>
 	<script src="./lib/XdeltaPatcher.js"></script>
@@ -33,6 +28,9 @@
 			padding: 20px;
 			overflow-x: hidden;
 			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 		/* Simple, robust animations */
@@ -90,6 +88,7 @@
 
 		.container {
 			max-width: 600px;
+			width: 100%;
 			margin: 0 auto;
 			background: rgba(255, 255, 255, 0.95);
 			border-radius: 15px;
@@ -603,7 +602,7 @@
 
 				// Set styles - IMPORTANT: Start from very top
 				element.style.left = x + 'px';
-				element.style.top = '-300px'; // Start way above screen
+				element.style.top = '-300px';
 				element.style.width = size + 'px';
 				element.style.height = size + 'px';
 				element.style.opacity = opacity;
@@ -764,7 +763,6 @@
 			}
 		}
 
-		// Ladda rätt patchfil för identifierad ROM-version
 		async function loadPatchForVersion(versionInfo_data) {
 			try {
 				updateStatus(`🔄 Laddar patch ${versionInfo_data.patch}...`, 'loading');

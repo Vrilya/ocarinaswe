@@ -1,7 +1,7 @@
 const Checksums = (function () {
 
     // --- CRC32 ---
-    // Bygger upp en 256-positioners uppslagstabell med polynomtabell för CRC32
+    // Builds a 256-entry lookup table with polynomial table for CRC32
     const crcTable = (function () {
         const t = new Uint32Array(256);
         for (let entry = 0; entry < 256; entry++) {
@@ -25,7 +25,7 @@ const Checksums = (function () {
 
 
     // --- MD5 ---
-    // Shiftvärden per runda
+    // Shift amounts per round
     const shiftAmounts = [
          7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
          5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
@@ -33,7 +33,7 @@ const Checksums = (function () {
          6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21
     ];
 
-    // Förberäknade sinuskonstanter
+    // Precomputed sine constants
     const sineConstants = new Uint32Array(64);
     for (let i = 0; i < 64; i++) {
         sineConstants[i] = (Math.abs(Math.sin(i + 1)) * 0x100000000) >>> 0;
@@ -80,13 +80,13 @@ const Checksums = (function () {
         const src = new Uint8Array(arrayBuffer);
         const byteCount = src.length;
 
-        // Räkna ut paddat längd
+        // Calculate padded length
         const padded = byteCount + 1 + 8 + (64 - ((byteCount + 9) % 64)) % 64;
         const buf = new Uint8Array(padded);
         buf.set(src);
         buf[byteCount] = 0x80;
 
-        // Lägg in meddelandelängd i bitar som 64-bit little-endian i slutet
+        // Append message length in bits as 64-bit little-endian at the end
         const bitsLow  = (byteCount * 8) >>> 0;
         const bitsHigh = Math.floor(byteCount / 0x20000000) >>> 0;
         const lenPos   = padded - 8;
@@ -99,10 +99,10 @@ const Checksums = (function () {
         buf[lenPos + 6] = (bitsHigh >>> 16) & 0xFF;
         buf[lenPos + 7] = (bitsHigh >>> 24) & 0xFF;
 
-        // Startvärden för digest (litte-endian magic numbers)
+        // Initial digest values (little-endian magic numbers)
         const digest = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476];
 
-        // Bearbeta 64-byte block i taget
+        // Process 64-byte blocks
         const view = new DataView(buf.buffer);
         for (let blockStart = 0; blockStart < padded; blockStart += 64) {
             const chunk = new Array(16);
@@ -112,7 +112,7 @@ const Checksums = (function () {
             compressBlock(digest, chunk);
         }
 
-        // Producera hex-sträng (4 bytes per ord, little-endian)
+        // Produce hex string (4 bytes per word, little-endian)
         let result = '';
         for (let d = 0; d < 4; d++) {
             const word = digest[d] >>> 0;
