@@ -66,26 +66,15 @@ ROM-filen måste vara någon av dessa:
 
 ### 🚢 Ship of Harkinian Setup
 
-Det enklaste sättet är att ladda ner den färdiga OTR-filen via GameBanana:  
-**[📥 Direktlänk till modens sida här](https://gamebanana.com/mods/613613)**  
-Packa upp arkivet och placera `Svenska.otr` i `mods`-mappen i din Ship of Harkinian-installation.  
+Det enklaste sättet är att ladda ner den färdiga OTR-filen via GameBanana:
+**[📥 Direktlänk till modens sida här](https://gamebanana.com/mods/613613)**
+Packa upp arkivet och placera `Svenska.otr` i `mods`-mappen i din Ship of Harkinian-installation.
 
-Om du hellre vill skapa filen själv manuellt:  
+Om du hellre vill generera OTR-filen själv kan du använda webbverktyget:
+**[🌐 Generera OTR här](https://vrilya.github.io/ocarinaswe/index_otr.html)**
+Välj din ROM-fil och låt verktyget sköta resten.
 
-1. **Ladda ner** `OTRMod_PAL10.txt` från [Releases](https://github.com/Vrilya/ocarinaswe/releases)  
-2. **Dekomprimera din redan patchade ROM** med yaz0encdec (Bara PAL 1.0 än så länge):  
-   ```
-   https://github.com/Vrilya/yaz0encdec
-   ```
-3. **Generera OTR-filen** på:  
-   ```
-   https://soh.xoas.eu.org/
-   ```
-   - Välj `OTRMod_PAL10.txt` under "Choose a script"  
-   - Välj den dekomprimerade ROM-filen under "Choose a ROM"  
-   - Klicka på "Generate OTR"
-4. **Installera moden**:  
-   - Spara den genererade `Svenska.otr`-filen till `mods`-mappen i din Ship of Harkinian-installation  
+Vill du använda ett annat verktyg kan du ladda ner `otr_skriptpaket.zip` från [Releases](https://github.com/Vrilya/ocarinaswe/releases), som innehåller skriptfiler för varje ROM-version.
 
 > ⚠️ **Viktigt**: Andra mods som påverkar text och bilder kan orsaka konflikter och störa funktionaliteten.
 
