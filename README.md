@@ -72,7 +72,7 @@ Packa upp arkivet och placera `Svenska.otr` i `mods`-mappen i din Ship of Harkin
 Om du hellre vill generera OTR-filen själv kan du använda webbverktyget: **[🌐 Generera OTR här](https://vrilya.github.io/ocarinaswe/index_otr.html)**<br>
 Välj din ROM-fil och låt verktyget sköta resten.
 
-Vill du använda ett annat verktyg kan du ladda ner `otr_skriptpaket.zip` från [Releases](https://github.com/Vrilya/ocarinaswe/releases), som innehåller skriptfiler för varje ROM-version.
+Vill du använda ett annat verktyg kan du ladda ner `otr_skriptpaket.zip` från [Releases](https://github.com/Vrilya/ocarinaswe/releases).
 
 > ⚠️ **Viktigt**: Andra mods som påverkar text och bilder kan orsaka konflikter och störa funktionaliteten.
 
