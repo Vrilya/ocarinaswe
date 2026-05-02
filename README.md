@@ -97,6 +97,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 - **Bootlogo-patcher för GC-versionerna (patch-gc-bootlogo)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-bootlogo)
 - **NO CONTROLLER-patch för GC-versionerna (patch-gc-nocon)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-nocon)
 - **Credits-krasch-patch för GC-versionerna (patch-gc-credits)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-credits)
+- **En teknisk analys av kopieringsskyddet i Ocarina of Time**: [GitHub-repository](https://github.com/Vrilya/oot-anti-piracy)
 - **Texteditorn jag utvecklade för det här projektet (OoT Text Editor)**: [GitHub Repository](https://github.com/Vrilya/oottexteditor)
 - **Workflow för batch-hantering av hela projektet (OoT Workflow)**: [GitHub Repository](https://github.com/Vrilya/oot-workflow)
 
