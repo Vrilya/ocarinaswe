@@ -96,6 +96,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 - **PAL-videokorrigering för GC-EU / GC-EU-MQ (patch-vi-pal)**: [GitHub Repository](https://github.com/Vrilya/patch-vi-pal)
 - **Bootlogo-patcher för GC-versionerna (patch-gc-bootlogo)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-bootlogo)
 - **NO CONTROLLER-patch för GC-versionerna (patch-gc-nocon)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-nocon)
+- **Credits-krasch-patch för GC-versionerna (patch-gc-credits)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-credits)
 - **Texteditorn jag utvecklade för det här projektet (OoT Text Editor)**: [GitHub Repository](https://github.com/Vrilya/oottexteditor)
 - **Workflow för batch-hantering av hela projektet (OoT Workflow)**: [GitHub Repository](https://github.com/Vrilya/oot-workflow)
 
