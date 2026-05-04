@@ -93,6 +93,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 
 - **Bitmap-verktyg (VOoTIE)**: [GitHub Repository](https://github.com/Vrilya/VOoTIE)
 - **Yaz0-Kompressor/dekompressor (yaz0encdec)**: [GitHub Repository](https://github.com/Vrilya/yaz0encdec)
+- **Färgpatch för GC-versionernas knappar och cursors (patch-gc-colors)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-colors)
 - **PAL-videokorrigering för GC-EU / GC-EU-MQ (patch-vi-pal)**: [GitHub Repository](https://github.com/Vrilya/patch-vi-pal)
 - **Bootlogo-patcher för GC-versionerna (patch-gc-bootlogo)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-bootlogo)
 - **NO CONTROLLER-patch för GC-versionerna (patch-gc-nocon)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-nocon)
