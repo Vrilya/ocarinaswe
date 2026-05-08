@@ -288,6 +288,10 @@
 			display: none;
 		}
 
+		.upload-section.hidden {
+			display: none;
+		}
+
 		.status {
 			padding: 15px;
 			margin: 20px 0;
@@ -347,6 +351,45 @@
 			color: #555;
 			margin: 5px 0;
 			font-size: 14px;
+		}
+
+		.region-choice {
+			margin: 20px 0;
+			display: none;
+		}
+
+		.region-choice.show {
+			display: block;
+		}
+
+		.region-buttons {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 10px;
+		}
+
+		.region-btn {
+			background: #f8fafc;
+			color: #2d3748;
+			border: 2px solid #cbd5e0;
+			border-radius: 8px;
+			padding: 12px;
+			font-size: 16px;
+			font-weight: 700;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+
+		.region-btn:hover {
+			border-color: #667eea;
+			background: #edf2ff;
+		}
+
+		.region-btn.selected {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-color: #667eea;
+			color: white;
+			box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
 		}
 
 		.btn {
@@ -438,6 +481,13 @@
 			<p id="versionDetails"></p>
 		</div>
 
+		<div id="regionChoice" class="region-choice">
+			<div class="region-buttons">
+				<button type="button" class="region-btn" data-region="pal">PAL</button>
+				<button type="button" class="region-btn" data-region="ntsc">NTSC</button>
+			</div>
+		</div>
+
 		<button id="applyBtn" class="btn" disabled>Applicera Patch</button>
 	</div>
 
@@ -483,6 +533,10 @@
 				<li>
 					<strong>NTSC GC Master Quest</strong> (USA/JP GameCube MQ)<br>
 					MD5: <code>da35577fe54579f6a266931cc75f512d</code>
+				</li>
+				<li>
+					<strong>iQue Chinese</strong> (Released)<br>
+					MD5: <code>0ab48b2d44a74b3bb2d384f6170c2742</code>
 				</li>
 			</ul>
 			<p>
@@ -548,6 +602,23 @@
 				patch: 'Tidens_okarina-NTSCMQ.xdelta',
 				description: 'MQ NTSC (gc-us-mq)',
 				outputName: 'Tidens_okarina-NTSCMQ.z64'
+			},
+			'0ab48b2d44a74b3bb2d384f6170c2742': {
+				name: 'iQue Chinese',
+				description: 'iQue Chinese (Released)',
+				requiresRegionChoice: true,
+				variants: {
+					pal: {
+						name: 'iQue PAL',
+						patch: 'Tidens_okarina-IQUEPAL.xdelta',
+						outputName: 'Tidens_okarina-IQUEPAL.z64'
+					},
+					ntsc: {
+						name: 'iQue NTSC',
+						patch: 'Tidens_okarina-IQUENTSC.xdelta',
+						outputName: 'Tidens_okarina-IQUENTSC.z64'
+					}
+				}
 			}
 		};
 
@@ -670,18 +741,22 @@
 		let loadedPatch = null;
 		let romFileData = null;
 		let detectedVersion = null;
+		let selectedRegion = null;
 
 		// Start animations
 		const animManager = new AnimationManager();
 		animManager.init();
 
 		// DOM elements
+		const uploadSection = document.querySelector('.upload-section');
 		const dropZone = document.getElementById('dropZone');
 		const romFileInput = document.getElementById('romFile');
 		const applyBtn = document.getElementById('applyBtn');
 		const statusDiv = document.getElementById('status');
 		const versionInfo = document.getElementById('versionInfo');
 		const versionDetails = document.getElementById('versionDetails');
+		const regionChoice = document.getElementById('regionChoice');
+		const regionButtons = document.querySelectorAll('.region-btn');
 		const infoButton = document.getElementById('infoButton');
 		const infoModal = document.getElementById('infoModal');
 		const closeModal = document.getElementById('closeModal');
@@ -707,6 +782,20 @@
 			statusDiv.className = `status ${type}`;
 		}
 
+		function resetRegionChoice() {
+			selectedRegion = null;
+			regionChoice.classList.remove('show');
+			regionButtons.forEach((button) => button.classList.remove('selected'));
+		}
+
+		function getPatchInfo(versionInfo_data) {
+			if (!versionInfo_data.requiresRegionChoice) {
+				return versionInfo_data;
+			}
+
+			return selectedRegion ? versionInfo_data.variants[selectedRegion] : null;
+		}
+
 		// Beräkna MD5-checksumma
 		function calculateMD5(arrayBuffer) {
 			return Checksums.md5(arrayBuffer);
@@ -716,8 +805,10 @@
 		async function handleRomFile(file) {
 			if (!file) return;
 
+			uploadSection.classList.add('hidden');
 			updateStatus('🔍 Läser ROM-fil och identifierar version...', 'loading');
 			versionInfo.classList.remove('show');
+			resetRegionChoice();
 			applyBtn.disabled = true;
 			loadedPatch = null;
 			detectedVersion = null;
@@ -739,6 +830,7 @@
 						`❌ Okänd ROM-version! MD5: ${md5Hash}. Kontrollera att du använder en av de stödda versionerna.`,
 						'error'
 					);
+					uploadSection.classList.remove('hidden');
 					return;
 				}
 
@@ -746,13 +838,20 @@
 				updateStatus('✅ ROM-version identifierad! Laddar rätt patch...', 'success');
 
 				// Show version info
+				const patchInfo = getPatchInfo(versionInfo_data);
 				versionDetails.innerHTML = `
 					<strong>Version:</strong> ${versionInfo_data.name}<br>
 					<strong>Beskrivning:</strong> ${versionInfo_data.description}<br>
 					<strong>MD5:</strong> <code>${md5Hash}</code><br>
-					<strong>Patch-fil:</strong> ${versionInfo_data.patch}
+					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : 'Välj PAL eller NTSC'}
 				`;
 				versionInfo.classList.add('show');
+
+				if (versionInfo_data.requiresRegionChoice) {
+					regionChoice.classList.add('show');
+					updateStatus('✅ iQue-ROM identifierad. Välj PAL eller NTSC för att ladda patch.', 'success');
+					return;
+				}
 
 				// Load the correct patch
 				await loadPatchForVersion(versionInfo_data);
@@ -760,14 +859,22 @@
 			} catch (error) {
 				console.error('Error processing ROM:', error);
 				updateStatus(`❌ Fel vid bearbetning av ROM: ${error.message}`, 'error');
+				uploadSection.classList.remove('hidden');
 			}
 		}
 
 		async function loadPatchForVersion(versionInfo_data) {
-			try {
-				updateStatus(`🔄 Laddar patch ${versionInfo_data.patch}...`, 'loading');
+			const patchInfo = getPatchInfo(versionInfo_data);
+			if (!patchInfo) {
+				applyBtn.disabled = true;
+				updateStatus('Välj PAL eller NTSC innan du applicerar patchen.', 'info');
+				return;
+			}
 
-				const response = await fetch(`./patch/${versionInfo_data.patch}`);
+			try {
+				updateStatus(`🔄 Laddar patch ${patchInfo.patch}...`, 'loading');
+
+				const response = await fetch(`./patch/${patchInfo.patch}`);
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
@@ -779,7 +886,7 @@
 				console.log('Patch loaded successfully:', loadedPatch);
 
 				updateStatus(
-					`✅ Patch för ${versionInfo_data.name} är laddad. Klicka "Applicera Patch".`,
+					`✅ Patch för ${patchInfo.name} är laddad. Klicka "Applicera Patch".`,
 					'success'
 				);
 				applyBtn.disabled = false;
@@ -809,7 +916,7 @@
 				// Create download
 				updateStatus('💾 Skapar nedladdning...', 'loading');
 
-				const patchedFileName = detectedVersion.outputName;
+				const patchedFileName = getPatchInfo(detectedVersion).outputName;
 
 				const blob = new Blob([patchedRom.data], { type: 'application/octet-stream' });
 				const url = URL.createObjectURL(blob);
@@ -859,6 +966,28 @@
 			if (file) {
 				handleRomFile(file);
 			}
+		});
+
+		regionButtons.forEach((button) => {
+			button.addEventListener('click', async () => {
+				if (!detectedVersion || !detectedVersion.requiresRegionChoice) return;
+
+				selectedRegion = button.dataset.region;
+				loadedPatch = null;
+				applyBtn.disabled = true;
+				regionButtons.forEach((regionButton) => {
+					regionButton.classList.toggle('selected', regionButton === button);
+				});
+
+				const patchInfo = getPatchInfo(detectedVersion);
+				versionDetails.innerHTML = `
+					<strong>Version:</strong> ${detectedVersion.name} (${patchInfo.name})<br>
+					<strong>Beskrivning:</strong> ${detectedVersion.description}<br>
+					<strong>Patch-fil:</strong> ${patchInfo.patch}
+				`;
+
+				await loadPatchForVersion(detectedVersion);
+			});
 		});
 
 		applyBtn.addEventListener('click', applyPatch);
