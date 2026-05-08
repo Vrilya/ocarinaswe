@@ -63,7 +63,7 @@ ROM-filen måste vara någon av dessa:
 - **Database match:** Legend of Zelda, The - Ocarina of Time - Master Quest (USA) (GameCube)
 - **SHA-1:** `8b5d13aac69bfbf989861cfdc50b1d840945fc1d`
 - **MD5:** `da35577fe54579f6a266931cc75f512d`
-- **Database match:** iQue Chinese (Released)
+- **Database match:** Zelda Chuanshou Shiguang Zhi Di (Simplified)
 - **SHA-1:** `1015d0f3af34b89149bfd773580bbc66466af54e`
 - **MD5:** `0ab48b2d44a74b3bb2d384f6170c2742`
 
