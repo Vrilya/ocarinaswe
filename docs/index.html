@@ -353,22 +353,26 @@
 			font-size: 14px;
 		}
 
-		.region-choice {
+		.ique-choices {
 			margin: 12px 0 0;
 			display: none;
 		}
 
-		.region-choice.show {
+		.ique-choices.show {
 			display: block;
 		}
 
-		.region-buttons {
+		.ique-button-group {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			gap: 10px;
 		}
 
-		.region-btn {
+		.ique-button-group + .ique-button-group {
+			margin-top: 10px;
+		}
+
+		.ique-choice-btn {
 			background: #f8fafc;
 			color: #2d3748;
 			border: 2px solid #cbd5e0;
@@ -380,12 +384,12 @@
 			transition: all 0.2s ease;
 		}
 
-		.region-btn:hover {
+		.ique-choice-btn:hover {
 			border-color: #667eea;
 			background: #edf2ff;
 		}
 
-		.region-btn.selected {
+		.ique-choice-btn.selected {
 			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 			border-color: #667eea;
 			color: white;
@@ -406,7 +410,7 @@
 			margin-top: 20px;
 		}
 
-		.region-choice.show + .btn {
+		.ique-choices.show + .btn {
 			margin-top: 10px;
 		}
 
@@ -485,10 +489,14 @@
 			<p id="versionDetails"></p>
 		</div>
 
-		<div id="regionChoice" class="region-choice">
-			<div class="region-buttons">
-				<button type="button" class="region-btn" data-region="pal">PAL</button>
-				<button type="button" class="region-btn" data-region="ntsc">NTSC</button>
+		<div id="iqueChoices" class="ique-choices">
+			<div class="ique-button-group">
+				<button type="button" class="ique-choice-btn" data-choice-group="game" data-choice="oot">Vanlig OoT</button>
+				<button type="button" class="ique-choice-btn" data-choice-group="game" data-choice="mq">Master Quest</button>
+			</div>
+			<div class="ique-button-group">
+				<button type="button" class="ique-choice-btn" data-choice-group="region" data-choice="pal">PAL</button>
+				<button type="button" class="ique-choice-btn" data-choice-group="region" data-choice="ntsc">NTSC</button>
 			</div>
 		</div>
 
@@ -610,17 +618,31 @@
 			'0ab48b2d44a74b3bb2d384f6170c2742': {
 				name: 'iQue Chinese',
 				description: 'iQue Chinese (Released)',
-				requiresRegionChoice: true,
+				requiresIqueChoices: true,
 				variants: {
-					pal: {
-						name: 'iQue PAL',
-						patch: 'Tidens_okarina-IQUEPAL.xdelta',
-						outputName: 'Tidens_okarina-IQUEPAL.z64'
+					oot: {
+						pal: {
+							name: 'iQue Vanlig OoT PAL',
+							patch: 'Tidens_okarina-IQUEPAL.xdelta',
+							outputName: 'Tidens_okarina-IQUEPAL.z64'
+						},
+						ntsc: {
+							name: 'iQue Vanlig OoT NTSC',
+							patch: 'Tidens_okarina-IQUENTSC.xdelta',
+							outputName: 'Tidens_okarina-IQUENTSC.z64'
+						}
 					},
-					ntsc: {
-						name: 'iQue NTSC',
-						patch: 'Tidens_okarina-IQUENTSC.xdelta',
-						outputName: 'Tidens_okarina-IQUENTSC.z64'
+					mq: {
+						pal: {
+							name: 'iQue Master Quest PAL',
+							patch: 'Tidens_okarina-IQUEMQPAL.xdelta',
+							outputName: 'Tidens_okarina-IQUEMQPAL.z64'
+						},
+						ntsc: {
+							name: 'iQue Master Quest NTSC',
+							patch: 'Tidens_okarina-IQUEMQNTSC.xdelta',
+							outputName: 'Tidens_okarina-IQUEMQNTSC.z64'
+						}
 					}
 				}
 			}
@@ -745,6 +767,7 @@
 		let loadedPatch = null;
 		let romFileData = null;
 		let detectedVersion = null;
+		let selectedGame = null;
 		let selectedRegion = null;
 
 		// Start animations
@@ -759,8 +782,8 @@
 		const statusDiv = document.getElementById('status');
 		const versionInfo = document.getElementById('versionInfo');
 		const versionDetails = document.getElementById('versionDetails');
-		const regionChoice = document.getElementById('regionChoice');
-		const regionButtons = document.querySelectorAll('.region-btn');
+		const iqueChoices = document.getElementById('iqueChoices');
+		const iqueChoiceButtons = document.querySelectorAll('.ique-choice-btn');
 		const infoButton = document.getElementById('infoButton');
 		const infoModal = document.getElementById('infoModal');
 		const closeModal = document.getElementById('closeModal');
@@ -786,18 +809,19 @@
 			statusDiv.className = `status ${type}`;
 		}
 
-		function resetRegionChoice() {
+		function resetIqueChoices() {
+			selectedGame = null;
 			selectedRegion = null;
-			regionChoice.classList.remove('show');
-			regionButtons.forEach((button) => button.classList.remove('selected'));
+			iqueChoices.classList.remove('show');
+			iqueChoiceButtons.forEach((button) => button.classList.remove('selected'));
 		}
 
 		function getPatchInfo(versionInfo_data) {
-			if (!versionInfo_data.requiresRegionChoice) {
+			if (!versionInfo_data.requiresIqueChoices) {
 				return versionInfo_data;
 			}
 
-			return selectedRegion ? versionInfo_data.variants[selectedRegion] : null;
+			return selectedGame && selectedRegion ? versionInfo_data.variants[selectedGame][selectedRegion] : null;
 		}
 
 		// Beräkna MD5-checksumma
@@ -812,7 +836,7 @@
 			uploadSection.classList.add('hidden');
 			updateStatus('🔍 Läser ROM-fil och identifierar version...', 'loading');
 			versionInfo.classList.remove('show');
-			resetRegionChoice();
+			resetIqueChoices();
 			applyBtn.disabled = true;
 			loadedPatch = null;
 			detectedVersion = null;
@@ -847,13 +871,13 @@
 					<strong>Version:</strong> ${versionInfo_data.name}<br>
 					<strong>Beskrivning:</strong> ${versionInfo_data.description}<br>
 					<strong>MD5:</strong> <code>${md5Hash}</code><br>
-					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : 'Välj PAL eller NTSC'}
+					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : 'Välj OoT/Master Quest och PAL/NTSC'}
 				`;
 				versionInfo.classList.add('show');
 
-				if (versionInfo_data.requiresRegionChoice) {
-					regionChoice.classList.add('show');
-					updateStatus('✅ iQue-ROM identifierad. Välj PAL eller NTSC för att ladda patch.', 'success');
+				if (versionInfo_data.requiresIqueChoices) {
+					iqueChoices.classList.add('show');
+					updateStatus('✅ iQue-ROM identifierad. Välj Vanlig OoT eller Master Quest och PAL eller NTSC.', 'success');
 					return;
 				}
 
@@ -871,7 +895,7 @@
 			const patchInfo = getPatchInfo(versionInfo_data);
 			if (!patchInfo) {
 				applyBtn.disabled = true;
-				updateStatus('Välj PAL eller NTSC innan du applicerar patchen.', 'info');
+				updateStatus('Välj Vanlig OoT eller Master Quest och PAL eller NTSC innan du applicerar patchen.', 'info');
 				return;
 			}
 
@@ -972,22 +996,29 @@
 			}
 		});
 
-		regionButtons.forEach((button) => {
+		iqueChoiceButtons.forEach((button) => {
 			button.addEventListener('click', async () => {
-				if (!detectedVersion || !detectedVersion.requiresRegionChoice) return;
+				if (!detectedVersion || !detectedVersion.requiresIqueChoices) return;
 
-				selectedRegion = button.dataset.region;
+				const choiceGroup = button.dataset.choiceGroup;
+				if (choiceGroup === 'game') {
+					selectedGame = button.dataset.choice;
+				} else {
+					selectedRegion = button.dataset.choice;
+				}
 				loadedPatch = null;
 				applyBtn.disabled = true;
-				regionButtons.forEach((regionButton) => {
-					regionButton.classList.toggle('selected', regionButton === button);
+				iqueChoiceButtons.forEach((choiceButton) => {
+					if (choiceButton.dataset.choiceGroup === choiceGroup) {
+						choiceButton.classList.toggle('selected', choiceButton === button);
+					}
 				});
 
 				const patchInfo = getPatchInfo(detectedVersion);
 				versionDetails.innerHTML = `
-					<strong>Version:</strong> ${detectedVersion.name} (${patchInfo.name})<br>
+					<strong>Version:</strong> ${detectedVersion.name}${patchInfo ? ` (${patchInfo.name})` : ''}<br>
 					<strong>Beskrivning:</strong> ${detectedVersion.description}<br>
-					<strong>Patch-fil:</strong> ${patchInfo.patch}
+					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : 'Välj OoT/Master Quest och PAL/NTSC'}
 				`;
 
 				await loadPatchForVersion(detectedVersion);
