@@ -102,7 +102,7 @@ Har du frågor eller synpunkter? Kontakta mig gärna:
 - **NO CONTROLLER-patch för GC-versionerna (patch-gc-nocon)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-nocon)
 - **Credits-krasch-patch för GC-versionerna (patch-gc-credits)**: [GitHub Repository](https://github.com/Vrilya/patch-gc-credits)
 - **Title-screen-texteditor för `NO CONTROLLER` / `PRESS START` (oot-title-text)**: [GitHub Repository](https://github.com/Vrilya/oot-title-text)
-- **Texteditorn jag utvecklade för det här projektet (OoT Text Editor)**: [GitHub Repository](https://github.com/Vrilya/oottexteditor)
+- **Texteditorn jag utvecklade för det här projektet (Hylian Grimoire)**: [GitHub Repository](https://github.com/Vrilya/Hylian-Grimoire)
 - **Workflow för batch-hantering av hela projektet (OoT Workflow)**: [GitHub Repository](https://github.com/Vrilya/oot-workflow)
 - **En teknisk analys av kopieringsskyddet i Ocarina of Time**: [GitHub-repository](https://github.com/Vrilya/oot-anti-piracy)
 
