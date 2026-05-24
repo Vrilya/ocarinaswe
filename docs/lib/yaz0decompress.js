@@ -3,16 +3,15 @@ const DMA_DELETED = 0xFFFFFFFF;
 const BUILD_DATE_LEN = 17;
 
 const ROM_VERSIONS = [
-    { name: "NTSC 1.0",          buildDate: "98-10-21 04:56:31", buildOffset: 0x740C, dmaOffset: 0x7430, dmaCount: 1526 },
-    { name: "NTSC 1.1",          buildDate: "98-10-26 10:58:45", buildOffset: 0x740C, dmaOffset: 0x7430, dmaCount: 1526 },
-    { name: "NTSC 1.2",          buildDate: "98-11-12 18:17:03", buildOffset: 0x793C, dmaOffset: 0x7960, dmaCount: 1526 },
-    { name: "PAL 1.0",           buildDate: "98-11-10 14:34:22", buildOffset: 0x792C, dmaOffset: 0x7950, dmaCount: 1527 },
-    { name: "PAL 1.1",           buildDate: "98-11-18 17:36:49", buildOffset: 0x794C, dmaOffset: 0x7970, dmaCount: 1527 },
-    { name: "NTSC Master Quest", buildDate: "02-12-19 14:05:42", buildOffset: 0x7150, dmaOffset: 0x7170, dmaCount: 1525 },
-    { name: "NTSC GameCube",     buildDate: "02-12-19 13:28:09", buildOffset: 0x71D0, dmaOffset: 0x71F0, dmaCount: 1525 },
-    { name: "PAL Master Quest",  buildDate: "03-02-21 20:37:19", buildOffset: 0x71D0, dmaOffset: 0x71F0, dmaCount: 1526 },
-    { name: "PAL GameCube",      buildDate: "03-02-21 20:12:23", buildOffset: 0x71D0, dmaOffset: 0x71F0, dmaCount: 1526 },
-    { name: "PAL OTR",           buildDate: "98-11-10 11:11:11", buildOffset: 0x792C, dmaOffset: 0x7950, dmaCount: 1527 },
+    { name: "NTSC 1.0",          buildDate: "26-05-18 10:00:04", buildOffset: 0x740C, dmaOffset: 0x7430, dmaCount: 1526 },
+    { name: "NTSC 1.1",          buildDate: "26-05-18 10:00:05", buildOffset: 0x740C, dmaOffset: 0x7430, dmaCount: 1526 },
+    { name: "NTSC 1.2",          buildDate: "26-05-18 10:00:06", buildOffset: 0x793C, dmaOffset: 0x7960, dmaCount: 1526 },
+    { name: "NTSC GameCube",     buildDate: "26-05-18 10:00:07", buildOffset: 0x71D0, dmaOffset: 0x71F0, dmaCount: 1525 },
+    { name: "NTSC Master Quest", buildDate: "26-05-18 10:00:08", buildOffset: 0x7150, dmaOffset: 0x7170, dmaCount: 1525 },
+    { name: "PAL 1.0",           buildDate: "26-05-18 10:00:09", buildOffset: 0x792C, dmaOffset: 0x7950, dmaCount: 1527 },
+    { name: "PAL 1.1",           buildDate: "26-05-18 10:00:10", buildOffset: 0x794C, dmaOffset: 0x7970, dmaCount: 1527 },
+    { name: "PAL GameCube",      buildDate: "26-05-18 10:00:11", buildOffset: 0x71D0, dmaOffset: 0x71F0, dmaCount: 1526 },
+    { name: "PAL Master Quest",  buildDate: "26-05-18 10:00:12", buildOffset: 0x71D0, dmaOffset: 0x71F0, dmaCount: 1526 },
 ];
 
 function detectRomVersion(rom) {
