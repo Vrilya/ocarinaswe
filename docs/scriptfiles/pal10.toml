@@ -1,0 +1,3223 @@
+output = "Svenska.otr"
+
+[[text]]
+path = "text/nes_message_data_static"
+name = "nes_message_data_static"
+messages_offset = "8BB000"
+messages_length = "38FFFF"
+table_offset = "B801E4"
+table_length = "4220"
+add_charset = true
+
+[[text]]
+path = "text/staff_message_data_static"
+name = "staff_message_data_static"
+messages_offset = "968000"
+messages_length = "38FFFF"
+table_offset = "B88624"
+table_length = "4220"
+add_charset = true
+
+[[group]]
+path = "objects/object_mag"
+
+[[group.texture]]
+name = "gTitleTheLegendOfTextTex"
+offset = "17BA700"
+format = "IA8"
+size = [72, 8]
+
+[[group.texture]]
+name = "gTitleOcarinaOfTimeTMTextTex"
+offset = "17BA940"
+format = "IA8"
+size = [96, 8]
+
+[[group.texture]]
+name = "gTitleCopyright1998Tex"
+offset = "17B5300"
+format = "I8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gTitleCopyright19982003Tex"
+offset = "30FE700"
+format = "IA8"
+size = [160, 16]
+
+[[group]]
+path = "textures/nes_font_static"
+
+[[group.texture]]
+name = "gMsgChar20SpaceTex"
+offset = "8B6000"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar21ExclamationMarkTex"
+offset = "8B6080"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar22QuotationMarkTex"
+offset = "8B6100"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar23NumberSignTex"
+offset = "8B6180"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar24DollarSignTex"
+offset = "8B6200"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar25PercentSignTex"
+offset = "8B6280"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar26AmpersandTex"
+offset = "8B6300"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar27ApostropheTex"
+offset = "8B6380"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar28LeftParenthesesTex"
+offset = "8B6400"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar29RightParenthesesTex"
+offset = "8B6480"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar2AAsteriskTex"
+offset = "8B6500"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar2BPlusSignTex"
+offset = "8B6580"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar2CCommaTex"
+offset = "8B6600"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar2DHyphenMinusTex"
+offset = "8B6680"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar2EFullStopTex"
+offset = "8B6700"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar2FSolidusTex"
+offset = "8B6780"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar30Digit0Tex"
+offset = "8B6800"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar31Digit1Tex"
+offset = "8B6880"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar32Digit2Tex"
+offset = "8B6900"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar33Digit3Tex"
+offset = "8B6980"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar34Digit4Tex"
+offset = "8B6A00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar35Digit5Tex"
+offset = "8B6A80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar36Digit6Tex"
+offset = "8B6B00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar37Digit7Tex"
+offset = "8B6B80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar38Digit8Tex"
+offset = "8B6C00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar39Digit9Tex"
+offset = "8B6C80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar3AColonTex"
+offset = "8B6D00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar3BSemicolonTex"
+offset = "8B6D80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar3CLessThanSignTex"
+offset = "8B6E00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar3DEqualsSignTex"
+offset = "8B6E80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar3EGreaterThanSignTex"
+offset = "8B6F00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar3FQuestionMarkTex"
+offset = "8B6F80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar40CommercialAtTex"
+offset = "8B7000"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar41LatinCapitalLetterATex"
+offset = "8B7080"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar42LatinCapitalLetterBTex"
+offset = "8B7100"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar43LatinCapitalLetterCTex"
+offset = "8B7180"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar44LatinCapitalLetterDTex"
+offset = "8B7200"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar45LatinCapitalLetterETex"
+offset = "8B7280"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar46LatinCapitalLetterFTex"
+offset = "8B7300"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar47LatinCapitalLetterGTex"
+offset = "8B7380"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar48LatinCapitalLetterHTex"
+offset = "8B7400"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar49LatinCapitalLetterITex"
+offset = "8B7480"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar4ALatinCapitalLetterJTex"
+offset = "8B7500"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar4BLatinCapitalLetterKTex"
+offset = "8B7580"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar4CLatinCapitalLetterLTex"
+offset = "8B7600"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar4DLatinCapitalLetterMTex"
+offset = "8B7680"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar4ELatinCapitalLetterNTex"
+offset = "8B7700"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar4FLatinCapitalLetterOTex"
+offset = "8B7780"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar50LatinCapitalLetterPTex"
+offset = "8B7800"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar51LatinCapitalLetterQTex"
+offset = "8B7880"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar52LatinCapitalLetterRTex"
+offset = "8B7900"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar53LatinCapitalLetterSTex"
+offset = "8B7980"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar54LatinCapitalLetterTTex"
+offset = "8B7A00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar55LatinCapitalLetterUTex"
+offset = "8B7A80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar56LatinCapitalLetterVTex"
+offset = "8B7B00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar57LatinCapitalLetterWTex"
+offset = "8B7B80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar58LatinCapitalLetterXTex"
+offset = "8B7C00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar59LatinCapitalLetterYTex"
+offset = "8B7C80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar5ALatinCapitalLetterZTex"
+offset = "8B7D00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar5BLeftSquareBracketTex"
+offset = "8B7D80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar5CYenSignTex"
+offset = "8B7E00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar5DRightSquareBracketTex"
+offset = "8B7E80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar5ECircumflexAccentTex"
+offset = "8B7F00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar5FLowLineTex"
+offset = "8B7F80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar60GraveAccentTex"
+offset = "8B8000"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar61LatinSmallLetterATex"
+offset = "8B8080"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar62LatinSmallLetterBTex"
+offset = "8B8100"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar63LatinSmallLetterCTex"
+offset = "8B8180"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar64LatinSmallLetterDTex"
+offset = "8B8200"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar65LatinSmallLetterETex"
+offset = "8B8280"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar66LatinSmallLetterFTex"
+offset = "8B8300"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar67LatinSmallLetterGTex"
+offset = "8B8380"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar68LatinSmallLetterHTex"
+offset = "8B8400"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar69LatinSmallLetterITex"
+offset = "8B8480"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar6ALatinSmallLetterJTex"
+offset = "8B8500"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar6BLatinSmallLetterKTex"
+offset = "8B8580"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar6CLatinSmallLetterLTex"
+offset = "8B8600"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar6DLatinSmallLetterMTex"
+offset = "8B8680"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar6ELatinSmallLetterNTex"
+offset = "8B8700"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar6FLatinSmallLetterOTex"
+offset = "8B8780"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar70LatinSmallLetterPTex"
+offset = "8B8800"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar71LatinSmallLetterQTex"
+offset = "8B8880"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar72LatinSmallLetterRTex"
+offset = "8B8900"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar73LatinSmallLetterSTex"
+offset = "8B8980"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar74LatinSmallLetterTTex"
+offset = "8B8A00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar75LatinSmallLetterUTex"
+offset = "8B8A80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar76LatinSmallLetterVTex"
+offset = "8B8B00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar77LatinSmallLetterWTex"
+offset = "8B8B80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar78LatinSmallLetterXTex"
+offset = "8B8C00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar79LatinSmallLetterYTex"
+offset = "8B8C80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar7ALatinSmallLetterZTex"
+offset = "8B8D00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar7BLeftCurlyBracketTex"
+offset = "8B8D80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar7CVerticalLineTex"
+offset = "8B8E00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar7DRightCurlyBracketTex"
+offset = "8B8E80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar7ETildeTex"
+offset = "8B8F00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar7FBlankTex"
+offset = "8B8F80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar80LatinCapitalLetterAWithGraveTex"
+offset = "8B9000"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar81LatinCapitalLetterIWithCircumflexTex"
+offset = "8B9080"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar82LatinCapitalLetterAWithCircumflexTex"
+offset = "8B9100"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar83LatinCapitalLetterAWithDiaeresisTex"
+offset = "8B9180"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar84LatinCapitalLetterCWithCedillaTex"
+offset = "8B9200"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar85LatinCapitalLetterEWithGraveTex"
+offset = "8B9280"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar86LatinCapitalLetterEWithAcuteTex"
+offset = "8B9300"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar87LatinCapitalLetterEWithCircumflexTex"
+offset = "8B9380"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar88LatinCapitalLetterEWithDiaeresisTex"
+offset = "8B9400"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar89LatinCapitalLetterIWithDiaeresisTex"
+offset = "8B9480"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar8ALatinCapitalLetterOWithCircumflexTex"
+offset = "8B9500"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar8BLatinCapitalLetterOWithDiaeresisTex"
+offset = "8B9580"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar8CLatinCapitalLetterUWithGraveTex"
+offset = "8B9600"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar8DLatinCapitalLetterUWithCircumflexTex"
+offset = "8B9680"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar8ELatinCapitalLetterUWithDiaeresisTex"
+offset = "8B9700"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar8FLatinSmallLetterSharpSTex"
+offset = "8B9780"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar90LatinSmallLetterAWithGraveTex"
+offset = "8B9800"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar91LatinSmallLetterAWithAcuteTex"
+offset = "8B9880"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar92LatinSmallLetterAWithCircumflexTex"
+offset = "8B9900"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar93LatinSmallLetterAWithDiaeresisTex"
+offset = "8B9980"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar94LatinSmallLetterCWithCedillaTex"
+offset = "8B9A00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar95LatinSmallLetterEWithGraveTex"
+offset = "8B9A80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar96LatinSmallLetterEWithAcuteTex"
+offset = "8B9B00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar97LatinSmallLetterEWithCircumflexTex"
+offset = "8B9B80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar98LatinSmallLetterEWithDiaeresisTex"
+offset = "8B9C00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar99LatinSmallLetterIWithDiaeresisTex"
+offset = "8B9C80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar9ALatinSmallLetterOWithCircumflexTex"
+offset = "8B9D00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar9BLatinSmallLetterOWithDiaeresisTex"
+offset = "8B9D80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar9CLatinSmallLetterUWithGraveTex"
+offset = "8B9E00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar9DLatinSmallLetterUWithCircumflexTex"
+offset = "8B9E80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar9ELatinSmallLetterUWithDiaeresisTex"
+offset = "8B9F00"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgChar9FButtonATex"
+offset = "8B9F80"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA0ButtonBTex"
+offset = "8BA000"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA1ButtonCTex"
+offset = "8BA080"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA2ButtonLTex"
+offset = "8BA100"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA3ButtonRTex"
+offset = "8BA180"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA4ButtonZTex"
+offset = "8BA200"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA5ButtonCUpTex"
+offset = "8BA280"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA6ButtonCDownTex"
+offset = "8BA300"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA7ButtonCLeftTex"
+offset = "8BA380"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA8ButtonCRightTex"
+offset = "8BA400"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharA9ZTargetSignTex"
+offset = "8BA480"
+format = "I4"
+size = [16, 16]
+
+[[group.texture]]
+name = "gMsgCharAAControlStickTex"
+offset = "8BA500"
+format = "I4"
+size = [16, 16]
+
+[[group]]
+path = "textures/do_action_static"
+
+[[group.texture]]
+name = "gAttackDoActionENGTex"
+offset = "8A6000"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gCheckDoActionENGTex"
+offset = "8A6180"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gEnterDoActionENGTex"
+offset = "8A6300"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gReturnDoActionENGTex"
+offset = "8A6480"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gOpenDoActionENGTex"
+offset = "8A6600"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gJumpDoActionENGTex"
+offset = "8A6780"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gDecideDoActionENGTex"
+offset = "8A6900"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gDiveDoActionENGTex"
+offset = "8A6A80"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFasterDoActionENGTex"
+offset = "8A6C00"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gThrowDoActionENGTex"
+offset = "8A6D80"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gClimbDoActionENGTex"
+offset = "8A7080"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gDropDoActionENGTex"
+offset = "8A7200"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gDownDoActionENGTex"
+offset = "8A7380"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gSaveDoActionENGTex"
+offset = "8A7500"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gSpeakDoActionENGTex"
+offset = "8A7680"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gNextDoActionENGTex"
+offset = "8A7800"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gGrabDoActionENGTex"
+offset = "8A7980"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gStopDoActionENGTex"
+offset = "8A7B00"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gPutAwayDoActionENGTex"
+offset = "8A7C80"
+format = "IA4"
+size = [48, 16]
+
+[[group.texture]]
+name = "gReelDoActionENGTex"
+offset = "8A7E00"
+format = "IA4"
+size = [48, 16]
+
+[[group]]
+path = "textures/g_pn_01"
+
+[[group.texture]]
+name = "gForestTempleTitleCardENGTex"
+offset = "1992000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_02"
+
+[[group.texture]]
+name = "gShadowTempleTitleCardENGTex"
+offset = "1995000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_03"
+
+[[group.texture]]
+name = "gFireTempleTitleCardENGTex"
+offset = "1998000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_04"
+
+[[group.texture]]
+name = "gWaterTempleTitleCardENGTex"
+offset = "199B000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_05"
+
+[[group.texture]]
+name = "gSpiritTempleTitleCardENGTex"
+offset = "199E000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_06"
+
+[[group.texture]]
+name = "gDekuTreeTitleCardENGTex"
+offset = "19A1000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_07"
+
+[[group.texture]]
+name = "gJabuJabuTitleCardENGTex"
+offset = "19A4000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_08"
+
+[[group.texture]]
+name = "gDodongosCavernTitleCardENGTex"
+offset = "19A7000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_09"
+
+[[group.texture]]
+name = "gInsideGanonsCastleTitleCardENGTex"
+offset = "19AA000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_10"
+
+[[group.texture]]
+name = "gIceCavernTitleCardENGTex"
+offset = "19AD000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_11"
+
+[[group.texture]]
+name = "gGERudoTrainingGroundTitleCardENGTex"
+offset = "19B0000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_12"
+
+[[group.texture]]
+name = "gCastleCourtyardTitleCardENGTex"
+offset = "19B3000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_13"
+
+[[group.texture]]
+name = "gGreatFairysFountainTitleCardENGTex"
+offset = "19B6000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_14"
+
+[[group.texture]]
+name = "gChamberOfTheSagesTitleCardENGTex"
+offset = "19B9000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_15"
+
+[[group.texture]]
+name = "gShootingGalleryTitleCardENGTex"
+offset = "19BC000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_16"
+
+[[group.texture]]
+name = "gTempleOfTimeTitleCardENGTex"
+offset = "19BF000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_17"
+
+[[group.texture]]
+name = "gMarketTitleCardENGTex"
+offset = "19C2000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_18"
+
+[[group.texture]]
+name = "gBackAlleyTitleCardENGTex"
+offset = "19C5000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_19"
+
+[[group.texture]]
+name = "gKokiriShopTitleCardENGTex"
+offset = "19C8000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_20"
+
+[[group.texture]]
+name = "gGoronShopTitleCardENGTex"
+offset = "19CB000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_21"
+
+[[group.texture]]
+name = "gZoraShopTitleCardENGTex"
+offset = "19CE000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_22"
+
+[[group.texture]]
+name = "gHouseOfSkulltulaTitleCardENGTex"
+offset = "19D1000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_23"
+
+[[group.texture]]
+name = "gBazaarTitleCardENGTex"
+offset = "19D4000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_24"
+
+[[group.texture]]
+name = "gPotionShopTitleCardENGTex"
+offset = "19D7000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_25"
+
+[[group.texture]]
+name = "gGravekeepersHutTitleCardENGTex"
+offset = "19DA000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_26"
+
+[[group.texture]]
+name = "gLakesideLaboratoryTitleCardENGTex"
+offset = "19DD000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_27"
+
+[[group.texture]]
+name = "gHyruleFieldTitleCardENGTex"
+offset = "19E0000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_28"
+
+[[group.texture]]
+name = "gKakarikoVillageTitleCardENGTex"
+offset = "19E3000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_29"
+
+[[group.texture]]
+name = "gGraveyardTitleCardENGTex"
+offset = "19E6000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_30"
+
+[[group.texture]]
+name = "gZorasRiverTitleCardENGTex"
+offset = "19E9000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_31"
+
+[[group.texture]]
+name = "gKokiriForestTitleCardENGTex"
+offset = "19EC000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_32"
+
+[[group.texture]]
+name = "gLakeHyliaTitleCardENGTex"
+offset = "19EF000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_33"
+
+[[group.texture]]
+name = "gZorasDomainTitleCardENGTex"
+offset = "19F2000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_34"
+
+[[group.texture]]
+name = "gZorasFountainTitleCardENGTex"
+offset = "19F5000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_35"
+
+[[group.texture]]
+name = "gGERudoValleyTitleCardENGTex"
+offset = "19F8000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_36"
+
+[[group.texture]]
+name = "gLostWoodsTitleCardENGTex"
+offset = "19FB000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_37"
+
+[[group.texture]]
+name = "gHauntedWastelandTitleCardENGTex"
+offset = "19FE000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_38"
+
+[[group.texture]]
+name = "gHyruleCastleTitleCardENGTex"
+offset = "1A01000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_39"
+
+[[group.texture]]
+name = "gDeathMountainTrailTitleCardENGTex"
+offset = "1A04000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_40"
+
+[[group.texture]]
+name = "gDeathMountainCraterTitleCardENGTex"
+offset = "1A07000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_41"
+
+[[group.texture]]
+name = "gGoronCityTitleCardENGTex"
+offset = "1A0A000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_42"
+
+[[group.texture]]
+name = "gLonLonRanchTitleCardENGTex"
+offset = "1A0D000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_43"
+
+[[group.texture]]
+name = "gGanonsCastleTitleCardENGTex"
+offset = "1A10000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_44"
+
+[[group.texture]]
+name = "gRoyalFamilysTombTitleCardENGTex"
+offset = "1A13000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_45"
+
+[[group.texture]]
+name = "gFairysFountainTitleCardENGTex"
+offset = "1A16000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_46"
+
+[[group.texture]]
+name = "gFishingPondTitleCardENGTex"
+offset = "1A19000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_47"
+
+[[group.texture]]
+name = "gBombchuBowlingAlleyCardENGTex"
+offset = "1A1C000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_48"
+
+[[group.texture]]
+name = "gStableTitleCardENGTex"
+offset = "1A1F000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_49"
+
+[[group.texture]]
+name = "gThievesHideoutTitleCardENGTex"
+offset = "1A22000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_50"
+
+[[group.texture]]
+name = "gHappyMaskShopTitleCardENGTex"
+offset = "1A25000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_51"
+
+[[group.texture]]
+name = "gTreasureBoxShopTitleCardENGTex"
+offset = "1A28000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_52"
+
+[[group.texture]]
+name = "gSacredForestMeadowTitleCardENGTex"
+offset = "1A2B000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_53"
+
+[[group.texture]]
+name = "gGERudosFortressTitleCardENGTex"
+offset = "1A2E000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_54"
+
+[[group.texture]]
+name = "gBottomOfTheWellTitleCardENGTex"
+offset = "1A31000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_55"
+
+[[group.texture]]
+name = "gDesertColossusTitleCardENGTex"
+offset = "1A34000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_56"
+
+[[group.texture]]
+name = "gBombchuShopTitleCardENGTex"
+offset = "1A37000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/g_pn_57"
+
+[[group.texture]]
+name = "gQuestionMarkTitleCardENGTex"
+offset = "1A3A000"
+format = "IA8"
+size = [144, 24]
+
+[[group]]
+path = "textures/map_name_static"
+
+[[group.texture]]
+name = "gHauntedWastelandPointNameENGTex"
+offset = "873000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGerudosFortressPointNameENGTex"
+offset = "873400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGerudoValleyPointNameENGTex"
+offset = "873800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gHyliaLakesidePointNameENGTex"
+offset = "873C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gLonLonRanchPointNameENGTex"
+offset = "874000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gMarketPointNameENGTex"
+offset = "874400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gHyruleFieldPointNameENGTex"
+offset = "874800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gDeathMountainPointNameENGTex"
+offset = "874C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gKakarikoVillagePointNameENGTex"
+offset = "875000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gLostWoodsPointNameENGTex"
+offset = "875400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gKokiriForestPointNameENGTex"
+offset = "875800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gZorasDomainPointNameENGTex"
+offset = "875C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gHyruleFieldPositionNameENGTex"
+offset = "87C000"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gKakarikoVillagePositionNameENGTex"
+offset = "87CA00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gGraveyardPositionNameENGTex"
+offset = "87D400"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gZorasRiverPositionNameENGTex"
+offset = "87DE00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gKokiriForestPositionNameENGTex"
+offset = "87E800"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gSacredForestMeadowPositionNameENGTex"
+offset = "87F200"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gLakeHyliaPositionNameENGTex"
+offset = "87FC00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gZorasDomainPositionNameENGTex"
+offset = "880600"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gZorasFountainPositionNameENGTex"
+offset = "881000"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gGerudoValleyPositionNameENGTex"
+offset = "881A00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gLostWoodsPositionNameENGTex"
+offset = "882400"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gDesertColossusPositionNameENGTex"
+offset = "882E00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gGerudosFortressPositionNameENGTex"
+offset = "883800"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gHauntedWastelandPositionNameENGTex"
+offset = "884200"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gMarketPositionNameENGTex"
+offset = "884C00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gHyruleCastlePositionNameENGTex"
+offset = "885600"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gDeathMountainTrailPositionNameENGTex"
+offset = "886000"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gDeathMountainCraterPositionNameENGTex"
+offset = "886A00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gGoronCityPositionNameENGTex"
+offset = "887400"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gLonLonRanchPositionNameENGTex"
+offset = "887E00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gQuestionMarkPositionNameENGTex"
+offset = "888800"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gGanonsCastlePositionNameENGTex"
+offset = "889200"
+format = "IA8"
+size = [80, 32]
+
+[[group]]
+path = "textures/icon_item_nes_static"
+
+[[group.texture]]
+name = "gPauseDekuTitleENGTex"
+offset = "7E9000"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseDodongoTitleENGTex"
+offset = "7E9600"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseJabuTitleENGTex"
+offset = "7E9C00"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseForestTitleENGTex"
+offset = "7EA200"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseFireTitleENGTex"
+offset = "7EA800"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseWaterTitleENGTex"
+offset = "7EAE00"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseSpiritTitleENGTex"
+offset = "7EB400"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseShadowTitleENGTex"
+offset = "7EBA00"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseBotWTitleENGTex"
+offset = "7EC000"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseIceCavernTitleENGTex"
+offset = "7EC600"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gPauseToEquipENGTex"
+offset = "7ECC00"
+format = "IA8"
+size = [56, 16]
+
+[[group.texture]]
+name = "gPauseToDecideENGTex"
+offset = "7ECF80"
+format = "IA8"
+size = [64, 16]
+
+[[group.texture]]
+name = "gPauseToPlayMelodyENGTex"
+offset = "7ED380"
+format = "IA8"
+size = [80, 16]
+
+[[group.texture]]
+name = "gPauseToSelectItemENGTex"
+offset = "7ED880"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPauseToMapENGTex"
+offset = "7EE080"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPauseToQuestStatusENGTex"
+offset = "7EE880"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPauseToEquipmentENGTex"
+offset = "7EF080"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPauseSavePromptENGTex"
+offset = "7EF880"
+format = "IA8"
+size = [152, 16]
+
+[[group.texture]]
+name = "gPauseSaveConfirmationENGTex"
+offset = "7F0200"
+format = "IA8"
+size = [152, 16]
+
+[[group.texture]]
+name = "gPauseYesENGTex"
+offset = "7F0B80"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gPauseNoENGTex"
+offset = "7F0E80"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gPauseCurrentPositionENGTex"
+offset = "7F1180"
+format = "I4"
+size = [64, 8]
+
+[[group.texture]]
+name = "gPauseEquipment10ENGTex"
+offset = "7F1280"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseSelectItem00ENGTex"
+offset = "7F1C80"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseSelectItem10ENGTex"
+offset = "7F2680"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseSelectItem20ENGTex"
+offset = "7F3080"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseMap10ENGTex"
+offset = "7F3A80"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseQuestStatus00ENGTex"
+offset = "7F4480"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseQuestStatus10ENGTex"
+offset = "7F4E80"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseQuestStatus20ENGTex"
+offset = "7F5880"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseSave10ENGTex"
+offset = "7F6280"
+format = "IA8"
+size = [80, 32]
+
+[[group]]
+path = "textures/icon_item_static"
+
+[[group.texture]]
+name = "gPauseEquipment00Tex"
+offset = "79D3C0"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseEquipment20Tex"
+offset = "79DDC0"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseSave00Tex"
+offset = "7A0FC0"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gPauseSave20Tex"
+offset = "7A19C0"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gItemIconBottleMilkFullTex"
+offset = "75B000"
+format = "RGBA32"
+size = [32, 32]
+
+[[group.texture]]
+name = "gItemIconBottleMilkHalfTex"
+offset = "760000"
+format = "RGBA32"
+size = [32, 32]
+
+[[group.texture]]
+name = "gItemIconSoldOutTex"
+offset = "76D000"
+format = "RGBA32"
+size = [32, 32]
+
+[[group]]
+path = "objects/object_gi_soldout"
+
+[[group.texture]]
+name = "object_gi_soldoutTex_000000"
+offset = "1799000"
+format = "IA8"
+size = [32, 32]
+
+[[group]]
+path = "textures/item_name_static"
+
+[[group.texture]]
+name = "gDekuStickItemNameENGTex"
+offset = "816000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gDekuNutItemNameENGTex"
+offset = "816400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBombItemNameENGTex"
+offset = "816800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFairyBowItemNameENGTex"
+offset = "816C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFireArrowItemNameENGTex"
+offset = "817000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gDinsFireItemNameENGTex"
+offset = "817400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFairySlingshotItemNameENGTex"
+offset = "817800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFairyOcarinaItemNameENGTex"
+offset = "817C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gOcarinaOfTimeItemNameENGTex"
+offset = "818000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBombchuItemNameENGTex"
+offset = "818400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gHookshotItemNameENGTex"
+offset = "818800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gLongshotItemNameENGTex"
+offset = "818C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gIceArrowItemNameENGTex"
+offset = "819000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFaroresWindItemNameENGTex"
+offset = "819400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBoomerangItemNameENGTex"
+offset = "819800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gLensItemNameENGTex"
+offset = "819C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gMagicBeansItemNameENGTex"
+offset = "81A000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gMegatonHammerItemNameENGTex"
+offset = "81A400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gLightArrowItemNameENGTex"
+offset = "81A800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gNayrusLoveItemNameENGTex"
+offset = "81AC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gEmptyBottleItemNameENGTex"
+offset = "81B000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gRedPotionItemNameENGTex"
+offset = "81B400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGreenPotionItemNameENGTex"
+offset = "81B800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBluePotionItemNameENGTex"
+offset = "81BC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBottledFairyItemNameENGTex"
+offset = "81C000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFishItemNameENGTex"
+offset = "81C400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFullMilkItemNameENGTex"
+offset = "81C800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gRutosLetterItemNameENGTex"
+offset = "81CC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBlueFireItemNameENGTex"
+offset = "81D000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBugItemNameENGTex"
+offset = "81D400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBigPoeItemNameENGTex"
+offset = "81D800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gHalfMilkItemNameENGTex"
+offset = "81DC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPoeItemNameENGTex"
+offset = "81E000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gWeirdEggItemNameENGTex"
+offset = "81E400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gCuccoItemNameENGTex"
+offset = "81E800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gZeldasLetterItemNameENGTex"
+offset = "81EC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gKeatonMaskItemNameENGTex"
+offset = "81F000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSkullMaskItemNameENGTex"
+offset = "81F400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSpookyMaskItemNameENGTex"
+offset = "81F800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBunnyHoodItemNameENGTex"
+offset = "81FC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGoronMaskItemNameENGTex"
+offset = "820000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gZoraMaskItemNameENGTex"
+offset = "820400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGerudoMaskItemNameENGTex"
+offset = "820800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gMaskofTruthItemNameENGTex"
+offset = "820C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSOLDOUTItemNameENGTex"
+offset = "821000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPocketEggItemNameENGTex"
+offset = "821400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPocketCuccoItemNameENGTex"
+offset = "821800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gCojiroItemNameENGTex"
+offset = "821C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gOddMushroomItemNameENGTex"
+offset = "822000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gOddPotionItemNameENGTex"
+offset = "822400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPoachersSawItemNameENGTex"
+offset = "822800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBrokenGoronsSwordItemNameENGTex"
+offset = "822C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPrescriptionItemNameENGTex"
+offset = "823000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gEyeBallFrogItemNameENGTex"
+offset = "823400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gEyeDropsItemNameENGTex"
+offset = "823800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gClaimCheckItemNameENGTex"
+offset = "823C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gKokiriSwordItemNameENGTex"
+offset = "824C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gMasterSwordItemNameENGTex"
+offset = "825000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGiantsKnifeItemNameENGTex"
+offset = "825400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gDekuShieldItemNameENGTex"
+offset = "825800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gHylianShieldItemNameENGTex"
+offset = "825C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gMirrorShieldItemNameENGTex"
+offset = "826000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gKokiriTunicItemNameENGTex"
+offset = "826400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGoronTunicItemNameENGTex"
+offset = "826800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gZoraTunicItemNameENGTex"
+offset = "826C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gKokiriBootsItemNameENGTex"
+offset = "827000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gIronBootsItemNameENGTex"
+offset = "827400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gHoverBootsItemNameENGTex"
+offset = "827800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBulletBag30ItemNameENGTex"
+offset = "827C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBulletBag40ItemNameENGTex"
+offset = "828000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBulletBag50ItemNameENGTex"
+offset = "828400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gQuiver30ItemNameENGTex"
+offset = "828800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gQuiver40ItemNameENGTex"
+offset = "828C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gQuiver50ItemNameENGTex"
+offset = "829000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBombBag20ItemNameENGTex"
+offset = "829400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBombBag30ItemNameENGTex"
+offset = "829800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBombBag40ItemNameENGTex"
+offset = "829C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGoronsBraceletItemNameENGTex"
+offset = "82A000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSilverGauntletsItemNameENGTex"
+offset = "82A400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGoldenGauntletsItemNameENGTex"
+offset = "82A800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSilverScaleItemNameENGTex"
+offset = "82AC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGoldenScaleItemNameENGTex"
+offset = "82B000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBrokenGiantsKnifeItemNameENGTex"
+offset = "82B400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gMinuetOfForestItemNameENGTex"
+offset = "82C800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBoleroOfFireItemNameENGTex"
+offset = "82CC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSerenadeOfWaterItemNameENGTex"
+offset = "82D000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gRequiemOfSpiritItemNameENGTex"
+offset = "82D400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gNocturneOfShadowItemNameENGTex"
+offset = "82D800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPreludeOfLightItemNameENGTex"
+offset = "82DC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gZeldasLullabyItemNameENGTex"
+offset = "82E000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gEponasSongItemNameENGTex"
+offset = "82E400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSariasSongItemNameENGTex"
+offset = "82E800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSunsSongItemNameENGTex"
+offset = "82EC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSongOfTimeItemNameENGTex"
+offset = "82F000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSongOfStormsItemNameENGTex"
+offset = "82F400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gForestMedallionItemNameENGTex"
+offset = "82F800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFireMedallionItemNameENGTex"
+offset = "82FC00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gWaterMedallionItemNameENGTex"
+offset = "830000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gSpiritMedallionItemNameENGTex"
+offset = "830400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gShadowMedallionItemNameENGTex"
+offset = "830800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gLightMedallionItemNameENGTex"
+offset = "830C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gKokiriEmeraldItemNameENGTex"
+offset = "831000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGoronsRubyItemNameENGTex"
+offset = "831400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gZorasSapphireItemNameENGTex"
+offset = "831800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gStoneofAgonyItemNameENGTex"
+offset = "831C00"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGerudosCardItemNameENGTex"
+offset = "832000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gGoldSkulltulaItemNameENGTex"
+offset = "832400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gPieceOfHeartItemNameENGTex"
+offset = "832800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gUnusedBigKeyItemNameENGTex"
+offset = "833000"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gCompassItemNameENGTex"
+offset = "833400"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gDungeonMapItemNameENGTex"
+offset = "833800"
+format = "IA4"
+size = [128, 16]
+
+[[group.texture]]
+name = "gBiggoronsSwordItemNameENGTex"
+offset = "834800"
+format = "IA4"
+size = [128, 16]
+
+[[group]]
+path = "textures/icon_item_gameover_static"
+
+[[group.texture]]
+name = "gGameOverP1Tex"
+offset = "7E5000"
+format = "IA8"
+size = [64, 32]
+
+[[group.texture]]
+name = "gGameOverP2Tex"
+offset = "7E5800"
+format = "IA8"
+size = [64, 32]
+
+[[group.texture]]
+name = "gGameOverP3Tex"
+offset = "7E6000"
+format = "IA8"
+size = [64, 32]
+
+[[group.texture]]
+name = "gContinuePlayingENGTex"
+offset = "7E7000"
+format = "IA8"
+size = [152, 16]
+
+[[group]]
+path = "textures/parameter_static"
+
+[[group.texture]]
+name = "gNaviCUpENGTex"
+offset = "1A93FC0"
+format = "IA4"
+size = [32, 8]
+
+[[group]]
+path = "textures/object_bv"
+
+[[group.texture]]
+name = "gBarinadeTitleCardENGTex"
+offset = "1340230"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_sst"
+
+[[group.texture]]
+name = "gBongoTitleCardENGTex"
+offset = "15F3D80"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_ganon"
+
+[[group.texture]]
+name = "gGanondorfTitleCardENGTex"
+offset = "15DAF00"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_ganon2"
+
+[[group.texture]]
+name = "gGanonTitleCardENGTex"
+offset = "1812A90"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_goma"
+
+[[group.texture]]
+name = "gGohmaTitleCardENGTex"
+offset = "10BEBA8"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_kingdodongo"
+
+[[group.texture]]
+name = "gKingDodongoTitleCardENGTex"
+offset = "1066410"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_mo"
+
+[[group.texture]]
+name = "gMorphaTitleCardENGTex"
+offset = "14AE010"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_fhg"
+
+[[group.texture]]
+name = "gPhantomGanonTitleCardENGTex"
+offset = "123A9A0"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_tw"
+
+[[group.texture]]
+name = "gTwinrovaTitleCardENGTex"
+offset = "15A1170"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "textures/object_fd"
+
+[[group.texture]]
+name = "gVolvagiaBossTitleCardENGTex"
+offset = "13D6700"
+format = "IA8"
+size = [128, 40]
+
+[[group]]
+path = "overlays/ovl_End_Title"
+
+[[group.texture]]
+name = "sOcarinaOfTimeTex"
+offset = "E97850"
+format = "IA8"
+size = [112, 16]
+
+[[group.texture]]
+name = "sTheEndTex"
+offset = "E97F50"
+format = "IA8"
+size = [80, 24]
+
+[[group.texture]]
+name = "sPresentedByTex"
+offset = "E99ED0"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "sNintendoLeftTex"
+offset = "E986D0"
+format = "IA8"
+size = [64, 48]
+
+[[group.texture]]
+name = "sNintendoRightTex"
+offset = "E992D0"
+format = "IA8"
+size = [64, 48]
+
+[[group.texture]]
+name = "sTheLegendOfZeldaTex"
+offset = "E96D10"
+format = "IA8"
+size = [120, 24]
+
+[[group]]
+path = "textures/icon_item_dungeon_static"
+
+[[group.texture]]
+name = "gDungeonMap1FButtonTex"
+offset = "7E3180"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMap2FButtonTex"
+offset = "7E3300"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMap3FButtonTex"
+offset = "7E3480"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMap4FButtonTex"
+offset = "7E3600"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMap5FButtonTex"
+offset = "7E3780"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMap6FButtonTex"
+offset = "7E3900"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMap7FButtonTex"
+offset = "7E3A80"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMap8FButtonTex"
+offset = "7E3C00"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB1ButtonTex"
+offset = "7E3D80"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB2ButtonTex"
+offset = "7E3F00"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB3ButtonTex"
+offset = "7E4080"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB4ButtonTex"
+offset = "7E4200"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB5ButtonTex"
+offset = "7E4380"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB6ButtonTex"
+offset = "7E4500"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB7ButtonTex"
+offset = "7E4680"
+format = "IA8"
+size = [24, 16]
+
+[[group.texture]]
+name = "gDungeonMapB8ButtonTex"
+offset = "7E4800"
+format = "IA8"
+size = [24, 16]
+
+[[group]]
+path = "textures/title_static"
+
+[[group.texture]]
+name = "gFileSelCheckBrightnessENGNTSCTex"
+offset = "3100000"
+format = "IA8"
+size = [96, 16]
+
+[[group.texture]]
+name = "gFileSelLangEnglishLargeENGTex"
+offset = "1A8B300"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gFileSelLangEnglishLargeGERTex"
+offset = "1A8BD00"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gFileSelLangEnglishLargeFRATex"
+offset = "1A8C700"
+format = "IA8"
+size = [80, 32]
+
+[[group.texture]]
+name = "gFileSelSelectYourLanguageENGTex"
+offset = "1A8D1A0"
+format = "IA8"
+size = [160, 20]
+
+[[group.texture]]
+name = "gFileSelSelectYourLanguageFRATex"
+offset = "1A8EAA0"
+format = "IA8"
+size = [160, 20]
+
+[[group.texture]]
+name = "gFileSelSelectYourLanguageGERTex"
+offset = "1A8DE20"
+format = "IA8"
+size = [160, 20]
+
+[[group.texture]]
+name = "gFileSelCheckBrightnessENGTex"
+offset = "1A47B80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelCheckBrightnessGERTex"
+offset = "1A48380"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelCheckBrightnessFRETex"
+offset = "1A48B80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelNoFileToCopyENGTex"
+offset = "1A67580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelNoFileToEraseENGTex"
+offset = "1A67D80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelNoEmptyFileENGTex"
+offset = "1A68580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelFileEmptyENGTex"
+offset = "1A68D80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelFileInUseENGTex"
+offset = "1A69580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelCopyWhichFileENGTex"
+offset = "1A69D80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelCopyToWhichFileENGTex"
+offset = "1A6A580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelAreYouSureENGTex"
+offset = "1A6AD80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelFileCopiedENGTex"
+offset = "1A6B580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelPleaseSelectAFileENGTex"
+offset = "1A6BD80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelOpenThisFileENGTex"
+offset = "1A6C580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelEraseWhichFileENGTex"
+offset = "1A6CD80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelAreYouSure2ENGTex"
+offset = "1A6D580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelFileErasedENGTex"
+offset = "1A6DD80"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelOptionsENGTex"
+offset = "1A6E580"
+format = "IA8"
+size = [128, 16]
+
+[[group.texture]]
+name = "gFileSelNameENGTex"
+offset = "1A6ED80"
+format = "IA8"
+size = [56, 16]
+
+[[group.texture]]
+name = "gFileSelControlsENGTex"
+offset = "1A6F100"
+format = "IA8"
+size = [144, 16]
+
+[[group.texture]]
+name = "gFileSelCopyButtonENGTex"
+offset = "1A6FA00"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelFile1ButtonENGTex"
+offset = "1A70200"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelFile2ButtonENGTex"
+offset = "1A70A00"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelFile3ButtonENGTex"
+offset = "1A71200"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelYesButtonENGTex"
+offset = "1A71A00"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelEraseButtonENGTex"
+offset = "1A72200"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelOptionsButtonENGTex"
+offset = "1A72A00"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelQuitButtonENGTex"
+offset = "1A73A00"
+format = "IA16"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelLanguageENGTex"
+offset = "1A49C80"
+format = "IA8"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelLanguageGERTex"
+offset = "1A4A080"
+format = "IA8"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelLTargetingENGTex"
+offset = "1A45480"
+format = "IA8"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelLTargetingGERTex"
+offset = "1A45880"
+format = "IA8"
+size = [144, 16]
+
+[[group.texture]]
+name = "gFileSelSOUNDENGTex"
+offset = "1A44680"
+format = "IA8"
+size = [64, 16]
+
+[[group.texture]]
+name = "gFileSelENDButtonENGTex"
+offset = "1A5E300"
+format = "IA16"
+size = [44, 16]
+
+[[group.texture]]
+name = "gFileSelDISKButtonTex"
+offset = "1A64E00"
+format = "IA16"
+size = [44, 16]
+
+[[group.texture]]
+name = "gFileSelHeadsetENGTex"
+offset = "1A43A80"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelHeadsetGERTex"
+offset = "1A43D80"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelMonoENGTex"
+offset = "1A44380"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelStereoENGTex"
+offset = "1A44E80"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelSurroundENGTex"
+offset = "1A43780"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelHoldENGTex"
+offset = "1A47080"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelSwitchENGTex"
+offset = "1A46580"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelLangDeutschGERTex"
+offset = "1A49680"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelLangEnglishENGTex"
+offset = "1A49380"
+format = "IA8"
+size = [48, 16]
+
+[[group.texture]]
+name = "gFileSelLangFrancaisFRATex"
+offset = "1A49980"
+format = "IA8"
+size = [48, 16]

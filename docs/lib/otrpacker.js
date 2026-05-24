@@ -400,7 +400,7 @@
         return makeResource(TYPE_TEXT, 0, concat([countBuf, raw]));
     }
 
-    // --- Script parser ---
+    // --- TOML manifest parser ---
 
     function hexToBytes(hexStr) {
         const buf = new Uint8Array(hexStr.length / 2);
@@ -410,98 +410,228 @@
 
     function joinPath(...parts) { return parts.filter(Boolean).join('/'); }
 
-    function runScript(imageData, scriptText) {
-        const lines     = scriptText.split(/\r?\n/);
-        const variables = new Map(); // name -> Uint8Array
-        const settings  = new Map(); // key -> string
-        let   subdir    = '';
-        const resources = new Map(); // path -> Uint8Array
+    function stripTomlComment(line) {
+        let inString = false;
+        let escaped = false;
+        for (let i = 0; i < line.length; i++) {
+            const ch = line[i];
+            if (escaped) {
+                escaped = false;
+            } else if (ch === '\\' && inString) {
+                escaped = true;
+            } else if (ch === '"') {
+                inString = !inString;
+            } else if (ch === '#' && !inString) {
+                return line.slice(0, i);
+            }
+        }
+        return line;
+    }
 
-        function outPath(words) { return joinPath(subdir, words[words.length - 1]); }
+    function parseTomlString(value) {
+        return JSON.parse(value);
+    }
 
-        function extractTexture(fmtName, offsetStr) {
-            const fmt = PIXEL_FORMATS[fmtName];
-            if (fmt === undefined) throw new Error('Okänt pixelformat: ' + fmtName);
-            const addHRaw = (settings.get('AddH') || 'true').toLowerCase();
-            const useHeader = addHRaw !== 'false' && addHRaw !== '0';
-            const texS = settings.get('TexS');
-            if (!texS) throw new Error("'TexS' saknas – sätt det med: Set TexS BREDDxHÖJD");
-            const [w, h] = texS.split('x').map(Number);
-            const start  = parseInt(offsetStr, 16);
-            const length = pixelByteCount(fmt, w * h);
-            const pixels = imageData.slice(start, start + length);
-            return useHeader ? packTexture(fmt, w, h, pixels) : pixels;
+    function parseTomlValue(value, lineNum) {
+        value = value.trim();
+        if (value.startsWith('"')) return parseTomlString(value);
+        if (value === 'true') return true;
+        if (value === 'false') return false;
+        if (value.startsWith('[') && value.endsWith(']')) {
+            const inner = value.slice(1, -1).trim();
+            if (!inner) return [];
+            return inner.split(',').map(part => {
+                const item = part.trim();
+                return item.startsWith('"') ? parseTomlString(item) : Number(item);
+            });
+        }
+        const numberValue = Number(value);
+        if (!Number.isNaN(numberValue)) return numberValue;
+        throw new Error(`Okänt TOML-värde på rad ${lineNum}: ${value}`);
+    }
+
+    function parseTomlManifest(tomlText) {
+        const manifest = { group: [], text: [] };
+        let current = manifest;
+        let currentGroup = null;
+        let currentText = null;
+
+        const lines = tomlText.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
+        for (let lineNum = 1; lineNum <= lines.length; lineNum++) {
+            const line = stripTomlComment(lines[lineNum - 1]).trim();
+            if (!line) continue;
+
+            if (line === '[[group]]') {
+                currentGroup = { texture: [] };
+                manifest.group.push(currentGroup);
+                current = currentGroup;
+                continue;
+            }
+            if (line === '[[group.texture]]') {
+                if (!currentGroup) throw new Error(`group.texture utan group på rad ${lineNum}`);
+                const texture = {};
+                currentGroup.texture.push(texture);
+                current = texture;
+                continue;
+            }
+            if (line === '[[text]]') {
+                currentText = { replacement: [] };
+                manifest.text.push(currentText);
+                current = currentText;
+                continue;
+            }
+            if (line === '[[text.replacement]]') {
+                if (!currentText) throw new Error(`text.replacement utan text på rad ${lineNum}`);
+                const replacement = {};
+                currentText.replacement.push(replacement);
+                current = replacement;
+                continue;
+            }
+
+            const match = line.match(/^([A-Za-z0-9_]+)\s*=\s*(.+)$/);
+            if (!match) throw new Error(`Ogiltig TOML-rad ${lineNum}: ${line}`);
+            current[match[1]] = parseTomlValue(match[2], lineNum);
         }
 
-        for (let lineNum = 1; lineNum <= lines.length; lineNum++) {
-            const line = lines[lineNum - 1].trim();
-            if (!line || line.startsWith('#')) continue;
-            const words  = line.split(/\s+/);
-            const action = words[0];
-            try {
-                if (action === 'Get') {
-                    const start = parseInt(words[2], 16);
-                    const len   = parseInt(words[3], 16);
-                    variables.set(words[1], imageData.slice(start, start + len));
+        return manifest;
+    }
 
-                } else if (action === 'Rep') {
-                    const oldB  = hexToBytes(words[2]);
-                    const newB  = hexToBytes(words[3]);
-                    let   arr   = Array.from(variables.get(words[1]));
-                    const n     = oldB.length;
-                    let   i     = 0;
-                    while (i <= arr.length - n) {
-                        let match = true;
-                        for (let j = 0; j < n; j++) if (arr[i + j] !== oldB[j]) { match = false; break; }
-                        if (match) arr.splice(i, n, ...Array.from(newB));
-                        i++;
-                    }
-                    variables.set(words[1], new Uint8Array(arr));
+    function readRomSlice(imageData, offsetStr, lengthStr, label) {
+        const start = parseInt(offsetStr, 16);
+        const length = parseInt(lengthStr, 16);
+        const end = start + length;
+        if (start < 0 || end > imageData.length) {
+            throw new Error(`${label}: offset ${offsetStr} med längd ${lengthStr} ligger utanför ROM:en`);
+        }
+        return imageData.slice(start, end);
+    }
 
-                } else if (action === 'Set') {
-                    settings.set(words[1], words.slice(2).join(' '));
+    function replaceAllBytes(data, oldHex, newHex) {
+        const oldB = hexToBytes(oldHex);
+        const newB = hexToBytes(newHex);
+        if (!oldB.length) throw new Error('replacement.old får inte vara tom');
 
-                } else if (action === 'Mrg') {
-                    const addChars = words[3].toLowerCase() === 'true';
-                    resources.set(
-                        outPath(words),
-                        packText(variables.get(words[1]), variables.get(words[2]), addChars)
-                    );
+        const arr = Array.from(data);
+        let i = 0;
+        while (i <= arr.length - oldB.length) {
+            let match = true;
+            for (let j = 0; j < oldB.length; j++) {
+                if (arr[i + j] !== oldB[j]) { match = false; break; }
+            }
+            if (match) {
+                arr.splice(i, oldB.length, ...Array.from(newB));
+                i += newB.length;
+            } else {
+                i++;
+            }
+        }
+        return new Uint8Array(arr);
+    }
 
-                } else if (action === 'Dir') {
-                    subdir = words.length > 1 ? words.slice(1).join('/') : '';
+    function expectString(table, key, label) {
+        const value = table[key];
+        if (typeof value !== 'string' || !value) throw new Error(`${label}: saknar strängfältet '${key}'`);
+        return value;
+    }
 
-                } else if (action === 'Exp') {
-                    if (PIXEL_FORMATS[words[1]] !== undefined) {
-                        resources.set(outPath(words), extractTexture(words[1], words[2]));
-                    } else {
-                        throw new Error('Okänt Exp-format: ' + words[1]);
-                    }
+    function expectBool(table, key, defaultValue, label) {
+        const value = table[key] === undefined ? defaultValue : table[key];
+        if (typeof value !== 'boolean') throw new Error(`${label}: '${key}' måste vara true eller false`);
+        return value;
+    }
 
-                } else {
-                    throw new Error('Okänd instruktion: ' + action);
-                }
-            } catch (e) {
-                throw new Error(`Fel på rad ${lineNum} (${JSON.stringify(line)}): ${e.message}`);
+    function expectSize(table, label) {
+        const value = table.size;
+        if (!Array.isArray(value) || value.length !== 2 || !value.every(Number.isInteger)) {
+            throw new Error(`${label}: 'size' måste vara [bredd, höjd]`);
+        }
+        if (value[0] <= 0 || value[1] <= 0) throw new Error(`${label}: 'size' måste vara positiv`);
+        return value;
+    }
+
+    function packTextureFromManifest(imageData, texture, label) {
+        const name = expectString(texture, 'name', label);
+        const fmtName = expectString(texture, 'format', label);
+        const offset = expectString(texture, 'offset', label);
+        const [w, h] = expectSize(texture, label);
+        const addHeader = expectBool(texture, 'add_header', true, label);
+
+        const fmt = PIXEL_FORMATS[fmtName];
+        if (fmt === undefined) throw new Error(`${label}: okänt texturformat '${fmtName}'`);
+
+        const start = parseInt(offset, 16);
+        const length = pixelByteCount(fmt, w * h);
+        const end = start + length;
+        if (start < 0 || end > imageData.length) throw new Error(`${label}: texturen '${name}' ligger utanför ROM:en`);
+
+        const pixels = imageData.slice(start, end);
+        return addHeader ? packTexture(fmt, w, h, pixels) : pixels;
+    }
+
+    function runManifest(imageData, manifestText) {
+        const manifest = parseTomlManifest(manifestText);
+        const resources = new Map();
+        const otrName = manifest.output || 'Mod.otr';
+
+        for (let i = 0; i < manifest.text.length; i++) {
+            const text = manifest.text[i];
+            const label = `text #${i + 1}`;
+            const path = expectString(text, 'path', label);
+            const name = expectString(text, 'name', label);
+
+            let msgData = readRomSlice(
+                imageData,
+                expectString(text, 'messages_offset', label),
+                expectString(text, 'messages_length', label),
+                `${label} messages`
+            );
+            const tableData = readRomSlice(
+                imageData,
+                expectString(text, 'table_offset', label),
+                expectString(text, 'table_length', label),
+                `${label} table`
+            );
+
+            for (let r = 0; r < text.replacement.length; r++) {
+                const replacement = text.replacement[r];
+                const repLabel = `${label}.replacement #${r + 1}`;
+                msgData = replaceAllBytes(
+                    msgData,
+                    expectString(replacement, 'old', repLabel),
+                    expectString(replacement, 'new', repLabel)
+                );
+            }
+
+            const addCharset = expectBool(text, 'add_charset', true, label);
+            resources.set(joinPath(path, name), packText(msgData, tableData, addCharset));
+        }
+
+        for (let g = 0; g < manifest.group.length; g++) {
+            const group = manifest.group[g];
+            const groupLabel = `group #${g + 1}`;
+            const path = expectString(group, 'path', groupLabel);
+            const textures = Array.isArray(group.texture) ? group.texture : [];
+
+            for (let t = 0; t < textures.length; t++) {
+                const texture = textures[t];
+                const texLabel = `${groupLabel}.texture #${t + 1}`;
+                const name = expectString(texture, 'name', texLabel);
+                resources.set(joinPath(path, name), packTextureFromManifest(imageData, texture, texLabel));
             }
         }
 
-        return {
-            resources,
-            otrName: settings.get('OTRFileName') || 'Mod.otr',
-        };
+        return { resources, otrName };
     }
-
     // --- Public API ---
 
     /**
-     * Build an OTR archive from decompressed ROM data and a script.
+     * Build an OTR archive from decompressed ROM data and a TOML manifest.
      * @param {Uint8Array} romData      - Decompressed ROM
-     * @param {string}     scriptText   - Contents of OTRPacker.txt
+     * @param {string}     manifestText - Contents of the TOML manifest
      * @returns {{ data: Uint8Array, name: string }}
      */
-    async function buildOtr(romData, scriptText) {
-        const { resources, otrName } = runScript(romData, scriptText);
+    async function buildOtr(romData, manifestText) {
+        const { resources, otrName } = runManifest(romData, manifestText);
         return { data: await buildArchive(resources), name: otrName };
     }
 

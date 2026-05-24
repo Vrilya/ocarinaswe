@@ -434,55 +434,55 @@
             name: 'PAL v1.0',
             description: 'PAL (Europa) version 1.0',
             patch: 'Tidens_okarina-PAL10.xdelta',
-            script: 'scriptfiles/pal10.txt'
+            script: 'scriptfiles/pal10.toml'
         },
         'd714580dd74c2c033f5e1b6dc0aeac77': {
             name: 'PAL v1.1',
             description: 'PAL (Europa) version 1.1',
             patch: 'Tidens_okarina-PAL11.xdelta',
-            script: 'scriptfiles/pal11.txt'
+            script: 'scriptfiles/pal11.toml'
         },
         '2c27b4e000e85fd78dbca551f1b1c965': {
             name: 'PAL GC',
             description: 'PAL GameCube',
             patch: 'Tidens_okarina-PALGC.xdelta',
-            script: 'scriptfiles/palgc.txt'
+            script: 'scriptfiles/palgc.toml'
         },
         '1618403427e4344a57833043db5ce3c3': {
             name: 'PAL GC Master Quest',
             description: 'PAL GameCube Master Quest',
             patch: 'Tidens_okarina-PALMQ.xdelta',
-            script: 'scriptfiles/palmq.txt'
+            script: 'scriptfiles/palmq.toml'
         },
         '5bd1fe107bf8106b2ab6650abecd54d6': {
             name: 'NTSC v1.0',
             description: 'NTSC (USA/Japan) version 1.0',
             patch: 'Tidens_okarina-NTSC10.xdelta',
-            script: 'scriptfiles/ntsc10.txt'
+            script: 'scriptfiles/ntsc10.toml'
         },
         '721fdcc6f5f34be55c43a807f2a16af4': {
             name: 'NTSC Rev 1 (v1.1)',
             description: 'NTSC (USA/Japan) version 1.1',
             patch: 'Tidens_okarina-NTSC11.xdelta',
-            script: 'scriptfiles/ntsc11.txt'
+            script: 'scriptfiles/ntsc11.toml'
         },
         '57a9719ad547c516342e1a15d5c28c3d': {
             name: 'NTSC Rev 2 (v1.2)',
             description: 'NTSC (USA/Japan) version 1.2',
             patch: 'Tidens_okarina-NTSC12.xdelta',
-            script: 'scriptfiles/ntsc12.txt'
+            script: 'scriptfiles/ntsc12.toml'
         },
         'cd09029edcfb7c097ac01986a0f83d3f': {
             name: 'NTSC GC',
             description: 'NTSC GameCube',
             patch: 'Tidens_okarina-NTSCGC.xdelta',
-            script: 'scriptfiles/ntscgc.txt'
+            script: 'scriptfiles/ntscgc.toml'
         },
         'da35577fe54579f6a266931cc75f512d': {
             name: 'NTSC GC Master Quest',
             description: 'NTSC GameCube Master Quest',
             patch: 'Tidens_okarina-NTSCMQ.xdelta',
-            script: 'scriptfiles/ntscmq.txt'
+            script: 'scriptfiles/ntscmq.toml'
         }
     };
 
@@ -662,10 +662,10 @@
             console.log('Patch applicerad. Storlek:', patchedData.length, 'bytes');
             setProgress(0.4);
 
-            setStatus('Laddar skriptfil...');
+            setStatus('Laddar TOML-settings...');
             const scriptResponse = await fetch(version.script);
-            if (!scriptResponse.ok) throw new Error('Kunde inte ladda skriptfil: HTTP ' + scriptResponse.status);
-            const scriptText = await scriptResponse.text();
+            if (!scriptResponse.ok) throw new Error('Kunde inte ladda TOML-settings: HTTP ' + scriptResponse.status);
+            const manifestText = await scriptResponse.text();
             setProgress(0.5);
 
             setStatus('Dekomprimerar Tidens okarina ROM...');
@@ -685,7 +685,7 @@
             console.log('Dekomprimerad. Version:', detectedVersion);
 
             setStatus('Genererar OTR-arkiv...');
-            const { data: otrData, name: otrName } = await buildOtr(decompData, scriptText);
+            const { data: otrData, name: otrName } = await buildOtr(decompData, manifestText);
             setProgress(1);
 
             const blob = new Blob([otrData], { type: 'application/octet-stream' });
