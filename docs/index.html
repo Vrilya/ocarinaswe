@@ -353,26 +353,26 @@
 			font-size: 14px;
 		}
 
-		.variant-choices {
+		.ique-choices {
 			margin: 12px 0 0;
 			display: none;
 		}
 
-		.variant-choices.show {
+		.ique-choices.show {
 			display: block;
 		}
 
-		.variant-button-group {
+		.ique-button-group {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			gap: 10px;
 		}
 
-		.variant-button-group + .variant-button-group {
+		.ique-button-group + .ique-button-group {
 			margin-top: 10px;
 		}
 
-		.variant-choice-btn {
+		.ique-choice-btn {
 			background: #f8fafc;
 			color: #2d3748;
 			border: 2px solid #cbd5e0;
@@ -384,12 +384,12 @@
 			transition: all 0.2s ease;
 		}
 
-		.variant-choice-btn:hover {
+		.ique-choice-btn:hover {
 			border-color: #667eea;
 			background: #edf2ff;
 		}
 
-		.variant-choice-btn.selected {
+		.ique-choice-btn.selected {
 			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 			border-color: #667eea;
 			color: white;
@@ -410,7 +410,7 @@
 			margin-top: 20px;
 		}
 
-		.variant-choices.show ~ .btn {
+		.ique-choices.show + .btn {
 			margin-top: 10px;
 		}
 
@@ -489,21 +489,14 @@
 			<p id="versionDetails"></p>
 		</div>
 
-		<div id="iqueChoices" class="variant-choices">
-			<div class="variant-button-group">
-				<button type="button" class="variant-choice-btn ique-choice-btn" data-choice-group="game" data-choice="oot">Vanlig OoT</button>
-				<button type="button" class="variant-choice-btn ique-choice-btn" data-choice-group="game" data-choice="mq">Master Quest</button>
+		<div id="iqueChoices" class="ique-choices">
+			<div class="ique-button-group">
+				<button type="button" class="ique-choice-btn" data-choice-group="game" data-choice="oot">Vanlig OoT</button>
+				<button type="button" class="ique-choice-btn" data-choice-group="game" data-choice="mq">Master Quest</button>
 			</div>
-			<div class="variant-button-group">
-				<button type="button" class="variant-choice-btn ique-choice-btn" data-choice-group="region" data-choice="pal">PAL</button>
-				<button type="button" class="variant-choice-btn ique-choice-btn" data-choice-group="region" data-choice="ntsc">NTSC</button>
-			</div>
-		</div>
-
-		<div id="ntsc12Choices" class="variant-choices">
-			<div class="variant-button-group">
-				<button type="button" class="variant-choice-btn ntsc12-choice-btn" data-choice="standard">Vanlig</button>
-				<button type="button" class="variant-choice-btn ntsc12-choice-btn" data-choice="selector">Med VI-selektor</button>
+			<div class="ique-button-group">
+				<button type="button" class="ique-choice-btn" data-choice-group="region" data-choice="pal">PAL</button>
+				<button type="button" class="ique-choice-btn" data-choice-group="region" data-choice="ntsc">NTSC</button>
 			</div>
 		</div>
 
@@ -543,8 +536,7 @@
 				</li>
 				<li>
 					<strong>NTSC Rev 2 (v1.2)</strong> (USA/JP version 1.2)<br>
-					MD5: <code>57a9719ad547c516342e1a15d5c28c3d</code><br>
-					Val: vanlig eller med VI-selektor
+					MD5: <code>57a9719ad547c516342e1a15d5c28c3d</code>
 				</li>
 				<li>
 					<strong>NTSC GC</strong> (USA/JP GameCube)<br>
@@ -561,7 +553,7 @@
 			</ul>
 			<p>
 				Patchern identifierar automatiskt din ROM-version genom att beräkna MD5-checksumman 
-				och väljer sedan rätt patch-fil. För iQue och NTSC v1.2 behöver du även välja variant.
+				och väljer sedan rätt patch-fil. Du behöver inte göra något annat än att välja din ROM-fil.
 			</p>
 		</div>
 	</div>
@@ -607,20 +599,9 @@
 			},
 			'57a9719ad547c516342e1a15d5c28c3d': {
 				name: 'NTSC Rev 2 (v1.2)',
+				patch: 'Tidens_okarina-NTSC12.xdelta',
 				description: 'NTSC (USA/Japan) version 1.2',
-				requiresNtsc12Choice: true,
-				variants: {
-					standard: {
-						name: 'Vanlig',
-						patch: 'Tidens_okarina-NTSC12.xdelta',
-						outputName: 'Tidens_okarina-NTSC12.z64'
-					},
-					selector: {
-						name: 'Med VI-selektor',
-						patch: 'Tidens_okarina-NTSC12VI.xdelta',
-						outputName: 'Tidens_okarina-NTSC12VI.z64'
-					}
-				}
+				outputName: 'Tidens_okarina-NTSC12.z64'
 			},
 			'cd09029edcfb7c097ac01986a0f83d3f': {
 				name: 'NTSC GameCube',
@@ -788,7 +769,6 @@
 		let detectedVersion = null;
 		let selectedGame = null;
 		let selectedRegion = null;
-		let selectedNtsc12Variant = null;
 
 		// Start animations
 		const animManager = new AnimationManager();
@@ -804,8 +784,6 @@
 		const versionDetails = document.getElementById('versionDetails');
 		const iqueChoices = document.getElementById('iqueChoices');
 		const iqueChoiceButtons = document.querySelectorAll('.ique-choice-btn');
-		const ntsc12Choices = document.getElementById('ntsc12Choices');
-		const ntsc12ChoiceButtons = document.querySelectorAll('.ntsc12-choice-btn');
 		const infoButton = document.getElementById('infoButton');
 		const infoModal = document.getElementById('infoModal');
 		const closeModal = document.getElementById('closeModal');
@@ -831,38 +809,19 @@
 			statusDiv.className = `status ${type}`;
 		}
 
-		function resetVariantChoices() {
+		function resetIqueChoices() {
 			selectedGame = null;
 			selectedRegion = null;
-			selectedNtsc12Variant = null;
 			iqueChoices.classList.remove('show');
-			ntsc12Choices.classList.remove('show');
 			iqueChoiceButtons.forEach((button) => button.classList.remove('selected'));
-			ntsc12ChoiceButtons.forEach((button) => button.classList.remove('selected'));
 		}
 
 		function getPatchInfo(versionInfo_data) {
-			if (versionInfo_data.requiresIqueChoices) {
-				return selectedGame && selectedRegion ? versionInfo_data.variants[selectedGame][selectedRegion] : null;
+			if (!versionInfo_data.requiresIqueChoices) {
+				return versionInfo_data;
 			}
 
-			if (versionInfo_data.requiresNtsc12Choice) {
-				return selectedNtsc12Variant ? versionInfo_data.variants[selectedNtsc12Variant] : null;
-			}
-
-			return versionInfo_data;
-		}
-
-		function getPatchChoiceText(versionInfo_data) {
-			if (versionInfo_data.requiresIqueChoices) {
-				return 'Välj OoT/Master Quest och PAL/NTSC';
-			}
-
-			if (versionInfo_data.requiresNtsc12Choice) {
-				return 'Välj vanlig eller med VI-selektor';
-			}
-
-			return '';
+			return selectedGame && selectedRegion ? versionInfo_data.variants[selectedGame][selectedRegion] : null;
 		}
 
 		// Beräkna MD5-checksumma
@@ -877,7 +836,7 @@
 			uploadSection.classList.add('hidden');
 			updateStatus('🔍 Läser ROM-fil och identifierar version...', 'loading');
 			versionInfo.classList.remove('show');
-			resetVariantChoices();
+			resetIqueChoices();
 			applyBtn.disabled = true;
 			loadedPatch = null;
 			detectedVersion = null;
@@ -912,19 +871,13 @@
 					<strong>Version:</strong> ${versionInfo_data.name}<br>
 					<strong>Beskrivning:</strong> ${versionInfo_data.description}<br>
 					<strong>MD5:</strong> <code>${md5Hash}</code><br>
-					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : getPatchChoiceText(versionInfo_data)}
+					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : 'Välj OoT/Master Quest och PAL/NTSC'}
 				`;
 				versionInfo.classList.add('show');
 
 				if (versionInfo_data.requiresIqueChoices) {
 					iqueChoices.classList.add('show');
 					updateStatus('✅ iQue-ROM identifierad. Välj Vanlig OoT eller Master Quest och PAL eller NTSC.', 'success');
-					return;
-				}
-
-				if (versionInfo_data.requiresNtsc12Choice) {
-					ntsc12Choices.classList.add('show');
-					updateStatus('✅ NTSC 1.2-ROM identifierad. Välj vanlig version eller version med VI-selektor.', 'success');
 					return;
 				}
 
@@ -942,7 +895,7 @@
 			const patchInfo = getPatchInfo(versionInfo_data);
 			if (!patchInfo) {
 				applyBtn.disabled = true;
-				updateStatus(`${getPatchChoiceText(versionInfo_data)} innan du applicerar patchen.`, 'info');
+				updateStatus('Välj Vanlig OoT eller Master Quest och PAL eller NTSC innan du applicerar patchen.', 'info');
 				return;
 			}
 
@@ -1065,29 +1018,7 @@
 				versionDetails.innerHTML = `
 					<strong>Version:</strong> ${detectedVersion.name}${patchInfo ? ` (${patchInfo.name})` : ''}<br>
 					<strong>Beskrivning:</strong> ${detectedVersion.description}<br>
-					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : getPatchChoiceText(detectedVersion)}
-				`;
-
-				await loadPatchForVersion(detectedVersion);
-			});
-		});
-
-		ntsc12ChoiceButtons.forEach((button) => {
-			button.addEventListener('click', async () => {
-				if (!detectedVersion || !detectedVersion.requiresNtsc12Choice) return;
-
-				selectedNtsc12Variant = button.dataset.choice;
-				loadedPatch = null;
-				applyBtn.disabled = true;
-				ntsc12ChoiceButtons.forEach((choiceButton) => {
-					choiceButton.classList.toggle('selected', choiceButton === button);
-				});
-
-				const patchInfo = getPatchInfo(detectedVersion);
-				versionDetails.innerHTML = `
-					<strong>Version:</strong> ${detectedVersion.name}${patchInfo ? ` (${patchInfo.name})` : ''}<br>
-					<strong>Beskrivning:</strong> ${detectedVersion.description}<br>
-					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : getPatchChoiceText(detectedVersion)}
+					<strong>Patch-fil:</strong> ${patchInfo ? patchInfo.patch : 'Välj OoT/Master Quest och PAL/NTSC'}
 				`;
 
 				await loadPatchForVersion(detectedVersion);
