@@ -172,7 +172,7 @@
         const listfileData = encodeLatinOne(listfileStr);
         const listfileCrc  = crc32(listfileData);
 
-        // attributes: version 100, flagga 1 (CRC32 aktiverat)
+        // attributes: version 100, flag 1 (CRC32 enabled)
         const allCrcs  = [...fileCrcs, listfileCrc, 0];
         const attrData = new Uint8Array(8 + allCrcs.length * 4);
         const attrDV   = new DataView(attrData.buffer);
@@ -338,13 +338,19 @@
         return buf;
     })();
 
-    function readMessage(msgData, start) {
+    function readMessage(msgData, start, glyphReplacements = null) {
         const out = [];
         let pos = start, extra = 0, done = false;
         while (pos < msgData.length) {
             const c = msgData[pos];
             if (c === 0 && extra === 0 && !done) break;
-            out.push(c);
+            // Remap visible characters only, never control codes or their parameters.
+            if (extra === 0 && c >= 0x20 && glyphReplacements &&
+                Object.prototype.hasOwnProperty.call(glyphReplacements, c)) {
+                out.push(glyphReplacements[c]);
+            } else {
+                out.push(c);
+            }
             pos++;
             if (extra === 0) {
                 if (MSG_CODES.has(c)) {
@@ -361,7 +367,7 @@
         return new Uint8Array(out);
     }
 
-    function packText(msgData, tableData, addCharset) {
+    function packText(msgData, tableData, addCharset, glyphReplacements = null) {
         const entries = [];
         let idx = 0;
         while (idx < tableData.length) {
@@ -378,7 +384,7 @@
             const boxByte = tableData[idx + 2];
             const boxType = (boxByte & 0xF0) >> 4;
             const boxPos  = (boxByte & 0x0F);
-            entries.push([msgId, boxType, boxPos, readMessage(msgData, offset)]);
+            entries.push([msgId, boxType, boxPos, readMessage(msgData, offset, glyphReplacements)]);
             idx += 8;
         }
 
@@ -432,15 +438,87 @@
         return JSON.parse(value);
     }
 
+    function splitTomlItems(value, lineNum) {
+        const items = [];
+        let start = 0;
+        let quote = false;
+        let escaped = false;
+        let depth = 0;
+        for (let i = 0; i < value.length; i++) {
+            const ch = value[i];
+            if (escaped) {
+                escaped = false;
+            } else if (ch === '\\' && quote) {
+                escaped = true;
+            } else if (ch === '"') {
+                quote = !quote;
+            } else if (!quote && (ch === '[' || ch === '{')) {
+                depth++;
+            } else if (!quote && (ch === ']' || ch === '}')) {
+                depth--;
+                if (depth < 0) throw new Error(`Ogiltigt TOML-värde på rad ${lineNum}: ${value}`);
+            } else if (!quote && ch === ',' && depth === 0) {
+                items.push(value.slice(start, i).trim());
+                start = i + 1;
+            }
+        }
+        if (quote || depth !== 0) throw new Error(`Ogiltigt TOML-värde på rad ${lineNum}: ${value}`);
+        const last = value.slice(start).trim();
+        if (last) items.push(last);
+        return items;
+    }
+
+    function findTomlEquals(value, lineNum) {
+        let quote = false;
+        let escaped = false;
+        let depth = 0;
+        for (let i = 0; i < value.length; i++) {
+            const ch = value[i];
+            if (escaped) {
+                escaped = false;
+            } else if (ch === '\\' && quote) {
+                escaped = true;
+            } else if (ch === '"') {
+                quote = !quote;
+            } else if (!quote && (ch === '[' || ch === '{')) {
+                depth++;
+            } else if (!quote && (ch === ']' || ch === '}')) {
+                depth--;
+            } else if (!quote && depth === 0 && ch === '=') {
+                return i;
+            }
+        }
+        throw new Error(`Ogiltig TOML-tabell på rad ${lineNum}: ${value}`);
+    }
+
+    function parseTomlInlineTable(value, lineNum) {
+        const inner = value.slice(1, -1).trim();
+        const table = {};
+        if (!inner) return table;
+        for (const item of splitTomlItems(inner, lineNum)) {
+            const equals = findTomlEquals(item, lineNum);
+            const keyText = item.slice(0, equals).trim();
+            if (!keyText) throw new Error(`Ogiltig TOML-tabell på rad ${lineNum}: ${item}`);
+            const key = keyText.startsWith('"') ? parseTomlString(keyText) : keyText;
+            if (!key) throw new Error(`Ogiltig TOML-tabellnyckel på rad ${lineNum}: ${item}`);
+            if (Object.prototype.hasOwnProperty.call(table, key)) {
+                throw new Error(`Dubblettnyckel i TOML-tabell på rad ${lineNum}: ${key}`);
+            }
+            table[key] = parseTomlValue(item.slice(equals + 1), lineNum);
+        }
+        return table;
+    }
+
     function parseTomlValue(value, lineNum) {
         value = value.trim();
         if (value.startsWith('"')) return parseTomlString(value);
         if (value === 'true') return true;
         if (value === 'false') return false;
+        if (value.startsWith('{') && value.endsWith('}')) return parseTomlInlineTable(value, lineNum);
         if (value.startsWith('[') && value.endsWith(']')) {
             const inner = value.slice(1, -1).trim();
             if (!inner) return [];
-            return inner.split(',').map(part => {
+            return splitTomlItems(inner, lineNum).map(part => {
                 const item = part.trim();
                 return item.startsWith('"') ? parseTomlString(item) : Number(item);
             });
@@ -451,7 +529,7 @@
     }
 
     function parseTomlManifest(tomlText) {
-        const manifest = { group: [], text: [] };
+        const manifest = { group: [], text: [], file: [] };
         let current = manifest;
         let currentGroup = null;
         let currentText = null;
@@ -485,6 +563,12 @@
                 const replacement = {};
                 currentText.replacement.push(replacement);
                 current = replacement;
+                continue;
+            }
+            if (line === '[[file]]') {
+                const file = {};
+                manifest.file.push(file);
+                current = file;
                 continue;
             }
 
@@ -540,6 +624,31 @@
         return value;
     }
 
+    function expectGlyphReplacements(table, label) {
+        const value = table.glyph_replacements === undefined ? {} : table.glyph_replacements;
+        if (!value || Array.isArray(value) || typeof value !== 'object') {
+            throw new Error(`${label}.glyph_replacements måste vara en TOML-tabell`);
+        }
+
+        const replacements = {};
+        for (const [source, target] of Object.entries(value)) {
+            if (typeof source !== 'string' || typeof target !== 'string' ||
+                !/^[0-9A-Fa-f]{2}$/.test(source) || !/^[0-9A-Fa-f]{2}$/.test(target)) {
+                throw new Error(`${label}.glyph_replacements: teckenbyten måste anges som tvåsiffriga hexsträngar`);
+            }
+            const oldByte = parseInt(source, 16);
+            const newByte = parseInt(target, 16);
+            if (oldByte < 0x20 || oldByte > 0x9E || newByte < 0x20 || newByte > 0x9E) {
+                throw new Error(`${label}.glyph_replacements: varje tecken måste vara en byte mellan 20 och 9E`);
+            }
+            if (Object.prototype.hasOwnProperty.call(replacements, oldByte)) {
+                throw new Error(`${label}.glyph_replacements: tecknet ${source.toUpperCase()} har angetts flera gånger`);
+            }
+            replacements[oldByte] = newByte;
+        }
+        return replacements;
+    }
+
     function expectSize(table, label) {
         const value = table.size;
         if (!Array.isArray(value) || value.length !== 2 || !value.every(Number.isInteger)) {
@@ -568,7 +677,22 @@
         return addHeader ? packTexture(fmt, w, h, pixels) : pixels;
     }
 
-    function runManifest(imageData, manifestText) {
+    async function readManifestFile(source, label) {
+        let response;
+        try {
+            response = await fetch(source);
+        } catch (error) {
+            throw new Error(`${label}: kunde inte läsa färdig resurs '${source}': ${error.message}`);
+        }
+        if (!response.ok) {
+            throw new Error(`${label}: kunde inte läsa färdig resurs '${source}': HTTP ${response.status}`);
+        }
+        const data = new Uint8Array(await response.arrayBuffer());
+        if (!data.length) throw new Error(`${label}: färdig resurs '${source}' är tom`);
+        return data;
+    }
+
+    async function runManifest(imageData, manifestText) {
         const manifest = parseTomlManifest(manifestText);
         const resources = new Map();
         const otrName = manifest.output || 'Mod.otr';
@@ -603,7 +727,17 @@
             }
 
             const addCharset = expectBool(text, 'add_charset', true, label);
-            resources.set(joinPath(path, name), packText(msgData, tableData, addCharset));
+            const glyphReplacements = expectGlyphReplacements(text, label);
+            resources.set(joinPath(path, name), packText(msgData, tableData, addCharset, glyphReplacements));
+        }
+
+        for (let i = 0; i < manifest.file.length; i++) {
+            const file = manifest.file[i];
+            const label = `file #${i + 1}`;
+            const resourcePath = expectString(file, 'path', label);
+            const name = expectString(file, 'name', label);
+            const source = expectString(file, 'source', label);
+            resources.set(joinPath(resourcePath, name), await readManifestFile(source, label));
         }
 
         for (let g = 0; g < manifest.group.length; g++) {
@@ -631,7 +765,7 @@
      * @returns {{ data: Uint8Array, name: string }}
      */
     async function buildOtr(romData, manifestText) {
-        const { resources, otrName } = runManifest(romData, manifestText);
+        const { resources, otrName } = await runManifest(romData, manifestText);
         return { data: await buildArchive(resources), name: otrName };
     }
 

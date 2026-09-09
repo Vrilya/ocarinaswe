@@ -1,8 +1,34 @@
 output = "Svenska.otr"
 
+[[file]]
+path = "audio/samples"
+name = "Navi - Hello!_META"
+source = "audio/soh/Navi - Hello!_META"
+
+[[file]]
+path = "audio/samples"
+name = "Navi - Hey!_META"
+source = "audio/soh/Navi - Hey!_META"
+
+[[file]]
+path = "audio/samples"
+name = "Navi - Listen!_META"
+source = "audio/soh/Navi - Listen!_META"
+
+[[file]]
+path = "audio/samples"
+name = "Navi - Look!_META"
+source = "audio/soh/Navi - Look!_META"
+
+[[file]]
+path = "audio/samples"
+name = "Navi - Watch Out!_META"
+source = "audio/soh/Navi - Watch Out!_META"
+
 [[text]]
 path = "text/nes_message_data_static"
 name = "nes_message_data_static"
+glyph_replacements = { "7B" = "82", "7D" = "92" }
 messages_offset = "8BA000"
 messages_length = "38FFFF"
 table_offset = "B7E8F8"
@@ -12,6 +38,7 @@ add_charset = true
 [[text]]
 path = "text/staff_message_data_static"
 name = "staff_message_data_static"
+glyph_replacements = { "7B" = "82", "7D" = "92" }
 messages_offset = "967000"
 messages_length = "38FFFF"
 table_offset = "B86D38"
@@ -614,7 +641,7 @@ size = [16, 16]
 
 [[group.texture]]
 name = "gMsgChar82LatinCapitalLetterAWithCircumflexTex"
-offset = "8B8100"
+offset = "8B7D80"
 format = "I4"
 size = [16, 16]
 
@@ -704,7 +731,7 @@ size = [16, 16]
 
 [[group.texture]]
 name = "gMsgChar92LatinSmallLetterAWithCircumflexTex"
-offset = "8B8900"
+offset = "8B7E80"
 format = "I4"
 size = [16, 16]
 
